@@ -1,0 +1,19 @@
+<section>
+  <header>
+    <h3 class="primary-color">Bubble Chart</h3>
+  </header>
+  <article>
+    <md-card>
+      <md-card-title>Simple</md-card-title>
+      <md-card-content>
+        <div echarts [options]="simpleBubbleOption" (chartInit)="chartInstances.push($event)" class="chart"></div>
+      </md-card-content>
+    </md-card>
+    <md-card>
+      <md-card-title>Single axis</md-card-title>
+      <md-card-content>
+        <div echarts [options]="singleAxisBubbleChartOption" (chartInit)="chartInstances.push($event)" class="chart"></div>
+      </md-card-content>
+    </md-card>
+  </article>
+</section>

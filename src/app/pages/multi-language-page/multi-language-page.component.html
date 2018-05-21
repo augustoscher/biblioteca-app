@@ -1,0 +1,17 @@
+<section>
+  <header>
+    <h3 class="primary-color">Multi language</h3>
+  </header>
+  <article>
+    <md-card>
+      <md-card-content>
+        <md-select class="push-bottom-xl" placeholder="Select language" [ngModel]="'en'" (change)="changeLanguage($event)">
+          <md-option [value]="'en'">{{'ENGLISH' | translate}}</md-option>
+          <md-option [value]="'de'">{{'GERMAN' | translate}}</md-option>
+        </md-select>
+        <div>{{'NODEJS' | translate}}</div>
+        <div echarts [options]="lineChartOption" (chartInit)="chartInstances.push($event)" class="line-chart"></div>
+      </md-card-content>
+    </md-card>
+  </article>
+</section>

@@ -1,0 +1,20 @@
+<section>
+  <header>
+    <h3 class="primary-color">Radar</h3>
+  </header>
+  <article>
+    <md-card>
+      <md-card-title>With area</md-card-title>
+      <md-card-content>
+        <div echarts [options]="areaOption" (chartInit)="chartInstances.push($event)" class="chart"></div>
+      </md-card-content>
+    </md-card>
+    <md-card>
+      <md-card-title>With lines</md-card-title>
+      <md-card-content>
+        <div echarts [options]="lineOption" (chartInit)="chartInstances.push($event)" class="chart"></div>
+      </md-card-content>
+    </md-card>
+
+  </article>
+</section>

@@ -1,0 +1,141 @@
+<section>
+  <header>
+    <h3 class="primary-color">List</h3>
+  </header>
+  <article fxLayout="column" fxLayout.gt-sm="row" fxLayoutWrap>
+    <div fxFlex="50" fxFlex.gt-md="33">
+      <md-card>
+        <md-card-title>Normal list</md-card-title>
+        <md-card-content>
+          <md-list>
+            <h3 md-subheader>Items</h3>
+            <md-list-item *ngFor="let item of items">
+              {{item}}
+            </md-list-item>
+          </md-list>
+        </md-card-content>
+      </md-card>
+      <md-card>
+        <md-card-title>Normal list</md-card-title>
+        <md-card-content>
+          <md-list>
+            <md-list-item *ngFor="let contact of contacts">
+              <h3 md-line>{{contact.name}}</h3>
+              <p md-line>extra line</p>
+              <p md-line>{{contact.headline}}</p>
+            </md-list-item>
+          </md-list>
+        </md-card-content>
+      </md-card>
+      <md-card>
+        <md-card-title>Normal list</md-card-title>
+        <md-card-content>
+          <md-list>
+            <h3 md-subheader>Today</h3>
+            <md-list-item *ngFor="let message of messages">
+              <md-icon class="icon-color" md-list-icon>account_circle</md-icon>
+              <h4 md-line>{{message.from}}</h4>
+              <p md-line>
+                <span>{{message.subject}} -- </span>
+                <span>{{message.message}}</span>
+              </p>
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item *ngFor="let message of messages">
+              <h4 md-line>{{message.from}}</h4>
+              <p md-line> {{message.subject}} </p>
+              <p md-line>{{message.message}} </p>
+            </md-list-item>
+          </md-list>
+        </md-card-content>
+      </md-card>
+    </div>
+
+    <div fxFlex="50" fxFlex.gt-md="33">
+      <md-card>
+        <md-card-title>Dense list</md-card-title>
+        <md-card-content>
+          <md-list dense>
+            <h3 md-subheader>Items</h3>
+            <md-list-item *ngFor="let item of items">
+              {{item}}
+            </md-list-item>
+          </md-list>
+        </md-card-content>
+      </md-card>
+      <md-card>
+        <md-card-title>Dense list</md-card-title>
+        <md-card-content>
+          <md-list dense>
+            <md-list-item *ngFor="let contact of contacts">
+              <h3 md-line>{{contact.name}}</h3>
+              <p md-line>{{contact.headline}}</p>
+            </md-list-item>
+          </md-list>
+        </md-card-content>
+      </md-card>
+      <md-card>
+        <md-card-title>Dense list</md-card-title>
+        <md-card-content>
+          <md-list dense>
+            <h3 md-subheader>Today</h3>
+            <md-list-item *ngFor="let message of messages">
+              <md-icon class="icon-color" md-list-icon>account_circle</md-icon>
+              <h4 md-line>{{message.from}}</h4>
+              <p md-line> {{message.subject}} </p>
+              <p md-line>{{message.message}} </p>
+            </md-list-item>
+          </md-list>
+        </md-card-content>
+      </md-card>
+    </div>
+
+    <div fxFlex="100" fxFlex.gt-md="33">
+      <md-card>
+        <md-card-title>Nav list</md-card-title>
+        <md-card-content>
+          <md-nav-list>
+            <a md-list-item *ngFor="let link of links">
+              <md-icon class="icon-color" md-list-icon>folder</md-icon>
+              <span md-line>{{ link.name }}</span>
+              <span md-line> Description </span>
+            </a>
+          </md-nav-list>
+        </md-card-content>
+      </md-card>
+      <md-card>
+        <md-card-title>Nav list</md-card-title>
+        <md-card-content>
+          <md-nav-list>
+            <a md-list-item *ngFor="let link of links">
+              {{ link.name }}
+            </a>
+          </md-nav-list>
+          <md-nav-list>
+            <md-list-item *ngFor="let link of links">
+              <a md-line >{{ link.name }}</a>
+              <button md-icon-button>
+                <md-icon class="icon-color">info</md-icon>
+              </button>
+            </md-list-item>
+          </md-nav-list>
+        </md-card-content>
+      </md-card>
+      <md-card>
+        <md-card-title>Nav list</md-card-title>
+        <md-card-content>
+          <md-nav-list dense>
+            <md-list-item *ngFor="let link of links">
+              <a md-line >{{ link.name }}</a>
+              <button md-icon-button>
+                <md-icon class="icon-color">info</md-icon>
+              </button>
+            </md-list-item>
+          </md-nav-list>
+        </md-card-content>
+      </md-card>
+    </div>
+  </article>
+</section>
+
+

@@ -1,0 +1,44 @@
+<section>
+  <header>
+    <h3 class="primary-color">Progress Spinner</h3>
+  </header>
+  <article>
+    <md-card>
+      <md-card-content>
+        <div>
+          <h6>Color:</h6>
+          <md-radio-group [(ngModel)]="color">
+            <md-radio-button value="primary">
+              Primary
+            </md-radio-button>
+            <md-radio-button value="accent">
+              Accent
+            </md-radio-button>
+            <md-radio-button value="warn">
+              Warn
+            </md-radio-button>
+          </md-radio-group>
+        </div>
+
+        <div>
+          <h6>Mode:</h6>
+          <md-radio-group [(ngModel)]="mode">
+            <md-radio-button value="determinate">
+              Determinate
+            </md-radio-button>
+            <md-radio-button value="indeterminate">
+              Indeterminate
+            </md-radio-button>
+          </md-radio-group>
+        </div>
+
+        <div *ngIf="mode == 'determinate'">
+          <label>Progress:</label>
+          <md-slider [(ngModel)]="value"></md-slider>
+        </div>
+
+        <md-progress-spinner [color]="color" [mode]="mode" [value]="value"></md-progress-spinner>
+      </md-card-content>
+    </md-card>
+  </article>
+</section>

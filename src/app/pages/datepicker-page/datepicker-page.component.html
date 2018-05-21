@@ -1,0 +1,16 @@
+<section>
+  <header>
+    <h3 class="primary-color">Datepicker</h3>
+  </header>
+  <article>
+    <md-card>
+      <md-card-content>
+        <md-input-container>
+          <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
+          <button mdSuffix [mdDatepickerToggle]="picker"></button>
+        </md-input-container>
+        <md-datepicker #picker></md-datepicker>
+      </md-card-content>
+    </md-card>
+  </article>
+</section>

@@ -1,0 +1,47 @@
+<section>
+  <header>
+    <h3 class="primary-color">Line Chart</h3>
+  </header>
+  <article>
+    <div fxLayout="column" fxLayout.gt-md="row">
+      <div fxFlex="50">
+        <md-card>
+          <md-card-title>Simple</md-card-title>
+          <md-card-content>
+            <div class="parent">
+              <div echarts [options]="lineChartOption" (chartInit)="chartInstances.push($event)" class="line-chart"></div>
+            </div>
+          </md-card-content>
+        </md-card>
+      </div>
+      <div fxFlex="50">
+        <md-card>
+          <md-card-title>Multiple Axes</md-card-title>
+          <md-card-content>
+            <div echarts [options]="multipleAxesOption" (chartInit)="chartInstances.push($event)" class="line-chart"></div>
+          </md-card-content>
+        </md-card>
+      </div>
+    </div>
+
+    <div fxLayout="column" fxLayout.gt-md="row">
+      <div fxFlex="50">
+        <md-card>
+          <md-card-title>Area Chart</md-card-title>
+          <md-card-content>
+            <div echarts [options]="areaOption" (chartInit)="chartInstances.push($event)" class="line-chart"></div>
+          </md-card-content>
+        </md-card>
+      </div>
+      <div fxFlex="50">
+        <md-card>
+          <md-card-title>Stacked Area</md-card-title>
+          <md-card-content>
+            <div echarts [options]="stackedAreaOption" (chartInit)="chartInstances.push($event)" class="line-chart"></div>
+          </md-card-content>
+        </md-card>
+      </div>
+    </div>
+
+  </article>
+</section>

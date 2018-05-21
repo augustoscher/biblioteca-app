@@ -1,0 +1,77 @@
+<section>
+  <header class="text-center">
+    <h5>Products</h5>
+    <div class="md-subhead">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium blanditiis dolorum ducimus placeat possimus
+      provident qui reprehenderit tempore totam voluptatibus.
+    </div>
+  </header>
+  <article fxLayout="column" fxLayout.gt-md="row">
+
+    <div fxFlex="50" fxLayout="column">
+      <md-card fxFlex class="main-card">
+        <md-card-content fxLayout="column">
+          <div class="md-title accent-color">{{mainProduct.promotion}}</div>
+          <a fxFlex routerLink="/main/product" class="main-product"
+             [style.background-image]="'url(' + mainProduct.image + ')'">
+          </a>
+          <div class="text-center">
+            <button md-raised-button color="primary" class="push-right-sm sm push-bottom-sm">
+              <md-icon>favorite</md-icon>
+            </button>
+            <button md-raised-button color="primary">ADD TO CART
+              <md-icon>add_shopping_cart</md-icon>
+            </button>
+          </div>
+          <div fxLayout="row" class="md-headline push-top-lg">
+            <div fxFlex="50">{{mainProduct.name}}</div>
+            <div fxFlex="50" class="primary-color text-right">$ {{mainProduct.price}}</div>
+          </div>
+          <div fxLayout="row" class="secondary-text-color">
+            <div fxFlex="50">{{mainProduct.description}}</div>
+            <div fxFlex="50" class="text-right"><s>$ {{mainProduct.oldPrice}}</s></div>
+          </div>
+          <div class="push-top-sm">
+            <md-icon>star</md-icon>
+            <md-icon>star</md-icon>
+            <md-icon>star</md-icon>
+            <md-icon>star</md-icon>
+            <md-icon>star</md-icon>
+          </div>
+        </md-card-content>
+      </md-card>
+    </div>
+    <div fxFlex="50" fxLayout="column" fxLayout.gt-sm="row" fxLayoutWrap>
+      <div fxFlex="50" *ngFor="let product of products">
+        <md-card>
+          <md-card-content fxLayout="column">
+            <div class="md-title accent-color">{{product.promotion}}</div>
+            <a fxFlex class="product" routerLink="/main/product" [style.background-image]="'url(' + product.image + ')'"></a>
+            <div class="text-center push-top-xs">
+              <button md-raised-button color="primary" class="push-right-sm push-bottom-sm">
+                <md-icon>favorite</md-icon>
+              </button>
+              <button md-raised-button color="primary">ADD TO CART
+                <md-icon>add_shopping_cart</md-icon>
+              </button>
+            </div>
+            <div fxLayout="row" class="md-headline push-top-sm">
+              <div fxFlex="50">{{product.name}}</div>
+              <div fxFlex="50" class="primary-color text-right">$ {{product.price}}</div>
+            </div>
+            <div class="secondary-text-color">
+              {{product.description}}
+            </div>
+            <div class="push-top-sm">
+              <md-icon>star</md-icon>
+              <md-icon>star</md-icon>
+              <md-icon>star</md-icon>
+              <md-icon>star</md-icon>
+              <md-icon>star</md-icon>
+            </div>
+          </md-card-content>
+        </md-card>
+      </div>
+    </div>
+  </article>
+</section>

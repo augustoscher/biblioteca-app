@@ -1,0 +1,73 @@
+<section>
+  <header>
+    <h3 class="primary-color">Flex layout</h3>
+  </header>
+  <article>
+    <md-card>
+      <md-card-title>Layout Children with 'layout-align'</md-card-title>
+      <md-card-content>
+        <div [fxLayout]="direction" [fxLayoutAlign]="layoutAlign()" class="blocks">
+          <div class="block primary-light-background-color" fxHide="lt-sm"></div>
+          <div class="block primary-light-background-color"></div>
+          <div class="block primary-light-background-color"></div>
+          <div class="block primary-light-background-color"></div>
+          <div class="block primary-light-background-color" fxHide="lt-sm"></div>
+        </div>
+        <br>
+        <div fxLayout="column" fxLayout.gt-sm="row">
+          <div>
+            <div>Layout Direction</div>
+            <md-radio-group [(ngModel)]="direction" fxLayout="column">
+              <md-radio-button value="row">row</md-radio-button>
+              <md-radio-button value="column">column</md-radio-button>
+            </md-radio-group>
+          </div>
+          <div>
+            <div>Alignment in Layout Direction ({{direction == 'row' ? 'horizontal' : 'vertical'}})</div>
+            <md-radio-group name="mainAxisOptions" [(ngModel)]="mainAxis" fxLayout="column">
+              <md-radio-button value="">none</md-radio-button>
+              <md-radio-button value="start">start (default)</md-radio-button>
+              <md-radio-button value="center">center</md-radio-button>
+              <md-radio-button value="end">end</md-radio-button>
+              <md-radio-button value="space-around">space-around</md-radio-button>
+              <md-radio-button value="space-between">space-between</md-radio-button>
+            </md-radio-group>
+          </div>
+          <div>
+            <div>Alignment in Perpendicular Direction ({{direction == 'column' ? 'horizontal' : 'vertical'}})</div>
+            <md-radio-group name="crossAxisOptions" [(ngModel)]="crossAxis" fxLayout="column">
+              <md-radio-button value="none"><em>none</em></md-radio-button>
+              <md-radio-button value="start">start</md-radio-button>
+              <md-radio-button value="center">center</md-radio-button>
+              <md-radio-button value="end">end</md-radio-button>
+              <md-radio-button value="stretch">stretch (default)</md-radio-button>
+            </md-radio-group>
+          </div>
+        </div>
+        <br>
+        <div>
+          <div class="secondary-text-color">
+            &lt;div fxLayout="{{ direction }}"
+            <span>fxLayoutAlign="{{ layoutAlign() }}"</span>
+            &gt;
+          </div>
+        </div>
+      </md-card-content>
+
+
+    </md-card>
+    <md-card>
+      <md-card-title>Flex proportion</md-card-title>
+      <md-card-content>
+        <div fxLayout="row" class="low-blocks">
+          <div fxFlex="10" class="block primary-light-background-color">1</div>
+          <div fxFlex="20" class="block primary-light-background-color">2</div>
+          <div fxFlex="30" class="block primary-light-background-color">3</div>
+          <div fxFlex="40" class="block primary-light-background-color">4</div>
+        </div>
+      </md-card-content>
+    </md-card>
+  </article>
+</section>
+
+

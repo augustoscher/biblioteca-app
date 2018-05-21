@@ -1,0 +1,14 @@
+<section>
+  <header>
+    <h3 class="primary-color">Dialog</h3>
+  </header>
+  <article>
+    <md-card>
+      <md-card-content>
+        <button md-raised-button color="primary" (click)="openDialog()">Open dialog</button>
+        <br>
+        <p>You selected: <mark *ngIf="selectedOption">{{selectedOption}}</mark></p>
+      </md-card-content>
+    </md-card>
+  </article>
+</section>

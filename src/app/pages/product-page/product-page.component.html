@@ -1,0 +1,102 @@
+<section class="wrapper cart-page">
+  <header>
+    <h5>Product page</h5>
+  </header>
+  <article class="push-top">
+    <button md-button routerLink="/main/products">
+      <md-icon class="push-right-sm">arrow_back</md-icon>
+      BACK TO LIST
+    </button>
+    <div fxLayout="column" fxLayout.gt-md="row" class="product-item">
+      <div fxFlex="65" class="text-center">
+        <img src="{{selectedItem.image}}">
+      </div>
+      <div fxFlex="35">
+        <div class="md-headline">{{selectedItem.name}}</div>
+        <div class="secondary-text-color md-caption">Item code: {{selectedItem.code}}</div>
+        <div class="md-headline accent-color push-top-sm">EUR {{selectedItem.price}}</div>
+        <div class="push-top-md">
+          <md-select [(ngModel)]="selectedItem.color" class="push-right">
+            <md-option *ngFor="let color of availableColors" [value]="color">
+              {{color}}
+            </md-option>
+          </md-select>
+          <md-select [(ngModel)]="selectedItem.size">
+            <md-option *ngFor="let size of availableSizes" [value]="size">
+              {{size}}
+            </md-option>
+          </md-select>
+        </div>
+        <div class="secondary-text-color push-top-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          Explicabo, sit.
+        </div>
+        <div class="push-top-sm">
+          <button md-raised-button color="primary">ADD TO CART</button>
+          <button md-icon-button color="primary">
+            <md-icon>favorite</md-icon>
+          </button>
+        </div>
+        <div class="expandable push-top">
+          <button md-button fxFlexFill (click)="detailsOpen = !detailsOpen">
+            <div fxLayout="row">
+              <div fxFlex class="text-left md-subhead">Details</div>
+              <div fxFlex class="text-right">
+                <md-icon>{{detailsOpen ? 'remove' : 'add'}}</md-icon>
+              </div>
+            </div>
+          </button>
+        </div>
+        <div [tdToggle]="!detailsOpen" class="secondary-text-color">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet assumenda corporis cum dignissimos dolores
+          earum, eos est excepturi ipsum nam obcaecati odit quibusdam quisquam rem sed sint tenetur ullam velit.
+        </div>
+
+        <div class="expandable push-top-sm">
+          <button md-button fxFlexFill (click)="reviewsOpen = !reviewsOpen">
+            <div fxLayout="row">
+              <div fxFlex class="text-left md-subhead">Reviews</div>
+              <div fxFlex class="text-right">
+                <md-icon>{{reviewsOpen ? 'remove' : 'add'}}</md-icon>
+              </div>
+            </div>
+          </button>
+        </div>
+        <div [tdToggle]="!reviewsOpen" class="secondary-text-color">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet assumenda corporis cum dignissimos dolores
+          earum, eos est excepturi ipsum nam obcaecati odit quibusdam quisquam rem sed sint tenetur ullam velit.
+        </div>
+
+        <div class="expandable push-top-sm">
+          <button md-button fxFlexFill (click)="shippingOpen = !shippingOpen">
+            <div fxLayout="row">
+              <div fxFlex class="text-left md-subhead">Shipping & Returns</div>
+              <div fxFlex class="text-right">
+                <md-icon>{{shippingOpen ? 'remove' : 'add'}}</md-icon>
+              </div>
+            </div>
+          </button>
+        </div>
+        <div [tdToggle]="!shippingOpen" class="secondary-text-color">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet assumenda corporis cum dignissimos dolores
+          earum, eos est excepturi ipsum nam obcaecati odit quibusdam quisquam rem sed sint tenetur ullam velit.
+        </div>
+        <div class="push-top-xxl share" fxLayout="row">
+          <div class="text-left" fxFlex>SHARE PRODUCT</div>
+          <div class="text-right" fxFlex>
+            <button md-icon-button>
+              <md-icon class="md-headline" fontSet="fontawesome" fontIcon="fa-instagram"></md-icon>
+            </button>
+            <button md-icon-button>
+              <md-icon class="md-headline" fontSet="fontawesome" fontIcon="fa-twitter"></md-icon>
+            </button>
+            <button md-icon-button>
+              <md-icon class="md-headline" fontSet="fontawesome" fontIcon="fa-facebook-f"></md-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </article>
+
+</section>

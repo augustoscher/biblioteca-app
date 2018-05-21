@@ -1,0 +1,63 @@
+<section>
+  <header>
+    <h3 class="primary-color">Grid list</h3>
+  </header>
+  <article>
+    <md-card>
+      <md-card-title>Constant height</md-card-title>
+      <md-card-content>
+        <md-grid-list cols="4" rowHeight="100px" gutterSize="10px">
+          <md-grid-tile class="primary-light-background-color md-whiteframe-6dp"
+            *ngFor="let tile of tiles1"
+            [colspan]="tile.cols"
+            [rowspan]="tile.rows">
+            {{tile.text}}
+          </md-grid-tile>
+        </md-grid-list>
+      </md-card-content>
+    </md-card>
+    <md-card>
+      <md-card-title>Ratio height</md-card-title>
+      <md-card-content>
+        <md-grid-list cols="4" rowHeight="4:3" gutterSize="10px">
+          <md-grid-tile class="primary-light-background-color md-whiteframe-6dp"
+                        *ngFor="let tile of tiles2"
+                        [colspan]="tile.cols"
+                        [rowspan]="tile.rows">
+            {{tile.text}}
+          </md-grid-tile>
+        </md-grid-list>
+      </md-card-content>
+    </md-card>
+    <md-card>
+      <md-card-title>Custom gutter</md-card-title>
+      <md-card-content>
+        <md-grid-list cols="4" rowHeight="100px" gutterSize="30px">
+
+          <md-grid-tile class="primary-light-background-color md-whiteframe-6dp"
+                        *ngFor="let tile of tiles3"
+                        [colspan]="tile.cols"
+                        [rowspan]="tile.rows">
+            {{tile.text}}
+          </md-grid-tile>
+        </md-grid-list>
+      </md-card-content>
+    </md-card>
+    <md-card>
+      <md-card-title>Header and footer</md-card-title>
+      <md-card-content>
+        <md-grid-list cols="4" rowHeight="200px" gutterSize="30px">
+
+          <md-grid-tile class="primary-light-background-color md-whiteframe-6dp"
+                        *ngFor="let tile of tiles4"
+                        [colspan]="tile.cols"
+                        [rowspan]="tile.rows">
+            <md-grid-tile-header>Header</md-grid-tile-header>
+            {{tile.text}}
+            <md-grid-tile-footer>Footer</md-grid-tile-footer>
+          </md-grid-tile>
+        </md-grid-list>
+      </md-card-content>
+    </md-card>
+  </article>
+</section>

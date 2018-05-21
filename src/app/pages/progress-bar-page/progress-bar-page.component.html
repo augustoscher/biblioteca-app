@@ -1,0 +1,57 @@
+<section>
+  <header>
+    <h3 class="primary-color">Progress bar</h3>
+  </header>
+  <article>
+    <md-card>
+      <md-card-content>
+
+        <div>
+          <h6>Color:</h6>
+          <md-radio-group [(ngModel)]="color" fxLayout="column" fxLayout.gt-sm="row">
+            <md-radio-button value="primary">
+              Primary
+            </md-radio-button>
+            <md-radio-button value="accent">
+              Accent
+            </md-radio-button>
+            <md-radio-button value="warn">
+              Warn
+            </md-radio-button>
+          </md-radio-group>
+        </div>
+
+        <div>
+          <h6>Mode:</h6>
+          <md-radio-group [(ngModel)]="mode" fxLayout="column" fxLayout.gt-sm="row">
+            <md-radio-button value="determinate">
+              Determinate
+            </md-radio-button>
+            <md-radio-button value="indeterminate">
+              Indeterminate
+            </md-radio-button>
+            <md-radio-button value="buffer">
+              Buffer
+            </md-radio-button>
+            <md-radio-button value="query">
+              Query
+            </md-radio-button>
+          </md-radio-group>
+        </div>
+
+        <div *ngIf="mode == 'determinate' || mode == 'buffer'">
+          <label>Progress:</label>
+          <md-slider [(ngModel)]="value"></md-slider>
+        </div>
+        <div *ngIf="mode == 'buffer'">
+          <label>Buffer:</label>
+          <md-slider [(ngModel)]="bufferValue"></md-slider>
+        </div>
+
+        <div>
+          <md-progress-bar [color]="color" [mode]="mode" [value]="value" [bufferValue]="bufferValue"></md-progress-bar>
+        </div>
+      </md-card-content>
+    </md-card>
+  </article>
+</section>

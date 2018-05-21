@@ -1,0 +1,221 @@
+<section>
+  <header>
+    <h3 class="primary-color">Form elements</h3>
+  </header>
+  <article>
+    <div fxLayout="column" fxLayout.gt-sm="row">
+      <div fxFlex="100" fxLayout="column">
+        <md-card>
+          <md-card-title>Input</md-card-title>
+          <md-card-content fxLayout="column">
+            <md-input-container>
+              <textarea mdInput placeholder="Default textarea"></textarea>
+            </md-input-container>
+            <md-input-container>
+              <textarea mdInput mdTextareaAutosize placeholder="Resizable textarea" minRows="5"></textarea>
+            </md-input-container>
+            <md-input-container>
+              <textarea mdInput placeholder="Disabled textarea" disabled></textarea>
+            </md-input-container>
+            <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
+              <md-input-container fxFlex>
+                <input mdInput placeholder="Default">
+              </md-input-container>
+              <md-input-container fxFlex>
+                <input mdInput placeholder="Filled" value="Lorem">
+              </md-input-container>
+            </div>
+            <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
+              <md-input-container fxFlex hintLabel="Lorem">
+                <input mdInput placeholder="With hint">
+              </md-input-container>
+              <md-input-container fxFlex>
+                <input mdInput placeholder="Disabled" disabled>
+              </md-input-container>
+            </div>
+            <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
+              <md-input-container fxFlex floatPlaceholder="never">
+                <input mdInput placeholder="Never float">
+              </md-input-container>
+              <md-input-container fxFlex floatPlaceholder="always">
+                <input mdInput placeholder="Always float">
+              </md-input-container>
+            </div>
+            <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
+              <md-input-container fxFlex dividerColor="accent">
+                <input mdInput placeholder="Accent">
+              </md-input-container>
+              <md-input-container fxFlex dividerColor="warn">
+                <input mdInput placeholder="Warn">
+              </md-input-container>
+            </div>
+            <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
+              <md-input-container fxFlex>
+                <input mdInput #postalCode2 maxlength="5" placeholder="Start hint">
+                <md-hint align="start">{{postalCode2.value.length}} / 5</md-hint>
+              </md-input-container>
+              <md-input-container fxFlex>
+                <input mdInput #postalCode maxlength="5" placeholder="End hint">
+                <md-hint align="end">{{postalCode.value.length}} / 5</md-hint>
+              </md-input-container>
+            </div>
+          </md-card-content>
+        </md-card>
+        <md-card>
+          <md-card-title>Autocomplete</md-card-title>
+          <md-card-content>
+            <md-input-container>
+              <input mdInput placeholder="State" [mdAutocomplete]="auto" [formControl]="stateCtrl">
+            </md-input-container>
+
+            <md-autocomplete #auto="mdAutocomplete">
+              <md-option *ngFor="let state of filteredStates | async" [value]="state">
+                {{ state }}
+              </md-option>
+            </md-autocomplete>
+            <div><strong>Keyboard interaction:</strong></div>
+            <ul>
+              <li><kbd>DOWN_ARROW</kbd>: Focus next option</li>
+              <li><kbd>UP_ARROW</kbd>: Focus previous option</li>
+              <li><kbd>ENTER</kbd> or <kbd>SPACE</kbd>: Select focused item</li>
+            </ul>
+          </md-card-content>
+        </md-card>
+        <md-card>
+          <md-card-title>Slide toggle</md-card-title>
+          <md-card-content>
+            <div class="group">
+              <div><label>Color:</label></div>
+              <md-radio-group [(ngModel)]="toggleColor" fxLayout="column" fxLayout.gt-md="row">
+                <md-radio-button value="primary">Primary</md-radio-button>
+                <md-radio-button value="accent">Accent</md-radio-button>
+                <md-radio-button value="warn">Warn</md-radio-button>
+              </md-radio-group>
+            </div>
+            <div class="group">
+              <md-checkbox [(ngModel)]="toggleDisabled">Disabled</md-checkbox>
+            </div>
+            <div>
+              <md-slide-toggle [color]="toggleColor" [disabled]="toggleDisabled">
+                Slide toggle
+              </md-slide-toggle>
+            </div>
+          </md-card-content>
+        </md-card>
+      </div>
+      <div fxFlex="100" fxLayout="column">
+        <md-card>
+          <md-card-title>Check box</md-card-title>
+          <md-card-content>
+            <div class="group" fxLayout="column" fxLayout.gt-md="row">
+              <md-checkbox [checked]="true">Checked</md-checkbox>
+              <md-checkbox [indeterminate]="true">Indeterminate</md-checkbox>
+              <md-checkbox [checked]="false">Unchecked</md-checkbox>
+            </div>
+            <div class="group" fxLayout="column" fxLayout.gt-md="row">
+              <md-checkbox [labelPosition]="'after'">After</md-checkbox>
+              <md-checkbox [labelPosition]="'before'">Before</md-checkbox>
+              <md-checkbox disabled [checked]="true">Disabled</md-checkbox>
+            </div>
+            <div class="group" fxLayout="column" fxLayout.gt-md="row">
+              <md-checkbox [disableRipple]="true">No ripple</md-checkbox>
+              <md-checkbox color="primary">Primary</md-checkbox>
+              <md-checkbox color="warn">Warn</md-checkbox>
+            </div>
+          </md-card-content>
+        </md-card>
+        <md-card>
+          <md-card-title>Radio button</md-card-title>
+          <md-card-content>
+            <div class="group">
+              <md-radio-group [(ngModel)]="radioGroupValue" fxLayout="column" fxLayout.gt-md="row">
+                <md-radio-button [value]="'first'">First</md-radio-button>
+                <md-radio-button [value]="'second'">Second</md-radio-button>
+                <md-radio-button [value]="'third'">Third</md-radio-button>
+                <md-radio-button [value]="'disabled'" disabled>Disabled</md-radio-button>
+              </md-radio-group>
+              <div class="secondary-text-color"><em>Your option is
+                <mark>{{radioGroupValue}}</mark>
+              </em></div>
+            </div>
+            <div class="group">
+              <md-radio-group [(ngModel)]="radioGroupValue2" fxLayout="column" fxLayout.gt-md="row">
+                <md-radio-button [value]="'before'" [labelPosition]="'before'">Before</md-radio-button>
+                <md-radio-button [value]="'after'" [labelPosition]="'after'">After</md-radio-button>
+                <md-radio-button [value]="'no ripple'" disableRipple>No ripple</md-radio-button>
+              </md-radio-group>
+              <div class="secondary-text-color"><em>Your option is
+                <mark>{{radioGroupValue2}}</mark>
+              </em></div>
+            </div>
+          </md-card-content>
+        </md-card>
+        <md-card>
+          <md-card-title>Select</md-card-title>
+          <md-card-content>
+            <md-select placeholder="Select value" [(ngModel)]="selectValue">
+              <md-option [value]="'first'">First</md-option>
+              <md-option [value]="'second'">Second</md-option>
+              <md-option [value]="'third'">Third</md-option>
+            </md-select>
+            <p class="secondary-text-color"><em>Selected value:
+              <mark *ngIf="selectValue">{{selectValue}}</mark>
+            </em></p>
+            <strong>Keyboard interaction:</strong>
+            <ul>
+              <li><kbd>DOWN_ARROW</kbd>: Focus next option</li>
+              <li><kbd>UP_ARROW</kbd>: Focus previous option</li>
+              <li><kbd>ENTER</kbd> or <kbd>SPACE</kbd>: Select focused item</li>
+            </ul>
+          </md-card-content>
+        </md-card>
+        <md-card>
+          <md-card-title>Slider</md-card-title>
+          <md-card-content>
+            <div class="group">
+              <md-input-container>
+                <input mdInput type="number" placeholder="Value" [(ngModel)]="sliderValue">
+              </md-input-container>
+              <md-input-container>
+                <input mdInput type="number" placeholder="Min value" [(ngModel)]="sliderMin">
+              </md-input-container>
+              <md-input-container>
+                <input mdInput type="number" placeholder="Max value" [(ngModel)]="sliderMax">
+              </md-input-container>
+              <md-input-container>
+                <input mdInput type="number" placeholder="Step size" [(ngModel)]="sliderStep">
+              </md-input-container>
+            </div>
+
+            <div class="group">
+              <md-checkbox [(ngModel)]="sliderShowTicks">Show ticks</md-checkbox>
+              <md-checkbox [(ngModel)]="sliderAutoTicks" *ngIf="sliderShowTicks">
+                Auto ticks
+              </md-checkbox>
+              <md-input-container *ngIf="sliderShowTicks && !sliderAutoTicks">
+                <input mdInput type="number" placeholder="Tick interval" [(ngModel)]="sliderTickInterval">
+              </md-input-container>
+            </div>
+
+            <div class="group">
+              <md-checkbox [(ngModel)]="sliderThumbLabel">Show thumb label</md-checkbox>
+            </div>
+
+            <div class="group">
+              <md-checkbox [(ngModel)]="sliderVertical">Vertical</md-checkbox>
+              <md-checkbox [(ngModel)]="sliderInvert">Inverted</md-checkbox>
+            </div>
+
+            <div class="group">
+              <md-checkbox [(ngModel)]="sliderDisabled">Disabled</md-checkbox>
+            </div>
+
+            <md-slider [disabled]="sliderDisabled" [invert]="sliderInvert" [max]="sliderMax" [min]="sliderMin" [step]="sliderStep"
+                       [thumb-label]="sliderThumbLabel" [tick-interval]="sliderTickInterval" [value]="sliderValue" [vertical]="sliderVertical">
+            </md-slider>
+          </md-card-content>
+        </md-card>
+      </div>
+    </div>
+  </article>
+</section>

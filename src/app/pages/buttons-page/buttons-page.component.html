@@ -1,0 +1,197 @@
+<section>
+  <header>
+    <h3 class="primary-color">Buttons</h3>
+  </header>
+  <article>
+    <div fxLayout="column" fxLayout.gt-sm="row">
+      <div fxLayout="column" fxFlex="45">
+        <md-card>
+          <md-card-title>Raised button</md-card-title>
+          <md-card-content class="text-center">
+            <div>
+              <button md-raised-button color="primary">Primary button</button>
+            </div>
+            <div>
+              <button md-raised-button color="accent">Accent button</button>
+            </div>
+            <div>
+              <button md-raised-button color="warn">Warn button</button>
+            </div>
+            <div>
+              <button md-raised-button>Raised button</button>
+            </div>
+            <div>
+              <button disableRipple="true" md-raised-button>No ripple effect</button>
+            </div>
+            <div>
+              <button md-raised-button disabled>Disabled button</button>
+            </div>
+          </md-card-content>
+        </md-card>
+        <md-card>
+          <md-card-title>Float button</md-card-title>
+          <md-card-content class="text-center">
+            <div>
+              <button md-button color="primary">Primary button</button>
+            </div>
+            <div>
+              <button md-button color="accent">Accent button</button>
+            </div>
+            <div>
+              <button md-button color="warn">Warn button</button>
+            </div>
+            <div>
+              <button md-button>Flat button</button>
+            </div>
+            <div>
+              <button disableRipple="true" md-button>No ripple effect</button>
+            </div>
+            <div>
+              <button md-button disabled>Disabled button</button>
+            </div>
+          </md-card-content>
+        </md-card>
+        <md-card>
+          <md-card-title>Icon button</md-card-title>
+          <md-card-content class="text-center">
+            <div>
+              <button md-icon-button color="primary">
+                <md-icon>network_wifi</md-icon>
+              </button>
+            </div>
+            <div>
+              <button md-icon-button color="accent">
+                <md-icon>cloud</md-icon>
+              </button>
+            </div>
+            <div>
+              <button md-icon-button color="warn">
+                <md-icon>folder</md-icon>
+              </button>
+            </div>
+            <div>
+              <button md-icon-button>
+                <md-icon>add_a_photo</md-icon>
+              </button>
+            </div>
+            <div>
+              <button md-icon-button disabled>
+                <md-icon>place</md-icon>
+              </button>
+            </div>
+          </md-card-content>
+        </md-card>
+      </div>
+      <div fxLayout="column" fxFlex="55">
+        <md-card>
+          <md-card-title>Floating action button</md-card-title>
+          <md-card-content class="text-center">
+            <div>
+              <button md-fab color="primary">
+                <md-icon>check</md-icon>
+              </button>
+            </div>
+            <div>
+              <button md-fab>
+                <md-icon>thumb_up</md-icon>
+              </button>
+            </div>
+            <div>
+              <button md-fab color="warn">
+                <md-icon>call</md-icon>
+              </button>
+            </div>
+            <div>
+              <button md-fab disabled>
+                <md-icon>home</md-icon>
+              </button>
+            </div>
+          </md-card-content>
+        </md-card>
+        <md-card>
+          <md-card-title>Mini FAB</md-card-title>
+          <md-card-content class="text-center">
+            <div>
+              <button md-mini-fab color="primary">
+                <md-icon>play_arrow</md-icon>
+              </button>
+            </div>
+            <div>
+              <button md-mini-fab>
+                <md-icon>chat_bubble</md-icon>
+              </button>
+            </div>
+            <div>
+              <button md-mini-fab color="warn">
+                <md-icon>add</md-icon>
+              </button>
+            </div>
+            <div>
+              <button md-mini-fab disabled>
+                <md-icon>home</md-icon>
+              </button>
+            </div>
+          </md-card-content>
+        </md-card>
+        <md-card class="text-center">
+          <md-card-title>Button toggle</md-card-title>
+          <md-card-content>
+            <p>
+              <md-checkbox (change)="isVertical = $event.checked">Show Button Toggles Vertical</md-checkbox>
+            </p>
+            <p>
+              <md-checkbox (change)="isDisabled = $event.checked">Disable Button Toggle Items</md-checkbox>
+            </p>
+            <h6>Exclusive Selection</h6>
+            <div>
+              <md-button-toggle-group name="alignment" [vertical]="isVertical">
+                <md-button-toggle value="left">
+                  <md-icon>format_align_left</md-icon>
+                </md-button-toggle>
+                <md-button-toggle value="center">
+                  <md-icon>format_align_center</md-icon>
+                </md-button-toggle>
+                <md-button-toggle value="right">
+                  <md-icon>format_align_right</md-icon>
+                </md-button-toggle>
+              </md-button-toggle-group>
+            </div>
+            <h6>Disabled Group</h6>
+            <div>
+              <md-button-toggle-group name="checkbox" [vertical]="isVertical" [disabled]="true">
+                <md-button-toggle value="bold">
+                  <md-icon>format_bold</md-icon>
+                </md-button-toggle>
+                <md-button-toggle value="italic">
+                  <md-icon>format_italic</md-icon>
+                </md-button-toggle>
+                <md-button-toggle value="underline">
+                  <md-icon>format_underline</md-icon>
+                </md-button-toggle>
+              </md-button-toggle-group>
+            </div>
+            <h6>Multiple Selection</h6>
+            <div>
+              <md-button-toggle-group multiple [vertical]="isVertical">
+                <md-button-toggle>First</md-button-toggle>
+                <md-button-toggle>Second</md-button-toggle>
+                <md-button-toggle [disabled]="isDisabled">Third</md-button-toggle>
+              </md-button-toggle-group>
+            </div>
+            <h6>Single Toggle</h6>
+            <md-button-toggle>Yes</md-button-toggle>
+            <h6>Dynamic Exclusive Selection</h6>
+            <div>
+              <md-button-toggle-group [(ngModel)]="selected" [vertical]="isVertical">
+                <md-button-toggle *ngFor="let item of options" [value]="item">
+                  {{item}}
+                </md-button-toggle>
+              </md-button-toggle-group>
+              <p>Your selected: {{selected}}</p>
+            </div>
+          </md-card-content>
+        </md-card>
+      </div>
+    </div>
+  </article>
+</section>

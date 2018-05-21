@@ -1,0 +1,138 @@
+<section>
+  <header>
+    <h3 class="primary-color">Form wizard</h3>
+  </header>
+  <article>
+    <md-card>
+      <md-card-content>
+        <md-tab-group #tabGroup dynamicHeight="true">
+          <md-tab label="Step 1">
+            <h5>Login information</h5>
+            <form #loginForm="ngForm">
+              <div>
+
+                <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="25">
+                  <md-input-container [dividerColor]="!userName.valid && !userName.pristine ? 'warn' : 'primary'">
+                    <input type="text" mdInput placeholder="Username" name="userName" required ngModel
+                           #userName="ngModel">
+                    <md-hint *ngIf="!userName.valid && !userName.pristine" class="warn-color">Field is required
+                    </md-hint>
+                  </md-input-container>
+                  <md-input-container [dividerColor]="!mail.valid && !mail.pristine ? 'warn' : 'primary'">
+                    <input type="email" email mdInput placeholder="Email" name="mail" required ngModel #mail="ngModel">
+                    <md-hint *ngIf="!mail.valid && !mail.pristine" class="warn-color">Not match email pattern</md-hint>
+                  </md-input-container>
+                  <md-input-container [dividerColor]="!password.valid && !password.pristine ? 'warn' : 'primary'">
+                    <input type="password" required mdInput placeholder="Password" name="password" minlength="6" ngModel
+                           #password="ngModel">
+                    <md-hint *ngIf="!password.valid && !password.pristine" class="warn-color">
+                      {{password.value.length}} / 6
+                    </md-hint>
+                  </md-input-container>
+                  <md-input-container
+                    [dividerColor]="!checkPassword.valid && !checkPassword.pristine ? 'warn' : 'primary'">
+                    <input type="password" required mdInput placeholder="Confirm password" name="checkPassword" ngModel
+                           #checkPassword="ngModel" [equalTo]="password">
+                    <md-hint *ngIf="!checkPassword.valid && !checkPassword.pristine" class="warn-color">Password does
+                      not
+                      match
+                    </md-hint>
+                  </md-input-container>
+                </div>
+              </div>
+              <div>
+                <button md-raised-button color="primary" (click)="tabGroup.selectedIndex=1"
+                        [disabled]="!loginForm.valid">Next
+                </button>
+              </div>
+            </form>
+          </md-tab>
+          <md-tab label="Step 2" [disabled]="!loginForm.valid">
+            <h5>Address</h5>
+            <form #addressForm="ngForm">
+              <div>
+                <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="25">
+                <div fxLayout="row" fxLayoutGap="10px">
+                  <md-input-container fxFlex [dividerColor]="!name.valid && !name.pristine ? 'warn' : 'primary'">
+                    <input type="text" mdInput placeholder="Name" name="name" required ngModel
+                           #name="ngModel">
+                    <md-hint *ngIf="!name.valid && !name.pristine" class="warn-color">Field is required</md-hint>
+                  </md-input-container>
+                  <md-input-container fxFlex
+                                      [dividerColor]="!lastName.valid && !lastName.pristine ? 'warn' : 'primary'">
+                    <input type="text" mdInput placeholder="LastName" name="lastName" required ngModel
+                           #lastName="ngModel">
+                    <md-hint *ngIf="!lastName.valid && !lastName.pristine" class="warn-color">Field is required
+                    </md-hint>
+                  </md-input-container>
+                </div>
+                <md-input-container>
+                  <input type="text" mdInput placeholder="Phone" name="phone" ngModel #phone="ngModel">
+                </md-input-container>
+                <md-select placeholder="Select county" ngModel name="country" #country="ngModel">
+                  <md-option [value]="'First country'">First country</md-option>
+                  <md-option [value]="'Second country'">Second country</md-option>
+                  <md-option [value]="'Third country'">Third country</md-option>
+                </md-select>
+                <md-input-container>
+                  <input type="text" mdInput placeholder="Zip Code" name="zipCode" ngModel #zipCode="ngModel">
+                </md-input-container>
+                <md-input-container>
+                  <textarea mdInput mdTextareaAutosize placeholder="Address" minRows="5"
+                            [ngModel]="" #address="ngModel"></textarea>
+                </md-input-container>
+              </div>
+              </div>
+              <div>
+                <button md-raised-button color="primary" (click)="tabGroup.selectedIndex=0">Previous</button>
+                <button md-raised-button color="primary" (click)="tabGroup.selectedIndex=2"
+                        [disabled]="!addressForm.valid">Next
+                </button>
+              </div>
+
+            </form>
+          </md-tab>
+          <md-tab label="Step 3" [disabled]="!addressForm.valid">
+            <h5>Confirmation</h5>
+            <md-list>
+              <md-list-item>
+                <h4 md-line>User name</h4>
+                <p md-line><em>{{userName.value}}</em></p>
+              </md-list-item>
+              <md-list-item>
+                <h4 md-line>Email</h4>
+                <p md-line><em>{{mail.value}}</em></p>
+              </md-list-item>
+              <md-divider></md-divider>
+              <md-list-item>
+                <h4 md-line>Name</h4>
+                <p md-line><em>{{name.value}}</em></p>
+              </md-list-item>
+              <md-list-item>
+                <h4 md-line>Last Name</h4>
+                <p md-line><em>{{lastName.value}}</em></p>
+              </md-list-item>
+              <md-list-item *ngIf="phone.value">
+                <h4 md-line>Phone</h4>
+                <p md-line><em>{{phone.value}}</em></p>
+              </md-list-item>
+              <md-list-item *ngIf="country.value">
+                <h4 md-line>Country</h4>
+                <p md-line><em>{{country.value}}</em></p>
+              </md-list-item>
+              <md-list-item *ngIf="address.value">
+                <h4 md-line>Address</h4>
+                <p md-line><em>{{address.value}}</em></p>
+              </md-list-item>
+              <md-list-item *ngIf="zipCode.value">
+                <h4 md-line>ZipCode</h4>
+                <p md-line><em>{{zipCode.value}}</em></p>
+              </md-list-item>
+            </md-list>
+            <button md-raised-button color="primary">Confirm</button>
+          </md-tab>
+        </md-tab-group>
+      </md-card-content>
+    </md-card>
+  </article>
+</section>

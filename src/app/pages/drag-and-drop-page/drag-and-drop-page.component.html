@@ -1,0 +1,37 @@
+<section>
+  <header>
+    <h3 class="primary-color">Drag and Drop</h3>
+  </header>
+  <article>
+    <div fxlayout="column" fxLayout.gt-sm="row">
+      <md-card fxFlex="50">
+        <md-card-title>Drag from</md-card-title>
+        <md-card-content>
+          <md-list>
+            <div [dragula]='"bag-one"' [dragulaModel]='links' class="drag-container">
+              <md-list-item *ngFor="let link of links" class="cursor-pointer">
+                <md-icon class="icon-color" md-list-icon>folder</md-icon>
+                <span md-line>{{ link.name }}</span>
+                <span md-line class="secondary-text-color"> Some description </span>
+              </md-list-item>
+            </div>
+          </md-list>
+        </md-card-content>
+      </md-card>
+      <md-card fxFlex="50">
+        <md-card-title>Drag to</md-card-title>
+        <md-card-content>
+          <md-list>
+            <div [dragula]='"bag-one"' [dragulaModel]='otherLinks' class="drag-container">
+              <md-list-item *ngFor="let link of otherLinks" class="cursor-pointer">
+                <md-icon class="icon-color" md-list-icon>folder</md-icon>
+                <span md-line>{{ link.name }}</span>
+                <span md-line class="secondary-text-color"> Some description </span>
+              </md-list-item>
+            </div>
+          </md-list>
+        </md-card-content>
+      </md-card>
+    </div>
+  </article>
+</section>

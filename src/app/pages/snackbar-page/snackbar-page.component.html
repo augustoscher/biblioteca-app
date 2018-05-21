@@ -1,0 +1,22 @@
+<section>
+  <header>
+    <h3 class="primary-color">Snackbar</h3>
+  </header>
+  <article>
+    <md-card>
+      <md-card-content fxLayout="column" fxLayout.gt-sm="row">
+        <md-input-container>
+          <input mdInput value="Message saved" placeholder="Message" #message>
+        </md-input-container>
+
+        <md-input-container>
+          <input mdInput value="Cancel" placeholder="Action" #action>
+        </md-input-container>
+        <div>
+          <button md-raised-button color="primary" (click)="openSnackBar(message.value, action.value)">Show snack-bar
+          </button>
+        </div>
+      </md-card-content>
+    </md-card>
+  </article>
+</section>
