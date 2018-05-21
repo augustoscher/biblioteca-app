@@ -6,12 +6,13 @@
         <md-icon>arrow_back</md-icon>
       </button>
       <div fxFlex class="text-center pad-right-xl">
-        <a href="/">
+        <h5>Biblioteca</h5>
+        <!-- <a href="/">
           <img *ngIf="darkTheme; else darkLogo" src="/assets/logo/logo-text-white.png">
           <ng-template #darkLogo>
             <img src="/assets/logo/logo-text-black.png">
           </ng-template>
-        </a>
+        </a> -->
       </div>
     </header>
     <perfect-scrollbar class="perfect-scrollbar">
@@ -247,7 +248,7 @@
     </perfect-scrollbar>
     <footer class="secondary-text-color">
       <md-divider></md-divider>
-      <p>PixelGarden © All Rights Reserved</p>
+      <p>Objective © Todos os direitos reservados</p>
     </footer>
   </md-sidenav>
   <md-sidenav #optionsnav mode="over" align="end">
@@ -279,9 +280,10 @@
     <button md-icon-button (click)="sidenav.toggle()">
       <md-icon>menu</md-icon>
     </button>
-    <a fxHide="true" fxHide.gt-sm="false" href="/" class="logo">
+    <span fxHide="true" fxHide.gt-sm="false">Biblioteca</span>
+    <!-- <a fxHide="true" fxHide.gt-sm="false" href="/" class="logo">
       <img src="/assets/logo/logo-text-white.png">
-    </a>
+    </a> -->
     <!--<span fxHide="true" fxHide.gt-sm="false">Application</span>-->
     <span fxFlex></span>
     <td-search-box [alwaysVisible]="false" fxHide="true" fxHide.gt-sm="false"></td-search-box>
