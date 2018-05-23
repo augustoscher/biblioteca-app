@@ -16,12 +16,12 @@ export class AppComponent {
 
   constructor(mdIconRegistry: MdIconRegistry, public router: Router, translateService: TranslateService) {
     mdIconRegistry.registerFontClassAlias('fontawesome', 'fa');
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        ga('set', 'page', event.urlAfterRedirects);
-        ga('send', 'pageview');
-      }
-    });
+    // this.router.events.subscribe(event => {
+    //   if (event instanceof NavigationEnd) {
+    //     ga('set', 'page', event.urlAfterRedirects);
+    //     ga('send', 'pageview');
+    //   }
+    // });
     this.loading = false;
     // this language will be used as a fallback when a translation isn't found in the current language
     translateService.setDefaultLang('en');

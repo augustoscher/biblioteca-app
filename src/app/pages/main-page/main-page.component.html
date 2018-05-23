@@ -6,7 +6,7 @@
         <md-icon>arrow_back</md-icon>
       </button>
       <div fxFlex class="text-center pad-right-xl">
-        <h5>Biblioteca</h5>
+        <h6>Biblioteca</h6>
         <!-- <a href="/">
           <img *ngIf="darkTheme; else darkLogo" src="/assets/logo/logo-text-white.png">
           <ng-template #darkLogo>
@@ -21,25 +21,34 @@
           <md-icon>dashboard</md-icon>
         </px-gdn-sideitem>
 
-        <px-gdn-sideitem title="Options" (click)="optionsnav.toggle()">
+        <px-gdn-sideitem title="Opções" (click)="optionsnav.toggle()">
           <md-icon>settings</md-icon>
         </px-gdn-sideitem>
 
-        <px-gdn-sideitem title="Basics">
-          <md-icon>web_asset</md-icon>
-          <px-gdn-sideitem title="Typography" [routerLinkUrl]="'typography'">
+        <px-gdn-sideitem title="Alunos">
+          <md-icon>account_box</md-icon>
+          <px-gdn-sideitem title="Not Found Page" [routerLinkUrl]="'/404'">
             <md-icon>keyboard_arrow_right</md-icon>
           </px-gdn-sideitem>
-          <px-gdn-sideitem title="Color" [routerLinkUrl]="'color'">
+          <px-gdn-sideitem title="Login" [routerLinkUrl]="'/login'">
             <md-icon>keyboard_arrow_right</md-icon>
           </px-gdn-sideitem>
-          <px-gdn-sideitem title="Icons" [routerLinkUrl]="'icons'">
+          <px-gdn-sideitem title="Sign Up" [routerLinkUrl]="'/sign-up'">
+            <md-icon>keyboard_arrow_right</md-icon>
+          </px-gdn-sideitem>
+          <px-gdn-sideitem title="Chat" [routerLinkUrl]="'chat'">
+            <md-icon>keyboard_arrow_right</md-icon>
+          </px-gdn-sideitem>
+          <px-gdn-sideitem title="Testimonials" [routerLinkUrl]="'testimonials'">
+            <md-icon>keyboard_arrow_right</md-icon>
+          </px-gdn-sideitem>
+          <px-gdn-sideitem title="Portfolio" [routerLinkUrl]="'portfolio'">
             <md-icon>keyboard_arrow_right</md-icon>
           </px-gdn-sideitem>
         </px-gdn-sideitem>
 
-        <px-gdn-sideitem title="Components">
-          <md-icon>view_module</md-icon>
+        <px-gdn-sideitem title="Livros">
+          <md-icon>library_books</md-icon>
           <px-gdn-sideitem title="Buttons" [routerLinkUrl]="'buttons'">
             <md-icon>keyboard_arrow_right</md-icon>
           </px-gdn-sideitem>
@@ -62,6 +71,21 @@
             <md-icon>keyboard_arrow_right</md-icon>
           </px-gdn-sideitem>
         </px-gdn-sideitem>
+
+        <px-gdn-sideitem title="Empréstimos">
+          <md-icon>school</md-icon>
+          <px-gdn-sideitem title="Typography" [routerLinkUrl]="'typography'">
+            <md-icon>keyboard_arrow_right</md-icon>
+          </px-gdn-sideitem>
+          <px-gdn-sideitem title="Color" [routerLinkUrl]="'color'">
+            <md-icon>keyboard_arrow_right</md-icon>
+          </px-gdn-sideitem>
+          <px-gdn-sideitem title="Icons" [routerLinkUrl]="'icons'">
+            <md-icon>keyboard_arrow_right</md-icon>
+          </px-gdn-sideitem>
+        </px-gdn-sideitem>
+
+ 
 
         <px-gdn-sideitem title="Layout and navigation">
           <md-icon>view_list</md-icon>
@@ -154,30 +178,7 @@
           </px-gdn-sideitem>
         </px-gdn-sideitem>
 
-        <px-gdn-sideitem title="Custom pages">
-          <md-icon>account_box</md-icon>
-          <px-gdn-sideitem title="Not Found Page" [routerLinkUrl]="'/404'">
-            <md-icon>keyboard_arrow_right</md-icon>
-          </px-gdn-sideitem>
-          <px-gdn-sideitem title="Login" [routerLinkUrl]="'/login'">
-            <md-icon>keyboard_arrow_right</md-icon>
-          </px-gdn-sideitem>
-          <px-gdn-sideitem title="Sign Up" [routerLinkUrl]="'/sign-up'">
-            <md-icon>keyboard_arrow_right</md-icon>
-          </px-gdn-sideitem>
-          <px-gdn-sideitem title="Chat" [routerLinkUrl]="'chat'">
-            <md-icon>keyboard_arrow_right</md-icon>
-          </px-gdn-sideitem>
-          <px-gdn-sideitem title="Testimonials" [routerLinkUrl]="'testimonials'">
-            <md-icon>keyboard_arrow_right</md-icon>
-          </px-gdn-sideitem>
-          <px-gdn-sideitem title="Portfolio" [routerLinkUrl]="'portfolio'">
-            <md-icon>keyboard_arrow_right</md-icon>
-          </px-gdn-sideitem>
-        </px-gdn-sideitem>
-
-
-        <px-gdn-sideitem title="E-commerce">
+        <!-- <px-gdn-sideitem title="E-commerce">
           <md-icon>shopping_cart</md-icon>
           <px-gdn-sideitem title="Pricing Tables" [routerLinkUrl]="'pricing-tables'">
             <md-icon>keyboard_arrow_right</md-icon>
@@ -191,16 +192,16 @@
           <px-gdn-sideitem title="Shopping Cart" [routerLinkUrl]="'cart'">
             <md-icon>keyboard_arrow_right</md-icon>
           </px-gdn-sideitem>
-        </px-gdn-sideitem>
+        </px-gdn-sideitem> -->
 
-        <px-gdn-sideitem title="Maps">
+        <!-- <px-gdn-sideitem title="Maps">
           <md-icon>location_on</md-icon>
           <px-gdn-sideitem title="Google Maps" [routerLinkUrl]="'google-maps'">
             <md-icon>keyboard_arrow_right</md-icon>
           </px-gdn-sideitem>
-        </px-gdn-sideitem>
+        </px-gdn-sideitem> -->
 
-        <px-gdn-sideitem title="Multilevel">
+        <!-- <px-gdn-sideitem title="Multilevel">
           <px-gdn-sideitem title="Level 1.1">
             <md-icon>keyboard_arrow_right</md-icon>
           </px-gdn-sideitem>
@@ -228,9 +229,9 @@
           <px-gdn-sideitem title="Level 1.3">
             <md-icon>keyboard_arrow_right</md-icon>
           </px-gdn-sideitem>
-        </px-gdn-sideitem>
+        </px-gdn-sideitem> -->
 
-        <px-gdn-sideitem title="Primary">
+        <!-- <px-gdn-sideitem title="Primary">
           <td-notification-count color="primary" [notifications]="3"></td-notification-count>
           <md-icon color="primary">star</md-icon>
         </px-gdn-sideitem>
@@ -243,7 +244,8 @@
         <px-gdn-sideitem title="Warn">
           <td-notification-count color="warn" [notifications]="true"></td-notification-count>
           <md-icon color="warn">star</md-icon>
-        </px-gdn-sideitem>
+        </px-gdn-sideitem> -->
+        
       </px-gdn-sidemenu>
     </perfect-scrollbar>
     <footer class="secondary-text-color">
@@ -253,26 +255,26 @@
   </md-sidenav>
   <md-sidenav #optionsnav mode="over" align="end">
     <md-toolbar color="primary">
-      <h5>Theme options</h5>
+      <h5>Opções</h5>
       <span fxFlex></span>
       <button md-icon-button (click)="optionsnav.close()">
         <md-icon>close</md-icon>
       </button>
     </md-toolbar>
     <div class="pad" fxLayoutAlign="space-between center">
-      <span class="md-subhead">Dark theme</span>
+      <span class="md-subhead">Modo Dark</span>
       <md-slide-toggle [(ngModel)]="darkTheme"></md-slide-toggle>
     </div>
     <div class="pad" fxLayoutAlign="space-between center">
-      <span class="md-subhead">Sidenav mode</span>
+      <span class="md-subhead">Menu Lateral</span>
       <md-select [(ngModel)]="sidenavMode">
-        <md-option value="side">Side</md-option>
-        <md-option value="over">Over</md-option>
-        <md-option value="push">Push</md-option>
+        <md-option value="side">Padrão</md-option>
+        <md-option value="over">Sobrepor</md-option>
+        <md-option value="push">Deslocar</md-option>
       </md-select>
     </div>
     <div class="pad" fxLayoutAlign="space-between center">
-      <span class="md-subhead">Boxed layout</span>
+      <span class="md-subhead">Modo Box</span>
       <md-slide-toggle [(ngModel)]="boxedLayout"></md-slide-toggle>
     </div>
   </md-sidenav>
@@ -285,14 +287,14 @@
       <img src="/assets/logo/logo-text-white.png">
     </a> -->
     <!--<span fxHide="true" fxHide.gt-sm="false">Application</span>-->
-    <span fxFlex></span>
+    <!-- <span fxFlex></span>
     <td-search-box [alwaysVisible]="false" fxHide="true" fxHide.gt-sm="false"></td-search-box>
     <button md-icon-button [mdMenuTriggerFor]="lettersMenu">
       <td-notification-count [notifications]="3">
         <md-icon>mail</md-icon>
       </td-notification-count>
-    </button>
-    <md-menu #lettersMenu="mdMenu">
+    </button> -->
+    <!-- <md-menu #lettersMenu="mdMenu">
       <md-nav-list>
         <a md-list-item *ngFor="let message of messages">
           <img md-list-avatar [src]="message.image">
@@ -308,9 +310,9 @@
       <div class="text-center">
         <button md-button>View all</button>
       </div>
-    </md-menu>
-    <img src="assets/avatars/4040.png" class="cursor-pointer push-left-sm" [mdMenuTriggerFor]="userMenu">
-    <md-menu #userMenu="mdMenu">
+    </md-menu> -->
+    <!-- <img src="assets/avatars/4040.png" class="cursor-pointer push-left-sm" [mdMenuTriggerFor]="userMenu"> -->
+    <!-- <md-menngu #userMenu="mdMenu">
       <md-list>
         <md-list-item>
           <img md-list-avatar src="assets/avatars/4040.png">
@@ -353,7 +355,7 @@
         <md-icon>share</md-icon>
         Share
       </button>
-    </md-menu>
+    </md-menu> -->
 
   </md-toolbar>
   <div class="wrapper" [class.wrapper-box]="boxedLayout">

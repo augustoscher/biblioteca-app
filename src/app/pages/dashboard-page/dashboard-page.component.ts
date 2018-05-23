@@ -58,21 +58,21 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   // Rating list items
   ratingItems = [
     {
-      avatar: '/assets/avatars-img/4040.png',
-      name: 'Marian Cannon',
-      tag: '@mariancannon',
+      // avatar: '/assets/avatars-img/4040.png',
+      name: 'Teste 1',
+      tag: '@teste1',
       value: 81.48
     },
     {
-      avatar: '/assets/avatars-img/4040.png',
-      name: 'John Lynch',
-      tag: '@johnlynch',
+      // avatar: '/assets/avatars-img/4040.png',
+      name: 'Teste 2',
+      tag: '@teste2',
       value: 68
     },
     {
-      avatar: '/assets/avatars-img/4040.png',
-      name: 'Isabella Watts',
-      tag: '@isabellawatts',
+      // avatar: '/assets/avatars-img/4040.png',
+      name: 'Teste 3',
+      tag: '@teste3',
       value: 36
     }
   ];
