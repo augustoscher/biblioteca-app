@@ -27,69 +27,61 @@
 
         <px-gdn-sideitem title="Alunos">
           <md-icon>account_box</md-icon>
-          <px-gdn-sideitem title="Cadastrar aluno" [routerLinkUrl]="'/404'">
+          <px-gdn-sideitem title="Cadastrar aluno" [routerLinkUrl]="'cadastro-aluno'">
             <md-icon>keyboard_arrow_right</md-icon>
           </px-gdn-sideitem>
-          <px-gdn-sideitem title="Consultar aluno" [routerLinkUrl]="'/login'">
-            <md-icon>keyboard_arrow_right</md-icon>
-          </px-gdn-sideitem>
-          <px-gdn-sideitem title="Sign Up" [routerLinkUrl]="'/sign-up'">
-            <md-icon>keyboard_arrow_right</md-icon>
-          </px-gdn-sideitem>
-          <px-gdn-sideitem title="Chat" [routerLinkUrl]="'chat'">
-            <md-icon>keyboard_arrow_right</md-icon>
-          </px-gdn-sideitem>
-          <px-gdn-sideitem title="Testimonials" [routerLinkUrl]="'testimonials'">
-            <md-icon>keyboard_arrow_right</md-icon>
-          </px-gdn-sideitem>
-          <px-gdn-sideitem title="Portfolio" [routerLinkUrl]="'portfolio'">
+          <px-gdn-sideitem title="Consultar aluno" [routerLinkUrl]="'consulta-aluno'">
             <md-icon>keyboard_arrow_right</md-icon>
           </px-gdn-sideitem>
         </px-gdn-sideitem>
 
         <px-gdn-sideitem title="Livros">
           <md-icon>library_books</md-icon>
-          <px-gdn-sideitem title="Cadastrar livro" [routerLinkUrl]="'buttons'">
+          <px-gdn-sideitem title="Cadastrar livro" [routerLinkUrl]="'cadastro-livro'">
             <md-icon>keyboard_arrow_right</md-icon>
           </px-gdn-sideitem>
-          <px-gdn-sideitem title="Consultar livro" [routerLinkUrl]="'dialog'">
-            <md-icon>keyboard_arrow_right</md-icon>
-          </px-gdn-sideitem>
-          <px-gdn-sideitem title="Tooltip" [routerLinkUrl]="'tooltip'">
-            <md-icon>keyboard_arrow_right</md-icon>
-          </px-gdn-sideitem>
-          <px-gdn-sideitem title="Progress bar" [routerLinkUrl]="'progress-bar'">
-            <md-icon>keyboard_arrow_right</md-icon>
-          </px-gdn-sideitem>
-          <px-gdn-sideitem title="Progress spinner" [routerLinkUrl]="'spinner'">
-            <md-icon>keyboard_arrow_right</md-icon>
-          </px-gdn-sideitem>
-          <px-gdn-sideitem title="Snackbar" [routerLinkUrl]="'snackbar'">
-            <md-icon>keyboard_arrow_right</md-icon>
-          </px-gdn-sideitem>
-          <px-gdn-sideitem title="Chips" [routerLinkUrl]="'chips'">
+          <px-gdn-sideitem title="Consultar livro" [routerLinkUrl]="'consulta-livro'">
             <md-icon>keyboard_arrow_right</md-icon>
           </px-gdn-sideitem>
         </px-gdn-sideitem>
 
         <px-gdn-sideitem title="Empréstimos">
           <md-icon>school</md-icon>
-          <px-gdn-sideitem title="Empréstimo de livro" [routerLinkUrl]="'typography'">
+          <px-gdn-sideitem title="Empréstimo de livro" [routerLinkUrl]="'emprestimo-livro'">
             <md-icon>keyboard_arrow_right</md-icon>
           </px-gdn-sideitem>
-          <px-gdn-sideitem title="Consultar empréstimos" [routerLinkUrl]="'color'">
+          <px-gdn-sideitem title="Consultar empréstimos" [routerLinkUrl]="'consulta-emprestimo-livro'">
+            <md-icon>keyboard_arrow_right</md-icon>
+          </px-gdn-sideitem>
+        </px-gdn-sideitem>
+
+        <px-gdn-sideitem title="Devoluções">
+          <md-icon>view_list</md-icon>
+          <px-gdn-sideitem title="Devolução de livro" [routerLinkUrl]="'devolucao-livro'">
+            <md-icon>keyboard_arrow_right</md-icon>
+          </px-gdn-sideitem>
+        </px-gdn-sideitem>
+
+        <px-gdn-sideitem title="Extra">
+          <md-icon>extension</md-icon>
+          <px-gdn-sideitem title="Form elements" [routerLinkUrl]="'form-elements'">
+            <md-icon>keyboard_arrow_right</md-icon>
+          </px-gdn-sideitem>
+          <px-gdn-sideitem title="Form wizard" [routerLinkUrl]="'form-wizard'">
+            <md-icon>keyboard_arrow_right</md-icon>
+          </px-gdn-sideitem>
+
+          <px-gdn-sideitem title="Typography" [routerLinkUrl]="'typography'">
+            <md-icon>keyboard_arrow_right</md-icon>
+          </px-gdn-sideitem>
+          <px-gdn-sideitem title="Colors" [routerLinkUrl]="'color'">
             <md-icon>keyboard_arrow_right</md-icon>
           </px-gdn-sideitem>
           <px-gdn-sideitem title="Icons" [routerLinkUrl]="'icons'">
             <md-icon>keyboard_arrow_right</md-icon>
           </px-gdn-sideitem>
-        </px-gdn-sideitem>
 
- 
-
-        <px-gdn-sideitem title="Devoluções">
-          <md-icon>view_list</md-icon>
-          <px-gdn-sideitem title="Devolução de livro" [routerLinkUrl]="'flex-layout'">
+          <px-gdn-sideitem title="Flex Layout" [routerLinkUrl]="'flex-layout'">
             <md-icon>keyboard_arrow_right</md-icon>
           </px-gdn-sideitem>
           <px-gdn-sideitem title="Cards" [routerLinkUrl]="'cards'">
@@ -113,24 +105,49 @@
           <px-gdn-sideitem title="Grid List" [routerLinkUrl]="'grid-list'">
             <md-icon>keyboard_arrow_right</md-icon>
           </px-gdn-sideitem>
-        </px-gdn-sideitem>
 
-        <px-gdn-sideitem title="Forms">
-          <md-icon>format_align_left</md-icon>
-          <px-gdn-sideitem title="Form elements" [routerLinkUrl]="'form-elements'">
+          <px-gdn-sideitem title="Buttons" [routerLinkUrl]="'buttons'">
             <md-icon>keyboard_arrow_right</md-icon>
           </px-gdn-sideitem>
-          <px-gdn-sideitem title="Form wizard" [routerLinkUrl]="'form-wizard'">
+          <px-gdn-sideitem title="Dialog" [routerLinkUrl]="'dialog'">
             <md-icon>keyboard_arrow_right</md-icon>
           </px-gdn-sideitem>
-        </px-gdn-sideitem>
+          <px-gdn-sideitem title="Tooltip" [routerLinkUrl]="'tooltip'">
+            <md-icon>keyboard_arrow_right</md-icon>
+          </px-gdn-sideitem>
+          <px-gdn-sideitem title="Progress bar" [routerLinkUrl]="'progress-bar'">
+            <md-icon>keyboard_arrow_right</md-icon>
+          </px-gdn-sideitem>
+          <px-gdn-sideitem title="Progress spinner" [routerLinkUrl]="'spinner'">
+            <md-icon>keyboard_arrow_right</md-icon>
+          </px-gdn-sideitem>
+          <px-gdn-sideitem title="Snackbar" [routerLinkUrl]="'snackbar'">
+            <md-icon>keyboard_arrow_right</md-icon>
+          </px-gdn-sideitem>
+          <px-gdn-sideitem title="Chips" [routerLinkUrl]="'chips'">
+            <md-icon>keyboard_arrow_right</md-icon>
+          </px-gdn-sideitem>
 
-        <px-gdn-sideitem title="Extra">
-          <md-icon>extension</md-icon>
+          <px-gdn-sideitem title="Page Not Found" [routerLinkUrl]="'/404'">
+            <md-icon>keyboard_arrow_right</md-icon>
+          </px-gdn-sideitem>
+          <px-gdn-sideitem title="Login" [routerLinkUrl]="'/login'">
+            <md-icon>keyboard_arrow_right</md-icon>
+          </px-gdn-sideitem>
+          <px-gdn-sideitem title="Sign Up" [routerLinkUrl]="'/sign-up'">
+            <md-icon>keyboard_arrow_right</md-icon>
+          </px-gdn-sideitem>
+          <px-gdn-sideitem title="Chat" [routerLinkUrl]="'chat'">
+            <md-icon>keyboard_arrow_right</md-icon>
+          </px-gdn-sideitem>
+          <px-gdn-sideitem title="Testimonials" [routerLinkUrl]="'testimonials'">
+            <md-icon>keyboard_arrow_right</md-icon>
+          </px-gdn-sideitem>
+          <px-gdn-sideitem title="Portfolio" [routerLinkUrl]="'portfolio'">
+            <md-icon>keyboard_arrow_right</md-icon>
+          </px-gdn-sideitem>
+
           <px-gdn-sideitem title="Tree" [routerLinkUrl]="'tree'">
-            <md-icon>keyboard_arrow_right</md-icon>
-          </px-gdn-sideitem>
-          <px-gdn-sideitem title="Editor" [routerLinkUrl]="'editor'">
             <md-icon>keyboard_arrow_right</md-icon>
           </px-gdn-sideitem>
           <px-gdn-sideitem title="Table" [routerLinkUrl]="'table'">
@@ -154,10 +171,7 @@
           <px-gdn-sideitem title="Multi language" [routerLinkUrl]="'multi-language'">
             <md-icon>keyboard_arrow_right</md-icon>
           </px-gdn-sideitem>
-        </px-gdn-sideitem>
 
-        <px-gdn-sideitem title="Charts">
-          <md-icon>insert_chart</md-icon>
           <px-gdn-sideitem title="Linechart" [routerLinkUrl]="'line-chart'">
             <md-icon>keyboard_arrow_right</md-icon>
           </px-gdn-sideitem>
@@ -176,6 +190,8 @@
           <px-gdn-sideitem title="Radar" [routerLinkUrl]="'radar'">
             <md-icon>keyboard_arrow_right</md-icon>
           </px-gdn-sideitem>
+
+
         </px-gdn-sideitem>
 
         <!-- <px-gdn-sideitem title="E-commerce">

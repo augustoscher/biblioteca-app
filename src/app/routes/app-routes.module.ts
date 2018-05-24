@@ -91,8 +91,9 @@ const APP_ROUTES: Routes = [
     {path: 'cart', component: CartPageComponent},
     {path: 'portfolio', component: PortfolioPageComponent},
     {path: 'multi-language', component: MultiLanguagePageComponent},
-    {path: '', redirectTo: 'dashboard', pathMatch: 'prefix'},
-    {path: '**', redirectTo: 'dashboard', pathMatch: 'prefix'}
+    {path: 'cadastro-aluno', loadChildren: 'app/pages/cadastro-aluno/cadastro-aluno.module#CadastroAlunoModule'},
+    {path: '', redirectTo: '/main/dashboard', pathMatch: 'prefix'},
+    {path: '**', redirectTo: '/main/dashboard', pathMatch: 'prefix'}
   ]
   },
   {path: '404', component: PageNotFoundComponent},
@@ -100,13 +101,15 @@ const APP_ROUTES: Routes = [
   {path: 'sign-up', component: SignUpPageComponent},
   {path: '', redirectTo: '/main/dashboard', pathMatch: 'prefix'},
   {path: '**', redirectTo: '/main/dashboard', pathMatch: 'prefix'}
+  // {path: '', redirectTo: 'login', pathMatch: 'prefix'},
+  // {path: '**', redirectTo: 'login', pathMatch: 'prefix'}
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(APP_ROUTES, { useHash: true }),
+
     // RouterModule.forRoot(APP_ROUTES, {preloadingStrategy: PreloadAllModules}),
-    // 
   ]
 })
 export class AppRoutesModule {
