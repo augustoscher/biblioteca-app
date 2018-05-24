@@ -92,6 +92,12 @@ const APP_ROUTES: Routes = [
     {path: 'portfolio', component: PortfolioPageComponent},
     {path: 'multi-language', component: MultiLanguagePageComponent},
     {path: 'cadastro-aluno', loadChildren: 'app/pages/cadastro-aluno/cadastro-aluno.module#CadastroAlunoModule'},
+    {path: 'cadastro-livro', loadChildren: 'app/pages/cadastro-livro/cadastro-livro.module#CadastroLivroModule'},
+    {path: 'consulta-aluno', loadChildren: 'app/pages/consulta-aluno/consulta-aluno.module#ConsultaAlunoModule'},
+    {path: 'consulta-livro', loadChildren: 'app/pages/consulta-livro/consulta-livro.module#ConsultaLivroModule'},
+    {path: 'emprestimo-livro', loadChildren: 'app/pages/emprestimo-livro/emprestimo-livro.module#EmprestimoLivroModule'},
+    {path: 'devolucao-livro', loadChildren: 'app/pages/devolucao-livro/devolucao-livro.module#DevolucaoLivroModule'},
+    {path: 'consulta-emprestimo-livro', loadChildren: 'app/pages/consulta-emprestimo-livro/consulta-emprestimo-livro.module#ConsultaEmprestimoLivroModule'},
     {path: '', redirectTo: '/main/dashboard', pathMatch: 'prefix'},
     {path: '**', redirectTo: '/main/dashboard', pathMatch: 'prefix'}
   ]
