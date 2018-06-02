@@ -103,6 +103,8 @@ const APP_ROUTES: Routes = [
   ]
   },
   {path: '404', component: PageNotFoundComponent},
+
+  
   {path: 'login', component: LoginPageComponent},
   {path: 'sign-up', component: SignUpPageComponent},
   {path: '', redirectTo: '/main/dashboard', pathMatch: 'prefix'},
