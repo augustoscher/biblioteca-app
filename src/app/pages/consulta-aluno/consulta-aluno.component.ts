@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConsultaAlunoComponent implements OnInit {
 
+  teste: string = "asdasdasdoiasd";
+
   constructor() { }
 
   ngOnInit() {
