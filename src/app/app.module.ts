@@ -1,8 +1,7 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
 
+import { NgModule } from "@angular/core";
+import {BrowserModule} from '@angular/platform-browser';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
 import {PerfectScrollbarConfigInterface, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import {RouterModule} from '@angular/router';
@@ -95,16 +94,31 @@ import {
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AngularEchartsModule} from 'ngx-echarts';
-import { MultiLanguagePageComponent } from './pages/multi-language-page/multi-language-page.component';
+import {MultiLanguagePageComponent } from './pages/multi-language-page/multi-language-page.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {AuthConfig, AuthHttp} from 'angular2-jwt';
+import {TOKEN_NAME} from './services/auth.constants';
+// import {SharedModule} from './shared/shared.module';
+import {Http} from "@angular/http";
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {};
 
 // AoT requires an exported function for factories for translate module
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+export function authHttpServiceFactory(http: Http) {
+  return new AuthHttp(new AuthConfig({
+      headerPrefix: 'Bearer',
+      tokenName: TOKEN_NAME,
+      globalHeaders: [{'Content-Type': 'application/json'}],
+      noJwtError: false,
+      noTokenScheme: true,
+      tokenGetter: (() => localStorage.getItem(TOKEN_NAME))
+  }), http);
 }
 
 @NgModule({
@@ -136,7 +150,7 @@ export function createTranslateLoader(http: HttpClient) {
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MdAutocompleteModule,
     MdButtonModule,
@@ -167,7 +181,6 @@ export function createTranslateLoader(http: HttpClient) {
     SidemenuModule,
     PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG),
     FlexLayoutModule,
-    ReactiveFormsModule,
     CustomFormsModule,
     AngularEchartsModule,
     CovalentMediaModule,
@@ -188,9 +201,11 @@ export function createTranslateLoader(http: HttpClient) {
       }
     }),
     RouterModule,
-    AppRoutesModule
+    AppRoutesModule,
   ],
-  providers: [],
+  providers: [
+    {provide: AuthHttp, useFactory: authHttpServiceFactory, deps: [Http]}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
