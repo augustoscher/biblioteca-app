@@ -1,3 +1,5 @@
+import { AuthGuard } from './guards/auth.guard.service';
+import { AuthenticationService } from './services/authentication.service';
 
 import { NgModule } from "@angular/core";
 import {BrowserModule} from '@angular/platform-browser';
@@ -102,6 +104,7 @@ import {AuthConfig, AuthHttp} from 'angular2-jwt';
 import {TOKEN_NAME} from './services/auth.constants';
 // import {SharedModule} from './shared/shared.module';
 import {Http} from "@angular/http";
+import { UserService } from './services/user.service';
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {};
 
@@ -204,7 +207,10 @@ export function authHttpServiceFactory(http: Http) {
     AppRoutesModule,
   ],
   providers: [
-    {provide: AuthHttp, useFactory: authHttpServiceFactory, deps: [Http]}
+    {provide: AuthHttp, useFactory: authHttpServiceFactory, deps: [Http]},
+    AuthenticationService,
+    UserService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

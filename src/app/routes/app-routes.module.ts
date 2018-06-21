@@ -42,12 +42,13 @@ import {PortfolioPageComponent} from '../pages/portfolio-page/portfolio-page.com
 import {PageNotFoundComponent} from '../pages/page-not-found/page-not-found.component';
 import {LoginPageComponent} from '../pages/login-page/login-page.component';
 import {SignUpPageComponent} from '../pages/sign-up-page/sign-up-page.component';
-import {MultiLanguagePageComponent} from '../pages/multi-language-page/multi-language-page.component';2
+import {MultiLanguagePageComponent} from '../pages/multi-language-page/multi-language-page.component';import { AuthGuard } from '../guards/auth.guard.service';
+2
 
 const APP_ROUTES: Routes = [
   {
     path: 'main', component: MainPageComponent, children: [
-    {path: 'dashboard', component: DashboardPageComponent},
+    {path: 'dashboard', component: DashboardPageComponent, canActivate: [AuthGuard]},
     {path: 'typography', component: TypographyPageComponent},
     {path: 'color', component: ColorPageComponent},
     {path: 'buttons', component: ButtonsPageComponent},
@@ -91,7 +92,7 @@ const APP_ROUTES: Routes = [
     {path: 'cart', component: CartPageComponent},
     {path: 'portfolio', component: PortfolioPageComponent},
     {path: 'multi-language', component: MultiLanguagePageComponent},
-    {path: 'cadastro-aluno', loadChildren: 'app/pages/cadastro-aluno/cadastro-aluno.module#CadastroAlunoModule'},
+    {path: 'cadastro-aluno', loadChildren: 'app/pages/cadastro-aluno/cadastro-aluno.module#CadastroAlunoModule', canActivate: [AuthGuard]},
     {path: 'cadastro-livro', loadChildren: 'app/pages/cadastro-livro/cadastro-livro.module#CadastroLivroModule'},
     {path: 'consulta-aluno', loadChildren: 'app/pages/consulta-aluno/consulta-aluno.module#ConsultaAlunoModule'},
     {path: 'consulta-livro', loadChildren: 'app/pages/consulta-livro/consulta-livro.module#ConsultaLivroModule'},
@@ -107,7 +108,7 @@ const APP_ROUTES: Routes = [
   
   {path: 'login', component: LoginPageComponent},
   {path: 'sign-up', component: SignUpPageComponent},
-  {path: '', redirectTo: '/main/dashboard', pathMatch: 'prefix'},
+{path: '', redirectTo: '/main/dashboard', pathMatch: 'prefix'},
   {path: '**', redirectTo: '/main/dashboard', pathMatch: 'prefix'}
   // {path: '', redirectTo: 'login', pathMatch: 'prefix'},
   // {path: '**', redirectTo: 'login', pathMatch: 'prefix'}
