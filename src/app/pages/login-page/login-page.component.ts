@@ -18,6 +18,7 @@ export class LoginPageComponent implements OnInit {
 
   // Add router animation
   @HostBinding('@routerAnimation') routerAnimation = true;
+  
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
     private authenticationService: AuthenticationService,

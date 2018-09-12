@@ -1,3 +1,4 @@
+import { TokentInterceptor } from './interceptors/token.interceptor';
 import { AuthGuard } from './guards/auth.guard.service';
 import { AuthenticationService } from './services/authentication.service';
 
@@ -98,13 +99,13 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AngularEchartsModule} from 'ngx-echarts';
 import {MultiLanguagePageComponent } from './pages/multi-language-page/multi-language-page.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {AuthConfig, AuthHttp} from 'angular2-jwt';
-import {TOKEN_NAME} from './services/auth.constants';
+import {TOKEN_NAME, TENANT} from './services/auth.constants';
 // import {SharedModule} from './shared/shared.module';
-import {Http} from "@angular/http";
 import { UserService } from './services/user.service';
+import { PessoaService } from './services/pessoa.service';
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {};
 
@@ -113,16 +114,16 @@ export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-export function authHttpServiceFactory(http: Http) {
-  return new AuthHttp(new AuthConfig({
-      headerPrefix: 'Bearer',
-      tokenName: TOKEN_NAME,
-      globalHeaders: [{'Content-Type': 'application/json'}],
-      noJwtError: false,
-      noTokenScheme: true,
-      tokenGetter: (() => localStorage.getItem(TOKEN_NAME))
-  }), http);
-}
+// export function authHttpServiceFactory(http: Http) {
+//   return new AuthHttp(new AuthConfig({
+//       headerPrefix: 'Bearer',
+//       tokenName: TOKEN_NAME,
+//       globalHeaders: [{'Content-Type': 'application/json'}],
+//       noJwtError: false,
+//       noTokenScheme: true,
+//       tokenGetter: (() => localStorage.getItem(TOKEN_NAME))
+//   }), http);
+// }
 
 @NgModule({
   declarations: [
@@ -207,9 +208,15 @@ export function authHttpServiceFactory(http: Http) {
     AppRoutesModule,
   ],
   providers: [
-    {provide: AuthHttp, useFactory: authHttpServiceFactory, deps: [Http]},
+    // {provide: AuthHttp, useFactory: authHttpServiceFactory, deps: [Http]},
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokentInterceptor,
+      multi: true
+    },
     AuthenticationService,
     UserService,
+    PessoaService,
     AuthGuard
   ],
   bootstrap: [AppComponent]

@@ -42,8 +42,9 @@ import {PortfolioPageComponent} from '../pages/portfolio-page/portfolio-page.com
 import {PageNotFoundComponent} from '../pages/page-not-found/page-not-found.component';
 import {LoginPageComponent} from '../pages/login-page/login-page.component';
 import {SignUpPageComponent} from '../pages/sign-up-page/sign-up-page.component';
-import {MultiLanguagePageComponent} from '../pages/multi-language-page/multi-language-page.component';import { AuthGuard } from '../guards/auth.guard.service';
-2
+import {MultiLanguagePageComponent} from '../pages/multi-language-page/multi-language-page.component';
+import { AuthGuard } from '../guards/auth.guard.service';
+
 
 const APP_ROUTES: Routes = [
   {
@@ -92,13 +93,14 @@ const APP_ROUTES: Routes = [
     {path: 'cart', component: CartPageComponent},
     {path: 'portfolio', component: PortfolioPageComponent},
     {path: 'multi-language', component: MultiLanguagePageComponent},
-    {path: 'cadastro-aluno', loadChildren: 'app/pages/cadastro-aluno/cadastro-aluno.module#CadastroAlunoModule', canActivate: [AuthGuard]},
-    {path: 'cadastro-livro', loadChildren: 'app/pages/cadastro-livro/cadastro-livro.module#CadastroLivroModule'},
-    {path: 'consulta-aluno', loadChildren: 'app/pages/consulta-aluno/consulta-aluno.module#ConsultaAlunoModule'},
-    {path: 'consulta-livro', loadChildren: 'app/pages/consulta-livro/consulta-livro.module#ConsultaLivroModule'},
-    {path: 'emprestimo-livro', loadChildren: 'app/pages/emprestimo-livro/emprestimo-livro.module#EmprestimoLivroModule'},
-    {path: 'devolucao-livro', loadChildren: 'app/pages/devolucao-livro/devolucao-livro.module#DevolucaoLivroModule'},
-    {path: 'consulta-emprestimo-livro', loadChildren: 'app/pages/consulta-emprestimo-livro/consulta-emprestimo-livro.module#ConsultaEmprestimoLivroModule'},
+    {path: 'cadastro-pessoa', loadChildren: 'app/pages/cadastro-aluno/cadastro-aluno.module#CadastroAlunoModule', canActivate: [AuthGuard]},
+    {path: 'cadastro-pessoa/:uuid', loadChildren: 'app/pages/cadastro-aluno/cadastro-aluno.module#CadastroAlunoModule', canActivate: [AuthGuard]},
+    {path: 'cadastro-livro', loadChildren: 'app/pages/cadastro-livro/cadastro-livro.module#CadastroLivroModule', canActivate: [AuthGuard]},
+    {path: 'consulta-pessoa', loadChildren: 'app/pages/consulta-aluno/consulta-aluno.module#ConsultaAlunoModule', canActivate: [AuthGuard]},
+    {path: 'consulta-livro', loadChildren: 'app/pages/consulta-livro/consulta-livro.module#ConsultaLivroModule', canActivate: [AuthGuard]},
+    {path: 'emprestimo-livro', loadChildren: 'app/pages/emprestimo-livro/emprestimo-livro.module#EmprestimoLivroModule', canActivate: [AuthGuard]},
+    {path: 'devolucao-livro', loadChildren: 'app/pages/devolucao-livro/devolucao-livro.module#DevolucaoLivroModule', canActivate: [AuthGuard]},
+    {path: 'consulta-emprestimo-livro', loadChildren: 'app/pages/consulta-emprestimo-livro/consulta-emprestimo-livro.module#ConsultaEmprestimoLivroModule', canActivate: [AuthGuard]},
     {path: '', redirectTo: '/main/dashboard', pathMatch: 'prefix'},
     {path: '**', redirectTo: '/main/dashboard', pathMatch: 'prefix'}
   ]
