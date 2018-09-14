@@ -114,17 +114,6 @@ export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-// export function authHttpServiceFactory(http: Http) {
-//   return new AuthHttp(new AuthConfig({
-//       headerPrefix: 'Bearer',
-//       tokenName: TOKEN_NAME,
-//       globalHeaders: [{'Content-Type': 'application/json'}],
-//       noJwtError: false,
-//       noTokenScheme: true,
-//       tokenGetter: (() => localStorage.getItem(TOKEN_NAME))
-//   }), http);
-// }
-
 @NgModule({
   declarations: [
     AppComponent, MainPageComponent, PageNotFoundComponent, DashboardPageComponent, TypographyPageComponent,
@@ -208,7 +197,6 @@ export function createTranslateLoader(http: HttpClient) {
     AppRoutesModule,
   ],
   providers: [
-    // {provide: AuthHttp, useFactory: authHttpServiceFactory, deps: [Http]},
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokentInterceptor,

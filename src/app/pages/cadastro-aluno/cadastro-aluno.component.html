@@ -1,3 +1,29 @@
-<p>
-  teste cadstro de aluno
-</p>
+<section>
+    <form #pessoaForm="ngForm">
+        <md-card>
+            <md-card-title class="md-title">Pessoa</md-card-title>
+            <md-card-content fxLayout="column">
+              <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
+                <md-input-container fxFlex [dividerColor]="!nome.valid && !nome.pristine ? 'warn' : 'primary'">
+                    <input type="text" mdInput style="width: 400px;" placeholder="Nome" name="nome" class="maiusculo" required maxlength="100" ngModel #nome="ngModel" [(ngModel)]="personSelected.nome">
+                    <md-hint *ngIf="!nome.valid && !nome.pristine" class="warn-color">Campo obrigatório. máximo 100 caracteres.</md-hint>
+                </md-input-container>
+              </div>
+              <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px" style="margin-top: 10px;">
+                <md-select placeholder="Tipo" style="width: 200px;" name="tipo" required ngModel #tipo="ngModel" [(ngModel)]="personSelected.tipo.id">
+                  <md-option [value]=0>Aluno</md-option>
+                  <md-option [value]=1>Professor</md-option>
+                  <md-option [value]=2>Funcionário</md-option>
+                  <md-option [value]=3>Outro</md-option>
+                </md-select>
+                <md-hint *ngIf="!tipo.valid && !tipo.pristine" class="warn-color">Campo 'Tipo' obrigatório.</md-hint>
+              </div>
+              <div layout="row" style="margin-left: 10px; margin-top: 20px;">
+                <button md-raised-button color="primary" type="submit" name="btnOk" [disabled]="!pessoaForm.valid" (click)="gravar()" style="margin-right: 10px;">OK</button>
+                <button md-raised-button color="secundary" type="button" name="btnVoltar" (click)="voltar()">Voltar</button>
+              </div>
+            </md-card-content>
+        </md-card>
+        <!-- {{diagnostic}} -->
+    </form>
+</section>

@@ -96,6 +96,7 @@ const APP_ROUTES: Routes = [
     {path: 'cadastro-pessoa', loadChildren: 'app/pages/cadastro-aluno/cadastro-aluno.module#CadastroAlunoModule', canActivate: [AuthGuard]},
     {path: 'cadastro-pessoa/:uuid', loadChildren: 'app/pages/cadastro-aluno/cadastro-aluno.module#CadastroAlunoModule', canActivate: [AuthGuard]},
     {path: 'cadastro-livro', loadChildren: 'app/pages/cadastro-livro/cadastro-livro.module#CadastroLivroModule', canActivate: [AuthGuard]},
+    {path: 'cadastro-turma', loadChildren: 'app/pages/cadastro-turma/cadastro-turma.module#CadastroTurmaModule', canActivate: [AuthGuard]},
     {path: 'consulta-pessoa', loadChildren: 'app/pages/consulta-aluno/consulta-aluno.module#ConsultaAlunoModule', canActivate: [AuthGuard]},
     {path: 'consulta-livro', loadChildren: 'app/pages/consulta-livro/consulta-livro.module#ConsultaLivroModule', canActivate: [AuthGuard]},
     {path: 'emprestimo-livro', loadChildren: 'app/pages/emprestimo-livro/emprestimo-livro.module#EmprestimoLivroModule', canActivate: [AuthGuard]},

@@ -34,7 +34,6 @@ export class ConsultaAlunoComponent implements OnInit {
         this.data = data['content'];
         this.filteredTotal = data['totalElements'];
         this.pageSize = data['size']
-        console.log(data);
       });
   }
 
@@ -46,7 +45,7 @@ export class ConsultaAlunoComponent implements OnInit {
 
   columns: ITdDataTableColumn[] = [
     {name: 'nome', label: 'Nome', sortable: true},
-    {name: 'tipo', label: 'Tipo', sortable: true},
+    {name: 'tipo.descricao', label: 'Tipo', sortable: true},
     {name: 'userLastUpdate', label: 'Usuário'},
     {name: 'createdAt', label: 'Data Criação'}
   ];
