@@ -15,4 +15,8 @@ export const environment = {
   urlPostPessoas: apiBase + '/v1/pessoas',
   urlPutPessoas: apiBase + '/v1/pessoas',
 
+  urlGetTurmas: apiBase + '/v1/turmas',
+  urlGetTurmasById: apiBase + '/v1/turmas/',
+  urlPostTurmas: apiBase + '/v1/turmas',
+  urlPutTurmas: apiBase + '/v1/turmas',
 };
