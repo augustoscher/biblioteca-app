@@ -107,6 +107,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { UserService } from './services/user.service';
 import { PessoaService } from './services/pessoa.service';
 import { TurmaService } from './services/turma.service';
+import { EditoraService } from './services/editora.service';
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {};
 
@@ -207,6 +208,7 @@ export function createTranslateLoader(http: HttpClient) {
     UserService,
     PessoaService,
     TurmaService,
+    EditoraService,
     AuthGuard
   ],
   bootstrap: [AppComponent]

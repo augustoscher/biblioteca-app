@@ -19,4 +19,9 @@ export const environment = {
   urlGetTurmasById: apiBase + '/v1/turmas/',
   urlPostTurmas: apiBase + '/v1/turmas',
   urlPutTurmas: apiBase + '/v1/turmas',
+
+  urlGetEditoras: apiBase + '/v1/editoras',
+  urlGetEditorasById: apiBase + '/v1/editoras/',
+  urlPostEditoras: apiBase + '/v1/editoras',
+  urlPutEditoras: apiBase + '/v1/editoras',
 };
