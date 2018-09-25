@@ -5,7 +5,7 @@
             <md-card-content fxLayout="column">
               <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
                 <md-input-container fxFlex [dividerColor]="!nome.valid && !nome.pristine ? 'warn' : 'primary'">
-                    <input type="text" mdInput style="width: 400px;" placeholder="Nome" name="nome" class="maiusculo" required maxlength="100" ngModel #nome="ngModel" [(ngModel)]="personSelected.nome">
+                    <input type="text" mdInput style="width: 400px;" placeholder="Nome" name="nome" required maxlength="100" ngModel #nome="ngModel" [(ngModel)]="personSelected.nome">
                     <md-hint *ngIf="!nome.valid && !nome.pristine" class="warn-color">Campo obrigatório. máximo 100 caracteres.</md-hint>
                 </md-input-container>
               </div>

@@ -1,34 +1,35 @@
 import { Component, OnInit } from '@angular/core';
+import { AutorService } from '../../services/autor.service';
+import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableColumn, ITdDataTableSortChangeEvent, IPageChangeEvent } from '@covalent/core';
 import { Router } from '@angular/router';
-import { TdDataTableService, TdDataTableSortingOrder, ITdDataTableColumn, ITdDataTableSortChangeEvent, IPageChangeEvent } from '@covalent/core';
-import { LivroService } from '../../services/livro.service';
+
+// const DATE_FORMAT: (v: any) => any = (v: Date) => v.getDay + '/' + v.getMonth() + '/' + v.getFullYear()
 
 @Component({
-  selector: 'consulta-livro',
-  templateUrl: './consulta-livro.component.html',
-  styleUrls: ['./consulta-livro.component.scss']
+  selector: 'app-consulta-autor',
+  templateUrl: './consulta-autor.component.html',
+  styleUrls: ['./consulta-autor.component.scss']
 })
-export class ConsultaLivroComponent implements OnInit {
-
+export class ConsultaAutorComponent implements OnInit {
 
   data: Array<any>;
   filteredData: Array<any>;
-  livroSelected: any;
+  autorSelected: any;
 
   filteredTotal: number;
   searchTerm = '';
   fromRow = 1;
   currentPage = 1;
   pageSize = 20;
-  sortBy = 'titulo';
+  sortBy = 'nome';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Ascending;
 
-  constructor(private _livroService: LivroService,
+  constructor(private _pessoaService: AutorService,
     private _dataTableService: TdDataTableService, 
     private _router: Router) { }
 
   ngOnInit() {
-    this._livroService.carregarLivros()
+    this._pessoaService.carregarAutores()
       .subscribe(data => {
         this.filteredData = data['content'];
         this.data = data['content'];
@@ -38,25 +39,22 @@ export class ConsultaLivroComponent implements OnInit {
   }
 
   edit() {
-    if (this.livroSelected) {
-      this._router.navigate(['/main/cadastro-livro', this.livroSelected.uuid]);
+    if (this.autorSelected) {
+        this._router.navigate(['/main/cadastro-autor', this.autorSelected.uuid]);
     }
   }
 
   columns: ITdDataTableColumn[] = [
-    {name: 'titulo', label: 'Livro', sortable: true},
-    {name: 'isbn', label: 'Isbn', sortable: true},
-    {name: 'autor.nome', label: 'Autor', sortable: false},
-    {name: 'codigoLivre', label: 'Código', sortable: true},
+    {name: 'nome', label: 'Autor', sortable: true},
     {name: 'userLastUpdate', label: 'Usuário'},
-    {name: 'createdAt', label: 'Data Criação'}
+    {name: 'createdAt', label: 'Data Criação' }
   ];
 
   selectEvent(event: any) {
       if (event.selected) {
-          this.livroSelected = event.row;
+          this.autorSelected = event.row;
       } else {
-          this.livroSelected = null;
+          this.autorSelected = null;
       }     
   } 
 

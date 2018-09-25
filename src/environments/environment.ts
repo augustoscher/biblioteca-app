@@ -10,6 +10,8 @@ export const environment = {
   production: false,
   envName: 'dev',
 
+  urlAuth: apiBase + '/login',
+
   urlGetPessoas: apiBase + '/v1/pessoas',
   urlGetPessoasById: apiBase + '/v1/pessoas/',
   urlPostPessoas: apiBase + '/v1/pessoas',
@@ -24,4 +26,14 @@ export const environment = {
   urlGetEditorasById: apiBase + '/v1/editoras/',
   urlPostEditoras: apiBase + '/v1/editoras',
   urlPutEditoras: apiBase + '/v1/editoras',
+
+  urlGetAutores: apiBase + '/v1/autores',
+  urlGetAutoresById: apiBase + '/v1/autores/',
+  urlPostAutores: apiBase + '/v1/autores',
+  urlPutAutores: apiBase + '/v1/autores',
+
+  urlGetLivros: apiBase + '/v1/livros',
+  urlGetLivrosById: apiBase + '/v1/livros/',
+  urlPostLivros: apiBase + '/v1/livros',
+  urlPutLivros: apiBase + '/v1/livros'
 };

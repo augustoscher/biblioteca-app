@@ -15,24 +15,14 @@ export class UserService {
   }
 
   login(result: LoginResult) {
-    const decodedToken = this.jwtHelper.decodeToken(result.accesToken);
-    console.log("decodedToken: " + decodedToken);
+    // const decodedToken = this.jwtHelper.decodeToken(result.accesToken);
+    // console.log("decodedToken: " + decodedToken);
     // this.isAdmin = decodedToken.authorities.some(el => el === 'ADMIN_USER');
     this.accessToken = result.accesToken;
     this.tenant = result.tenant;
     localStorage.setItem(TOKEN_NAME, result.accesToken);
     localStorage.setItem(TENANT, result.tenant);
   }
-
-  // login(accessToken: string) {
-  //   const decodedToken = this.jwtHelper.decodeToken(accessToken);
-  //   console.log(decodedToken);
-
-  //   // this.isAdmin = decodedToken.authorities.some(el => el === 'ADMIN_USER');
-  //   this.accessToken = accessToken;
-
-  //   localStorage.setItem(TOKEN_NAME, accessToken);
-  // }
 
   logout() {
     // this.isAdmin = false;

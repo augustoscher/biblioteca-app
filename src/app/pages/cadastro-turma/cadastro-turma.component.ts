@@ -42,8 +42,7 @@ export class CadastroTurmaComponent implements OnInit, OnDestroy {
           this.voltar();
         },
         err => {
-          this._snackBar.open('Erro ao alterar turma: ' + err, '', { duration: 3000 });
-          console.log(err);
+          this._snackBar.open('Erro ao alterar turma: ' + err.message, '', { duration: 3000 });
         });
     } else {
         this._turmaService.incluir(this.turmaSelected).subscribe(ob => {
@@ -51,8 +50,7 @@ export class CadastroTurmaComponent implements OnInit, OnDestroy {
           this.voltar();
         },
         err => {
-          this._snackBar.open('Erro ao incluir turma: ' + err, '', { duration: 3000 });
-          console.log(err);
+          this._snackBar.open('Erro ao incluir turma: ' + err.message, '', { duration: 3000 });
         });
     }   
   }

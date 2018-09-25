@@ -1,10 +1,10 @@
-import { CadastroAlunoComponent } from './cadastro-aluno.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MdCardModule, MdButtonModule, MdButtonToggleModule, MdInputModule, MdSelectModule } from '@angular/material';
 import { CovalentCommonModule, CovalentDataTableModule } from '@covalent/core';
+import { CadastroAutorComponent } from './cadastro-autor.component';
 
 @NgModule({
   imports: [
@@ -18,10 +18,10 @@ import { CovalentCommonModule, CovalentDataTableModule } from '@covalent/core';
     MdSelectModule,
     CovalentCommonModule, CovalentDataTableModule, 
     RouterModule.forChild([
-      {path: '', component: CadastroAlunoComponent}
+      {path: '', component: CadastroAutorComponent}
     ])
   ],
-  declarations: [CadastroAlunoComponent],
-  providers: [CadastroAlunoComponent]
+  declarations: [CadastroAutorComponent],
+  providers: [CadastroAutorComponent]
 })
-export class CadastroAlunoModule { }
+export class CadastroAutorModule { }

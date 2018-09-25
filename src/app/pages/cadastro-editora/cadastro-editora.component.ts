@@ -42,8 +42,7 @@ export class CadastroEditoraComponent implements OnInit {
           this.voltar();
         },
         err => {
-          this._snackBar.open('Erro ao alterar editora: ' + err, '', { duration: 3000 });
-          console.log(err);
+          this._snackBar.open('Erro ao alterar editora: ' + err.message, '', { duration: 3000 });
         });
     } else {
         this._editoraService.incluir(this.editoraSelected).subscribe(ob => {
@@ -51,8 +50,7 @@ export class CadastroEditoraComponent implements OnInit {
           this.voltar();
         },
         err => {
-          this._snackBar.open('Erro ao incluir editora: ' + err, '', { duration: 3000 });
-          console.log(err);
+          this._snackBar.open('Erro ao incluir editora: ' + err.message, '', { duration: 3000 });
         });
     }   
   }

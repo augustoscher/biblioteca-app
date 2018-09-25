@@ -29,7 +29,7 @@
               <h6>Nenhum registro encontado.</h6>
           </div>
           <td-paging-bar #pagingBar [pageSizes]="[20]" [total]="filteredTotal" (change)="page($event)" class="push-top">
-              <span td-paging-bar-label hide-xs>Row per page:</span>
+              <span td-paging-bar-label hide-xs>Resultados por página:</span>
               {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
           </td-paging-bar>
           <div layout="row" style="margin-left: 10px;">

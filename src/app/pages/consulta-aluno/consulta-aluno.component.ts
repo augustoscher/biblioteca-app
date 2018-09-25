@@ -1,6 +1,5 @@
 import { PessoaService } from './../../services/pessoa.service';
 import { Component, OnInit, HostBinding } from '@angular/core';
-import { Pessoa } from '../../model/pessoa';
 import { TdDataTableSortingOrder, ITdDataTableColumn, ITdDataTableSortChangeEvent, IPageChangeEvent, TdDataTableService } from '@covalent/core';
 import { Router } from '@angular/router';
 

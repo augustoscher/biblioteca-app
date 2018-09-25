@@ -31,7 +31,6 @@ export class ConsultaTurmaComponent implements OnInit {
       .subscribe(data => {
         this.filteredData = data;
         this.data = data;
-        console.log(data)
         this.filteredTotal = data.length;
         // this.pageSize = data['size']
       });

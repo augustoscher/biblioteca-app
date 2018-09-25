@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MdCardModule, MdButtonModule, MdButtonToggleModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { CovalentCommonModule, CovalentDataTableModule, CovalentFileModule, CovalentMediaModule, CovalentNotificationsModule, CovalentPagingModule, CovalentSearchModule, CovalentStepsModule } from '@covalent/core';
-import { ConsultaAlunoComponent } from './consulta-aluno.component';
+import { ConsultaAutorComponent } from './consulta-autor.component';
 
 @NgModule({
   imports: [
@@ -13,10 +13,10 @@ import { ConsultaAlunoComponent } from './consulta-aluno.component';
     MdButtonToggleModule,
     CovalentCommonModule, CovalentDataTableModule, CovalentFileModule, CovalentMediaModule, CovalentNotificationsModule, CovalentPagingModule, CovalentSearchModule, CovalentStepsModule,
     RouterModule.forChild([
-      {path: '', component: ConsultaAlunoComponent}
+      {path: '', component: ConsultaAutorComponent}
     ])
   ],
-  declarations: [ConsultaAlunoComponent],
-  providers: [ConsultaAlunoComponent]
+  declarations: [ConsultaAutorComponent],
+  providers: [ConsultaAutorComponent]
 })
-export class ConsultaAlunoModule { }
+export class ConsultaAutorModule { }

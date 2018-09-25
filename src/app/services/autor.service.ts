@@ -1,32 +1,32 @@
-import { environment } from './../../environments/environment';
 import { Injectable } from "@angular/core";
-import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Pessoa } from "../model/pessoa";
+import { environment } from "../../environments/environment";
+import { Observable } from "rxjs/Observable";
+import { Autor } from "../model/autor";
 
-const URL_GET_PESSOAS = environment.urlGetPessoas;
-const URL_GET_PESSOAS_ID = environment.urlGetPessoasById;
-const URL_POST_PESSOAS = environment.urlPostPessoas;
-const URL_PUT_PESSOAS = environment.urlPutPessoas;
+const URL_GET_AUTORES = environment.urlGetAutores;
+const URL_GET_AUTORES_ID = environment.urlGetAutoresById;
+const URL_POST_AUTOR = environment.urlPostAutores;
+const URL_PUT_AUTORES = environment.urlPutAutores;
 
 @Injectable()
-export class PessoaService {
+export class AutorService {
 
     constructor(private _http: HttpClient) {}
 
-    carregarPessoas() {
+    carregarAutores() {
         return this._http
-            .get<Pessoa[]>(URL_GET_PESSOAS)
+            .get<Autor[]>(URL_GET_AUTORES)
             .catch(this.handleError);
     }
 
-    carregarPessoaCompleta(uuid: string) {
+    carregarAutoresCompleto(uuid: string) {
         return this._http
-            .get<Pessoa[]>(URL_GET_PESSOAS_ID + uuid)
+            .get<Autor[]>(URL_GET_AUTORES_ID + uuid)
             .catch(this.handleError);
     }
 
-    incluir(pessoa: Pessoa): Observable<Pessoa>{
+    incluir(autor: Autor): Observable<Autor>{
         let httpHeaders = new HttpHeaders()
             .set('Accept', 'application/json')
             .set('Content-Type', 'application/json')
@@ -37,11 +37,11 @@ export class PessoaService {
         };        
 
         return this._http
-            .post<Pessoa>(URL_POST_PESSOAS, pessoa, options)
+            .post<Autor>(URL_POST_AUTOR, autor, options)
             .catch(this.handleError);
     }
 
-    alterar(pessoa: Pessoa): Observable<Pessoa>{
+    alterar(autor: Autor): Observable<Autor>{
         let httpHeaders = new HttpHeaders()
             .set('Accept', 'application/json')
             .set('Content-Type', 'application/json')
@@ -52,7 +52,7 @@ export class PessoaService {
         };   
 
         return this._http
-            .put<Pessoa>(URL_PUT_PESSOAS, pessoa, options)
+            .put<Autor>(URL_PUT_AUTORES, autor, options)
             .catch(this.handleError);
     }
 

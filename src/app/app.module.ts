@@ -2,7 +2,7 @@ import { TokentInterceptor } from './interceptors/token.interceptor';
 import { AuthGuard } from './guards/auth.guard.service';
 import { AuthenticationService } from './services/authentication.service';
 
-import { NgModule } from "@angular/core";
+import { NgModule, LOCALE_ID } from "@angular/core";
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
@@ -108,6 +108,8 @@ import { UserService } from './services/user.service';
 import { PessoaService } from './services/pessoa.service';
 import { TurmaService } from './services/turma.service';
 import { EditoraService } from './services/editora.service';
+import { AutorService } from './services/autor.service';
+import { LivroService } from './services/livro.service';
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {};
 
@@ -209,7 +211,10 @@ export function createTranslateLoader(http: HttpClient) {
     PessoaService,
     TurmaService,
     EditoraService,
-    AuthGuard
+    AutorService,
+    LivroService,
+    AuthGuard,
+    { provide: LOCALE_ID, useValue: 'pt-PT' }
   ],
   bootstrap: [AppComponent]
 })

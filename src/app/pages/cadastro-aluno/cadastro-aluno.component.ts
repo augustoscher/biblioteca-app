@@ -44,8 +44,7 @@ export class CadastroAlunoComponent implements OnInit, OnDestroy {
           this.voltar();
         },
         err => {
-          this._snackBar.open('Erro ao alterar pessoa: ' + err, '', { duration: 3000 });
-          console.log(err);
+          this._snackBar.open('Erro ao alterar pessoa: ' + err.message, '', { duration: 3000 });
         });
     } else {
         this._pessoaService.incluir(this.personSelected).subscribe(ob => {
@@ -53,8 +52,7 @@ export class CadastroAlunoComponent implements OnInit, OnDestroy {
           this.voltar();
         },
         err => {
-          this._snackBar.open('Erro ao incluir pessoa: ' + err, '', { duration: 3000 });
-          console.log(err);
+          this._snackBar.open('Erro ao incluir pessoa: ' + err.message, '', { duration: 3000 });
         });
     }      
   }
