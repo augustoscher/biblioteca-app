@@ -47,7 +47,7 @@ export class ConsultaLivroComponent implements OnInit {
     {name: 'titulo', label: 'Livro', sortable: true},
     {name: 'isbn', label: 'Isbn', sortable: true},
     {name: 'autor.nome', label: 'Autor', sortable: false},
-    {name: 'codigoLivre', label: 'Código', sortable: true},
+    {name: 'codigoLivre', label: 'Código Livre', sortable: true},
     {name: 'userLastUpdate', label: 'Usuário'},
     {name: 'createdAt', label: 'Data Criação'}
   ];
