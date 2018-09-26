@@ -1,64 +1,74 @@
 <section>
-  <form #livroForm="ngForm">
-      <md-card>
-          <md-card-title class="md-title">Livro</md-card-title>
-          <md-card-content fxLayout="column">
-            <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
-              <md-input-container fxFlex [dividerColor]="!titulo.valid && !titulo.pristine ? 'warn' : 'primary'">
-                  <input type="text" mdInput style="width: 500px;" placeholder="Título" name="titulo" required maxlength="100" ngModel #titulo="ngModel" [(ngModel)]="livroSelected.titulo">
-                  <md-hint *ngIf="!titulo.valid && !titulo.pristine" class="warn-color">Campo obrigatório. máximo 100 caracteres.</md-hint>
-              </md-input-container>
-            </div>
-            <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
-              <md-input-container fxFlex [dividerColor]="!subtitulo.valid && !subtitulo.pristine ? 'warn' : 'primary'">
-                  <input type="text" mdInput style="width: 500px;" placeholder="Subtítulo" name="subtitulo" required maxlength="100" ngModel #subtitulo="ngModel" [(ngModel)]="livroSelected.subTitulo">
-                  <md-hint *ngIf="!subtitulo.valid && !subtitulo.pristine" class="warn-color">Campo obrigatório. máximo 100 caracteres.</md-hint>
-              </md-input-container>
-            </div>
-            <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
-              <md-input-container fxFlex [dividerColor]="!isbn.valid && !isbn.pristine ? 'warn' : 'primary'">
-                  <input type="text" mdInput style="width: 500px;" placeholder="Isbn" name="isbn" required maxlength="100" ngModel #isbn="ngModel" [(ngModel)]="livroSelected.isbn">
-                  <md-hint *ngIf="!isbn.valid && !isbn.pristine" class="warn-color">Campo obrigatório. máximo 100 caracteres.</md-hint>
-              </md-input-container>
-            </div>
-            <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
-              <md-input-container fxFlex [dividerColor]="!edicao.valid && !edicao.pristine ? 'warn' : 'primary'">
-                  <input type="text" mdInput style="width: 500px;" placeholder="Edição" name="edicao" maxlength="100" ngModel #edicao="ngModel" [(ngModel)]="livroSelected.edicao">
-                  <md-hint *ngIf="!edicao.valid && !edicao.pristine" class="warn-color">Permitido apenas 100 caracteres.</md-hint>
-              </md-input-container>
-            </div>
-            <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
-              <md-input-container fxFlex [dividerColor]="!codigo.valid && !codigo.pristine ? 'warn' : 'primary'">
-                  <input type="text" mdInput style="width: 500px;" placeholder="Código Livre" name="codigo" maxlength="100" ngModel #codigo="ngModel" [(ngModel)]="livroSelected.codigoLivre">
-                  <md-hint *ngIf="!codigo.valid && !codigo.pristine" class="warn-color">Permitido apenas 100 caracteres.</md-hint>
-              </md-input-container>
-            </div>
-            <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
-              <md-input-container fxFlex [dividerColor]="!codigobarras.valid && !codigobarras.pristine ? 'warn' : 'primary'">
-                  <input type="text" mdInput style="width: 500px;" placeholder="Código Barras" name="codigobarras" maxlength="100" ngModel #codigobarras="ngModel" [(ngModel)]="livroSelected.codigoBarras">
-                  <md-hint *ngIf="!codigobarras.valid && !codigobarras.pristine" class="warn-color">Permitido apenas 100 caracteres.</md-hint>
-              </md-input-container>
-            </div>
-            <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
-                <md-input-container>
-                    <textarea mdInput style="min-width: 500px;" placeholder="Descrição" name="descricao" maxlength="250" maxRows="3" ngModel #descricao="ngModel" [(ngModel)]="livroSelected.descricao"></textarea>
-                    <md-hint *ngIf="!descricao.valid && !descricao.pristine" class="warn-color">Permitido apenas 250 caracteres.</md-hint>
-                </md-input-container>
-            </div>
-            <div layout="row" style="margin-left: 10px; margin-top: 20px;">
-              <button md-raised-button color="primary" type="submit" name="btnOk" [disabled]="!livroForm.valid" (click)="gravar()" style="margin-right: 10px;">OK</button>
-              <button md-raised-button color="secundary" type="button" name="btnVoltar" (click)="voltar()">Voltar</button>
-            </div>
-          </md-card-content>
-      </md-card>
-      {{diagnostic}}
-  </form>
+  <md-card>
+    <md-card-content fxLayout="column">
+        <md-tab-group #tabGroup dynamicHeight="true">
+            <md-tab label="Passo 1">
+              <h6>Livro</h6>
+              <form #livroForm="ngForm">
+              <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
+                  <md-input-container fxFlex [dividerColor]="!titulo.valid && !titulo.pristine ? 'warn' : 'primary'">
+                      <input type="text" mdInput style="width: 400px;" placeholder="Título" name="titulo" required maxlength="100" ngModel #titulo="ngModel" [(ngModel)]="livroSelected.titulo">
+                      <md-hint *ngIf="!titulo.valid && !titulo.pristine" class="warn-color">Campo obrigatório. máximo 100 caracteres.</md-hint>
+                  </md-input-container>
+                </div>
+                <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
+                  <md-input-container fxFlex [dividerColor]="!subtitulo.valid && !subtitulo.pristine ? 'warn' : 'primary'">
+                      <input type="text" mdInput style="width: 500px;" placeholder="Subtítulo" name="subtitulo" required maxlength="100" ngModel #subtitulo="ngModel" [(ngModel)]="livroSelected.subTitulo">
+                      <md-hint *ngIf="!subtitulo.valid && !subtitulo.pristine" class="warn-color">Campo obrigatório. máximo 100 caracteres.</md-hint>
+                  </md-input-container>
+                </div>
+                <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
+                  <md-input-container fxFlex [dividerColor]="!isbn.valid && !isbn.pristine ? 'warn' : 'primary'">
+                      <input type="text" mdInput style="width: 500px;" placeholder="Isbn" name="isbn" required maxlength="100" ngModel #isbn="ngModel" [(ngModel)]="livroSelected.isbn">
+                      <md-hint *ngIf="!isbn.valid && !isbn.pristine" class="warn-color">Campo obrigatório. máximo 100 caracteres.</md-hint>
+                  </md-input-container>
+                </div>
+                <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
+                  <md-input-container fxFlex [dividerColor]="!edicao.valid && !edicao.pristine ? 'warn' : 'primary'">
+                      <input type="text" mdInput style="width: 500px;" placeholder="Edição" name="edicao" maxlength="100" ngModel #edicao="ngModel" [(ngModel)]="livroSelected.edicao">
+                      <md-hint *ngIf="!edicao.valid && !edicao.pristine" class="warn-color">Permitido apenas 100 caracteres.</md-hint>
+                  </md-input-container>
+                </div>
+                <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
+                  <md-input-container fxFlex [dividerColor]="!codigo.valid && !codigo.pristine ? 'warn' : 'primary'">
+                      <input type="text" mdInput style="width: 500px;" placeholder="Código Livre" name="codigo" maxlength="100" ngModel #codigo="ngModel" [(ngModel)]="livroSelected.codigoLivre">
+                      <md-hint *ngIf="!codigo.valid && !codigo.pristine" class="warn-color">Permitido apenas 100 caracteres.</md-hint>
+                  </md-input-container>
+                </div>
+                <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
+                  <md-input-container fxFlex [dividerColor]="!codigobarras.valid && !codigobarras.pristine ? 'warn' : 'primary'">
+                      <input type="text" mdInput style="width: 500px;" placeholder="Código Barras" name="codigobarras" maxlength="100" ngModel #codigobarras="ngModel" [(ngModel)]="livroSelected.codigoBarras">
+                      <md-hint *ngIf="!codigobarras.valid && !codigobarras.pristine" class="warn-color">Permitido apenas 100 caracteres.</md-hint>
+                  </md-input-container>
+                </div>
+                <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
+                    <md-input-container>
+                        <textarea mdInput style="min-width: 500px;" placeholder="Descrição" name="descricao" maxlength="250" maxRows="3" ngModel #descricao="ngModel" [(ngModel)]="livroSelected.descricao"></textarea>
+                        <md-hint *ngIf="!descricao.valid && !descricao.pristine" class="warn-color">Permitido apenas 250 caracteres.</md-hint>
+                    </md-input-container>
+                </div>
+                <div style="margin-top: 10px; margin-bottom: 10px;">
+                  <button md-raised-button color="primary" (click)="tabGroup.selectedIndex=1" [disabled]="!livroForm.valid">Next</button>
+                </div>
+              </form>
+            </md-tab>
+            <md-tab label="Passo 2" [disabled]="!livroForm.valid">
+              <h6>Autor</h6>
+              <div style="margin-top: 10px; margin-bottom: 10px;">
+                <button md-raised-button color="primary" (click)="tabGroup.selectedIndex=0">Voltar</button>
+                <button md-raised-button color="primary" (click)="tabGroup.selectedIndex=2" >Próximo</button>
+              </div>
+            </md-tab>
+            <md-tab label="Passo 3">
+              <h6>Editora</h6>
+              <div style="margin-top: 10px; margin-bottom: 10px;">  
+                <button md-raised-button color="primary" type="submit" name="btnOk" [disabled]="!livroForm.valid" (click)="gravar()" style="margin-right: 10px;">OK</button>
+                <button md-raised-button color="secundary" type="button" name="btnVoltar" (click)="voltar()">Cancelar</button>
+              </div>
+            </md-tab>
+          </md-tab-group>
+    </md-card-content>
+  </md-card>
 </section>
+{{diagnostic}}
 
-<!-- 
-
-
-editora: any;
-autor: any;
-descricao: string;
- -->

@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LivroService } from '../../services/livro.service';
 import { MdSnackBar } from '@angular/material';
 import { Livro } from '../../model/livro';
+import { FormControl } from '@angular/forms';
+import { EditoraService } from '../../services/editora.service';
 
 @Component({
   selector: 'cadastro-livro',
@@ -10,6 +12,8 @@ import { Livro } from '../../model/livro';
   styleUrls: ['./cadastro-livro.component.scss']
 })
 export class CadastroLivroComponent implements OnInit {
+  
+  editoras: Array<any>;
 
   private uuid: string;
   private sub: any;
@@ -17,12 +21,17 @@ export class CadastroLivroComponent implements OnInit {
   
   constructor(private _route: ActivatedRoute, 
     private _router: Router, 
-    private _livroService: LivroService, 
+    private _livroService: LivroService, private _editoraService: EditoraService,
     private _snackBar: MdSnackBar) { }
   
   ngOnInit() {
     this.livroSelected = new Livro();
-    
+
+    this._editoraService.carregarEditoras()
+      .subscribe(data => {
+        this.editoras = data['content'];
+      });
+
     this.sub = this._route.params
       .subscribe(params => {
         this.uuid = params['uuid']; 
@@ -33,6 +42,10 @@ export class CadastroLivroComponent implements OnInit {
             });
         }
       });
+  }
+  
+  filterEditoras(val: string) {
+    return val ? this.editoras.filter((s) => new RegExp(val, 'gi').test(s)) : this.editoras;
   }
 
   gravar() {
