@@ -110,6 +110,8 @@ import { TurmaService } from './services/turma.service';
 import { EditoraService } from './services/editora.service';
 import { AutorService } from './services/autor.service';
 import { LivroService } from './services/livro.service';
+import { DialogSearchAutorComponent } from './dialog-search-autor/dialog-search-autor.component';
+import { DialogSearchEditoraComponent } from './dialog-search-editora/dialog-search-editora.component';
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {};
 
@@ -139,10 +141,15 @@ export function createTranslateLoader(http: HttpClient) {
     CartPageComponent,
     ProductPageComponent,
     PortfolioPageComponent,
-    MultiLanguagePageComponent
+    MultiLanguagePageComponent,
+    DialogSearchAutorComponent,
+    DialogSearchEditoraComponent
   ],
   entryComponents: [
-    DialogExampleComponent, CartButtonComponent
+    DialogExampleComponent,
+    DialogSearchAutorComponent, 
+    DialogSearchEditoraComponent,
+    CartButtonComponent
   ],
   imports: [
     BrowserModule,

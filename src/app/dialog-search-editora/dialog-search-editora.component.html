@@ -1,0 +1,39 @@
+<div>
+    <section style="min-height: 400px; min-width: 600px;">
+        <article>
+          <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
+          <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
+            <span class="md-title">Selecione a Editora</span>
+          </span>
+            <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
+          </span>
+            <td-search-box #searchBox backIcon="arrow_back" class="push-right-sm" placeholder="Pesquisar..."
+                          (searchDebounce)="search($event)" flex>
+            </td-search-box>
+          </div>
+          <md-divider></md-divider>
+          <td-data-table
+            #dataTable
+            [data]="filteredData"
+            [columns]="columns"
+            [sortable]="true"
+            [selectable]="true"
+            [sortBy]="sortBy"
+            [sortOrder]="sortOrder"
+            (sortChange)="sort($event)"
+            (rowSelect)="selectEvent($event)">
+          </td-data-table>
+          <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
+              <h6>Nenhum registro encontado.</h6>
+          </div>
+          <td-paging-bar #pagingBar [pageSizes]="[20]" [total]="filteredTotal" (change)="page($event)" class="push-top">
+              <span td-paging-bar-label hide-xs>Resultados por página:</span>
+              {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+          </td-paging-bar>
+        </article>
+      </section>
+</div>
+<div md-dialog-actions class="dialog-example-buttons">
+    <button md-button color="warn" (click)="cancelar()">Cancelar</button>
+    <button md-button (click)="selecionar()">Selecionar</button>
+</div>

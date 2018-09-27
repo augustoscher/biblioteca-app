@@ -24,12 +24,12 @@ export class ConsultaAutorComponent implements OnInit {
   sortBy = 'nome';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Ascending;
 
-  constructor(private _pessoaService: AutorService,
+  constructor(private _autorService: AutorService,
     private _dataTableService: TdDataTableService, 
     private _router: Router) { }
 
   ngOnInit() {
-    this._pessoaService.carregarAutores()
+    this._autorService.carregarAutores()
       .subscribe(data => {
         this.filteredData = data['content'];
         this.data = data['content'];

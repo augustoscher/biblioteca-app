@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LivroService } from '../../services/livro.service';
-import { MdSnackBar } from '@angular/material';
+import { MdSnackBar, MdDialog } from '@angular/material';
 import { Livro } from '../../model/livro';
 import { FormControl } from '@angular/forms';
 import { EditoraService } from '../../services/editora.service';
+import { DialogSearchAutorComponent } from '../../dialog-search-autor/dialog-search-autor.component';
+import { DialogSearchEditoraComponent } from '../../dialog-search-editora/dialog-search-editora.component';
 
 @Component({
   selector: 'cadastro-livro',
@@ -13,24 +15,17 @@ import { EditoraService } from '../../services/editora.service';
 })
 export class CadastroLivroComponent implements OnInit {
   
-  editoras: Array<any>;
-
   private uuid: string;
   private sub: any;
   private livroSelected = new Livro();
   
   constructor(private _route: ActivatedRoute, 
     private _router: Router, 
-    private _livroService: LivroService, private _editoraService: EditoraService,
-    private _snackBar: MdSnackBar) { }
+    private _livroService: LivroService, 
+    private _snackBar: MdSnackBar, private dialog: MdDialog) { }
   
   ngOnInit() {
     this.livroSelected = new Livro();
-
-    this._editoraService.carregarEditoras()
-      .subscribe(data => {
-        this.editoras = data['content'];
-      });
 
     this.sub = this._route.params
       .subscribe(params => {
@@ -44,10 +39,6 @@ export class CadastroLivroComponent implements OnInit {
       });
   }
   
-  filterEditoras(val: string) {
-    return val ? this.editoras.filter((s) => new RegExp(val, 'gi').test(s)) : this.editoras;
-  }
-
   gravar() {
     if (this.livroSelected.uuid) {
       this._livroService.alterar(this.livroSelected).subscribe(ob => {
@@ -66,6 +57,24 @@ export class CadastroLivroComponent implements OnInit {
           this._snackBar.open('Erro ao incluir livro: ' + err.message, '', { duration: 3000 });
         });
     }   
+  }
+
+  searchAutor() {
+    const dialogRef = this.dialog.open(DialogSearchAutorComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.livroSelected.autor = result;
+      }
+    });
+  }
+
+  searchEditora() {
+    const dialogRef = this.dialog.open(DialogSearchEditoraComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.livroSelected.editora = result;
+      }
+    });
   }
 
   voltar() {

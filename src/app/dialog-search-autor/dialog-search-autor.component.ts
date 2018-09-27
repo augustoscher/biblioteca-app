@@ -1,61 +1,65 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {MdDialogRef} from '@angular/material';
 import { TdDataTableService, TdDataTableSortingOrder, ITdDataTableColumn, ITdDataTableSortChangeEvent, IPageChangeEvent } from '@covalent/core';
-import { LivroService } from '../../services/livro.service';
+import { routerAnimation } from '../utils/page.animation';
+import { AutorService } from '../services/autor.service';
 
 @Component({
-  selector: 'consulta-livro',
-  templateUrl: './consulta-livro.component.html',
-  styleUrls: ['./consulta-livro.component.scss']
+  selector: 'app-dialog-search-autor',
+  templateUrl: './dialog-search-autor.component.html',
+  styleUrls: ['./dialog-search-autor.component.scss'],
+  animations: [routerAnimation]
 })
-export class ConsultaLivroComponent implements OnInit {
+export class DialogSearchAutorComponent implements OnInit {
 
   data: Array<any>;
   filteredData: Array<any>;
-  livroSelected: any;
+  autorSelected: any;
 
   filteredTotal: number;
   searchTerm = '';
   fromRow = 1;
   currentPage = 1;
   pageSize = 20;
-  sortBy = 'titulo';
+  sortBy = 'nome';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Ascending;
 
-  constructor(private _livroService: LivroService,
-    private _dataTableService: TdDataTableService, 
-    private _router: Router) { }
+  constructor(public dialogRef: MdDialogRef<DialogSearchAutorComponent>,
+     private _autorService: AutorService,
+     private _dataTableService: TdDataTableService) {}
 
   ngOnInit() {
-    this._livroService.carregarLivros()
-      .subscribe(data => {
-        this.filteredData = data['content'];
-        this.data = data['content'];
-        this.filteredTotal = data['totalElements'];
-        this.pageSize = data['size']
-      });
+  this._autorService.carregarAutores()
+    .subscribe(data => {
+      this.filteredData = data['content'];
+      this.data = data['content'];
+      this.filteredTotal = data['totalElements'];
+      this.pageSize = data['size']
+    });
   }
 
-  edit() {
-    if (this.livroSelected) {
-      this._router.navigate(['/main/cadastro-livro', this.livroSelected.uuid]);
+  cancelar(){
+    this.dialogRef.close();
+  }
+
+  selecionar(){
+    if (this.autorSelected) {
+      this.dialogRef.close(this.autorSelected);
     }
   }
 
   columns: ITdDataTableColumn[] = [
-    {name: 'titulo', label: 'Livro', sortable: true},
-    {name: 'isbn', label: 'Isbn', sortable: true},
-    {name: 'autor.nome', label: 'Autor'},
-    {name: 'codigoLivre', label: 'Código Livre', sortable: true},
+    {name: 'nome', label: 'Autor', sortable: true},
     {name: 'userLastUpdate', label: 'Usuário'},
-    {name: 'createdAt', label: 'Data Criação'}
+    {name: 'createdAt', label: 'Data Criação' },
+    {name: 'updatedAt', label: 'Data Atualização' }
   ];
 
   selectEvent(event: any) {
       if (event.selected) {
-          this.livroSelected = event.row;
+          this.autorSelected = event.row;
       } else {
-          this.livroSelected = null;
+          this.autorSelected = null;
       }     
   } 
 
@@ -76,8 +80,6 @@ export class ConsultaLivroComponent implements OnInit {
     this.fromRow = pagingEvent.fromRow;
     this.currentPage = pagingEvent.page;
     this.pageSize = pagingEvent.pageSize;
-    //fazer a chamada paginada ao backend.
-    //no subscribe atualizar a variavel this.data e chamar this.filter()
     this.filter();
   }
 
@@ -89,5 +91,4 @@ export class ConsultaLivroComponent implements OnInit {
     newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
     this.filteredData = newData;
   }
-
 }

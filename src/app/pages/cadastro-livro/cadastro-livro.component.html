@@ -48,22 +48,27 @@
                     </md-input-container>
                 </div>
                 <div style="margin-top: 10px; margin-bottom: 10px;">
-                  <button md-raised-button color="primary" (click)="tabGroup.selectedIndex=1" [disabled]="!livroForm.valid">Next</button>
+                  <button md-raised-button color="primary" (click)="tabGroup.selectedIndex=1" [disabled]="!livroForm.valid">Próximo</button>
                 </div>
               </form>
             </md-tab>
             <md-tab label="Passo 2" [disabled]="!livroForm.valid">
-              <h6>Autor</h6>
-              <div style="margin-top: 10px; margin-bottom: 10px;">
-                <button md-raised-button color="primary" (click)="tabGroup.selectedIndex=0">Voltar</button>
-                <button md-raised-button color="primary" (click)="tabGroup.selectedIndex=2" >Próximo</button>
+              <h6>Autor e Editora</h6>
+              <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
+                  <md-input-container fxFlex [dividerColor]="!autor.valid && !autor.pristine ? 'warn' : 'primary'">
+                      <input type="text" mdInput style="width: 400px;" placeholder="Autor" name="autor" disabled  ngModel #autor="ngModel" [(ngModel)]="livroSelected.autor.nome" >
+                  </md-input-container>
+                  <button md-button name="btnSearchAutor" (click)="searchAutor()">Selecionar</button>
               </div>
-            </md-tab>
-            <md-tab label="Passo 3">
-              <h6>Editora</h6>
-              <div style="margin-top: 10px; margin-bottom: 10px;">  
-                <button md-raised-button color="primary" type="submit" name="btnOk" [disabled]="!livroForm.valid" (click)="gravar()" style="margin-right: 10px;">OK</button>
-                <button md-raised-button color="secundary" type="button" name="btnVoltar" (click)="voltar()">Cancelar</button>
+              <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
+                  <md-input-container fxFlex [dividerColor]="!editora.valid && !editora.pristine ? 'warn' : 'primary'">
+                      <input type="text" mdInput style="width: 400px;" placeholder="Editora" name="editora" disabled  ngModel #editora="ngModel" [(ngModel)]="livroSelected.editora.nome" >
+                  </md-input-container>
+                  <button md-button name="btnSearchEditora" (click)="searchEditora()">Selecionar</button>
+              </div>
+              <div style="margin-top: 10px; margin-bottom: 10px;"> 
+                  <button md-raised-button color="primary" type="submit" name="btnOk" [disabled]="!livroForm.valid" (click)="gravar()" style="margin-right: 10px;">OK</button>
+                  <button md-button color="warn" type="button" name="btnCancelar" (click)="voltar()">Cancelar</button>
               </div>
             </md-tab>
           </md-tab-group>
