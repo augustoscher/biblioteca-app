@@ -13,7 +13,7 @@ export class CadastroEditoraComponent implements OnInit {
 
   private uuid: string;
   private sub: any;
-  private editoraSelected = new Editora();
+  public editoraSelected = new Editora();
   
   constructor(private _route: ActivatedRoute, 
     private _router: Router, 

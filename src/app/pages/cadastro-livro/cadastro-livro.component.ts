@@ -17,7 +17,7 @@ export class CadastroLivroComponent implements OnInit {
   
   private uuid: string;
   private sub: any;
-  private livroSelected = new Livro();
+  public livroSelected = new Livro();
   
   constructor(private _route: ActivatedRoute, 
     private _router: Router, 

@@ -13,7 +13,7 @@ export class CadastroAutorComponent implements OnInit, OnDestroy {
 
   private uuid: string;
   private sub: any;
-  private autorSelected = new Autor();
+  public autorSelected = new Autor();
   
   constructor(private _route: ActivatedRoute, 
     private _router: Router, 

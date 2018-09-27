@@ -13,7 +13,7 @@ export class CadastroTurmaComponent implements OnInit, OnDestroy {
   
   private uuid: string;
   private sub: any;
-  private turmaSelected = new Turma();
+  public turmaSelected = new Turma();
   
   constructor(private _route: ActivatedRoute, 
     private _router: Router, 

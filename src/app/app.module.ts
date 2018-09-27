@@ -103,7 +103,6 @@ import {HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/h
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 // import {AuthConfig, AuthHttp} from 'angular2-jwt';
 // import {TOKEN_NAME, TENANT} from './services/auth.constants';
-// import {SharedModule} from './shared/shared.module';
 import { UserService } from './services/user.service';
 import { PessoaService } from './services/pessoa.service';
 import { TurmaService } from './services/turma.service';

@@ -1,6 +1,5 @@
 
-// const apiBase = 'http://licenciamento.senior.com.br:9797';
-const apiBase = 'http://localhost:8080';
+const apiBase = 'https://app-biblioteca-api.herokuapp.com';
 
 export const environment = {
   production: true,

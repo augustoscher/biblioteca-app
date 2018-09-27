@@ -14,7 +14,7 @@ export class CadastroAlunoComponent implements OnInit, OnDestroy {
 
   private uuid: string;
   private sub: any;
-  private personSelected = new Pessoa();
+  public personSelected = new Pessoa();
   
   constructor(private _route: ActivatedRoute, 
     private _router: Router, 
