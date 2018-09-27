@@ -12,6 +12,8 @@ export const environment = {
 
   urlAuth: apiBase + '/login',
 
+  urlGetUsuarioLogin: apiBase + '/v1/usuarios/porLogin/',
+
   urlGetPessoas: apiBase + '/v1/pessoas',
   urlGetPessoasById: apiBase + '/v1/pessoas/',
   urlPostPessoas: apiBase + '/v1/pessoas',

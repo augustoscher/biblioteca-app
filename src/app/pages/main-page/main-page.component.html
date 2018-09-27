@@ -324,6 +324,7 @@
       <md-slide-toggle [(ngModel)]="boxedLayout"></md-slide-toggle>
     </div>
   </md-sidenav>
+
   <md-toolbar color="primary">
     <button md-icon-button (click)="sidenav.toggle()">
       <md-icon>menu</md-icon>
@@ -332,9 +333,10 @@
     <!-- <a fxHide="true" fxHide.gt-sm="false" href="/" class="logo">
       <img src="/assets/logo/logo-text-white.png">
     </a> -->
-    <!--<span fxHide="true" fxHide.gt-sm="false">Application</span>-->
-    <!-- <span fxFlex></span>
-    <td-search-box [alwaysVisible]="false" fxHide="true" fxHide.gt-sm="false"></td-search-box>
+    <!-- <span fxHide="true" fxHide.gt-sm="false">Application</span> -->
+    <span fxFlex></span>
+    <!-- <td-search-box [alwaysVisible]="false" fxHide="true" fxHide.gt-sm="false"></td-search-box>
+
     <button md-icon-button [mdMenuTriggerFor]="lettersMenu">
       <td-notification-count [notifications]="3">
         <md-icon>mail</md-icon>
@@ -357,31 +359,29 @@
         <button md-button>View all</button>
       </div>
     </md-menu> -->
+    <md-icon  class="cursor-pointer push-left-sm" [mdMenuTriggerFor]="userMenu">account_circle</md-icon>
     <!-- <img src="assets/avatars/4040.png" class="cursor-pointer push-left-sm" [mdMenuTriggerFor]="userMenu"> -->
-    <!-- <md-menngu #userMenu="mdMenu">
+    <md-menu #userMenu="mdMenu">
       <md-list>
         <md-list-item>
           <img md-list-avatar src="assets/avatars/4040.png">
-          <h4 md-line> Olivia Werner </h4>
+          <h4 md-line> {{nome}} </h4>
           <p md-line>
-            <span>Admin</span>
+            <span>{{tipo}}</span>
           </p>
         </md-list-item>
         <md-divider></md-divider>
       </md-list>
       <md-nav-list>
         <a md-list-item>
-          <h4 md-line>View Profile</h4>
+          <h5 md-line>Senha</h5>
         </a>
-        <a md-list-item>
-          <h4 md-line>Password</h4>
-        </a>
-        <a md-list-item>
-          <h4 md-line>Sign out</h4>
+        <a md-list-item  (click)="logout()">
+          <h5 md-line>Sair</h5>
         </a>
       </md-nav-list>
     </md-menu>
-    <button md-icon-button [mdMenuTriggerFor]="settingsMenu">
+    <!-- <button md-icon-button [mdMenuTriggerFor]="settingsMenu">
       <md-icon>more_vert</md-icon>
     </button>
     <md-menu #settingsMenu="mdMenu">
@@ -401,7 +401,7 @@
         <md-icon>share</md-icon>
         Share
       </button>
-    </md-menu> -->
+    </md-menu>  -->
 
   </md-toolbar>
   <div class="wrapper" [class.wrapper-box]="boxedLayout">

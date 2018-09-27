@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Http, RequestOptions } from '@angular/http';
 import { Headers } from '@angular/http';
-import { TOKEN_NAME, TENANT } from "./auth.constants";
 import { Usuario } from "../model/usuario";
 import { LoginResult } from "../model/loginResult";
 import { environment } from "../../environments/environment";
+import { TOKEN_NAME, TENANT } from "./auth.constants";
 
 const URL_AUTH = environment.urlAuth;
 
@@ -44,11 +44,10 @@ export class AuthenticationService {
     }
 
     getTenant() {
-      let tenant = localStorage.getItem(TENANT);
-      if (tenant){
-        return tenant;
+      let token = localStorage.getItem(TENANT);
+      if (token) {
+        return token;
       }
       return '';
     }
-
 }

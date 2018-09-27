@@ -20,14 +20,14 @@ export class LoginPageComponent implements OnInit {
   @HostBinding('@routerAnimation') routerAnimation = true;
   
   constructor(private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private authenticationService: AuthenticationService,
-    private userService: UserService) {
-      this.redirectUrl = this.activatedRoute.snapshot.queryParams['redirectTo'];
+    private _activatedRoute: ActivatedRoute,
+    private _authenticationService: AuthenticationService,
+    private _userService: UserService) {
+      this.redirectUrl = this._activatedRoute.snapshot.queryParams['redirectTo'];
 }
 
 ngOnInit(): void {
-  this.userService.logout();
+  this._userService.logout();
 }
 
   /**
@@ -38,20 +38,20 @@ ngOnInit(): void {
   login(login, password) {
     this.loading = true;
 
-    this.authenticationService.login(login, password)
+    this._authenticationService.login(login, password)
       .subscribe(
         result => {
           this.loading = false;
 
           if (result) {
-            this.userService.login(result);
+            this._userService.login(login, result);
             this.navigateAfterSuccess();
           } else {
-            this.error = 'Username or password is incorrect';
+            this.error = 'Usuário ou senha inválidos';
           }
         },
         error => {
-          this.error = 'Username or password is incorrect';
+          this.error = 'Usuário ou senha inválidos';
           this.loading = false;
         }
       );

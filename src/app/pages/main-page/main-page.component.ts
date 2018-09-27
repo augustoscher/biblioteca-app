@@ -1,6 +1,9 @@
 import {Component, HostBinding, OnInit} from '@angular/core';
 import {ResizeService} from '../../resize/resize.service';
 import {routerAnimation} from '../../utils/page.animation';
+import { Usuario } from '../../model/usuario';
+import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-page',
@@ -9,39 +12,29 @@ import {routerAnimation} from '../../utils/page.animation';
   animations: [routerAnimation]
 })
 export class MainPageComponent implements OnInit {
-  // Add router animation
   @HostBinding('@routerAnimation') routerAnimation = true;
-  // Applying theme class
   @HostBinding('class.dark-theme') darkTheme = false;
   _sidenavMode = 'side';
   _boxedLayout = false;
-  // Data for messages at popup
-  messages = [
-    {
-      subject: 'Monthly report',
-      message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-      image: 'assets/avatars/4040.png',
-      time: '18:05'
-    },
-    {
-      subject: 'Holiday party',
-      message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-      image: 'assets/avatars/4040.png',
-      time: '3 hrs ago'
-    },
-    {
-      subject: 'Salary bonus',
-      message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-      image: 'assets/avatars/4040.png',
-      time: '2 days ago'
+
+  tipo: string;
+  nome: string;
+
+  constructor(public resizeService: ResizeService,
+     private _userService: UserService, private _router: Router) { }
+
+  ngOnInit(){
+    if (!this.tipo) {
+      this.tipo = this._userService.getRule();
     }
-  ];
-
-
-  constructor(public resizeService: ResizeService) {
+    if (!this.nome) {
+      this.nome = this._userService.getUser();
+    }
   }
 
-  ngOnInit() {
+  logout(){
+    this._userService.logout();
+    this._router.navigate(['login']);
   }
 
   set sidenavMode(val) {

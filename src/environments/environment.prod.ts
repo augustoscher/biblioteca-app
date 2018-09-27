@@ -7,10 +7,17 @@ export const environment = {
 
   urlAuth: apiBase + '/login',
 
+  urlGetUsuarioLogin: apiBase + '/v1/usuarios/porLogin/',
+
   urlGetPessoas: apiBase + '/v1/pessoas',
   urlGetPessoasById: apiBase + '/v1/pessoas/',
   urlPostPessoas: apiBase + '/v1/pessoas',
   urlPutPessoas: apiBase + '/v1/pessoas',
+
+  urlGetTurmas: apiBase + '/v1/turmas',
+  urlGetTurmasById: apiBase + '/v1/turmas/',
+  urlPostTurmas: apiBase + '/v1/turmas',
+  urlPutTurmas: apiBase + '/v1/turmas',
 
   urlGetEditoras: apiBase + '/v1/editoras',
   urlGetEditorasById: apiBase + '/v1/editoras/',
