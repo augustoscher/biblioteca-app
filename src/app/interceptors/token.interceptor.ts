@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { AuthenticationService } from "../services/authentication.service";
 import { TENANT, TOKEN_NAME } from "../services/auth.constants";
 
 @Injectable()
@@ -28,9 +27,9 @@ export class TokentInterceptor implements HttpInterceptor {
     }
 
     getTenant() {
-        let token = localStorage.getItem(TENANT);
-        if (token) {
-          return token;
+        let tenant = localStorage.getItem(TENANT);
+        if (tenant) {
+          return tenant;
         }
         return '';
     }

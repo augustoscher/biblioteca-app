@@ -4,6 +4,12 @@
             <md-card-title class="md-title">Pessoa</md-card-title>
             <md-card-content fxLayout="column">
               <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
+                <md-input-container fxFlex [dividerColor]="!codigo.valid && !codigo.pristine ? 'warn' : 'primary'">
+                    <input type="text" mdInput style="width: 400px;" placeholder="Código" name="codigo" required maxlength="100" ngModel #codigo="ngModel" [(ngModel)]="personSelected.codigo">
+                    <md-hint *ngIf="!codigo.valid && !codigo.pristine" class="warn-color">Campo obrigatório. máximo 100 caracteres.</md-hint>
+                </md-input-container>
+              </div>
+              <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
                 <md-input-container fxFlex [dividerColor]="!nome.valid && !nome.pristine ? 'warn' : 'primary'">
                     <input type="text" mdInput style="width: 400px;" placeholder="Nome" name="nome" required maxlength="100" ngModel #nome="ngModel" [(ngModel)]="personSelected.nome">
                     <md-hint *ngIf="!nome.valid && !nome.pristine" class="warn-color">Campo obrigatório. máximo 100 caracteres.</md-hint>
@@ -20,7 +26,7 @@
               </div>
               <div layout="row" style="margin-left: 10px; margin-top: 20px;">
                 <button md-raised-button color="primary" type="submit" name="btnOk" [disabled]="!pessoaForm.valid" (click)="gravar()" style="margin-right: 10px;">OK</button>
-                <button md-raised-button color="secundary" type="button" name="btnVoltar" (click)="voltar()">Voltar</button>
+                <button md-button color="warn" type="button" name="btnCancelar" (click)="voltar()">Cancelar</button>
               </div>
             </md-card-content>
         </md-card>

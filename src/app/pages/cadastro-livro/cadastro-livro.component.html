@@ -7,14 +7,14 @@
               <form #livroForm="ngForm">
               <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
                   <md-input-container fxFlex [dividerColor]="!titulo.valid && !titulo.pristine ? 'warn' : 'primary'">
-                      <input type="text" mdInput style="width: 400px;" placeholder="Título" name="titulo" required maxlength="100" ngModel #titulo="ngModel" [(ngModel)]="livroSelected.titulo">
+                      <input type="text" mdInput style="width: 500px;" placeholder="Título" name="titulo" required maxlength="100" ngModel #titulo="ngModel" [(ngModel)]="livroSelected.titulo">
                       <md-hint *ngIf="!titulo.valid && !titulo.pristine" class="warn-color">Campo obrigatório. máximo 100 caracteres.</md-hint>
                   </md-input-container>
                 </div>
                 <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
                   <md-input-container fxFlex [dividerColor]="!subtitulo.valid && !subtitulo.pristine ? 'warn' : 'primary'">
-                      <input type="text" mdInput style="width: 500px;" placeholder="Subtítulo" name="subtitulo" required maxlength="100" ngModel #subtitulo="ngModel" [(ngModel)]="livroSelected.subTitulo">
-                      <md-hint *ngIf="!subtitulo.valid && !subtitulo.pristine" class="warn-color">Campo obrigatório. máximo 100 caracteres.</md-hint>
+                      <input type="text" mdInput style="width: 500px;" placeholder="Subtítulo" name="subtitulo" maxlength="100" ngModel #subtitulo="ngModel" [(ngModel)]="livroSelected.subTitulo">
+                      <md-hint *ngIf="!subtitulo.valid && !subtitulo.pristine" class="warn-color">Permitido apenas 100 caracteres.</md-hint>
                   </md-input-container>
                 </div>
                 <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
@@ -75,5 +75,5 @@
     </md-card-content>
   </md-card>
 </section>
-{{diagnostic}}
+<!-- {{diagnostic}} -->
 

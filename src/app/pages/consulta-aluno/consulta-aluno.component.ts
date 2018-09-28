@@ -43,6 +43,7 @@ export class ConsultaAlunoComponent implements OnInit {
   }
 
   columns: ITdDataTableColumn[] = [
+    {name: 'codigo', label: 'Código', sortable: true},
     {name: 'nome', label: 'Nome', sortable: true},
     {name: 'tipo.descricao', label: 'Tipo', sortable: true},
     {name: 'userLastUpdate', label: 'Usuário'},

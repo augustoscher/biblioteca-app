@@ -25,7 +25,7 @@ export class AuthenticationService {
       usuario.login = username;
       usuario.senha = password;
 
-      return this.http.post('https://app-biblioteca-api.herokuapp.com/login', usuario, options)
+      return this.http.post(URL_AUTH, usuario, options)
         // .map(res => res.json())
         .map((res: any) => {
           if (res.access_token && res.tenant) {
