@@ -3,8 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LivroService } from '../../services/livro.service';
 import { MdSnackBar, MdDialog } from '@angular/material';
 import { Livro } from '../../model/livro';
-import { FormControl } from '@angular/forms';
-import { EditoraService } from '../../services/editora.service';
 import { DialogSearchAutorComponent } from '../../dialog-search-autor/dialog-search-autor.component';
 import { DialogSearchEditoraComponent } from '../../dialog-search-editora/dialog-search-editora.component';
 

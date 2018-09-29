@@ -37,5 +37,10 @@ export const environment = {
   urlGetLivros: apiBase + '/v1/livros',
   urlGetLivrosById: apiBase + '/v1/livros/',
   urlPostLivros: apiBase + '/v1/livros',
-  urlPutLivros: apiBase + '/v1/livros'
+  urlPutLivros: apiBase + '/v1/livros',
+
+  urlGetEmprestimos: apiBase + '/v1/emprestimos',
+  urlGetEmprestimosById: apiBase + '/v1/emprestimos/',
+  urlPostEmprestimos: apiBase + '/v1/emprestimos',
+  urlPutEmprestimos: apiBase + '/v1/emprestimos'
 };

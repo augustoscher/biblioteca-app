@@ -111,6 +111,9 @@ import { AutorService } from './services/autor.service';
 import { LivroService } from './services/livro.service';
 import { DialogSearchAutorComponent } from './dialog-search-autor/dialog-search-autor.component';
 import { DialogSearchEditoraComponent } from './dialog-search-editora/dialog-search-editora.component';
+import { DialogSearchPessoaComponent } from './dialog-search-pessoa/dialog-search-pessoa.component';
+import { DialogSearchTurmaComponent } from './dialog-search-turma/dialog-search-turma.component';
+import { EmprestimoService } from './services/emprestimo.service';
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {};
 
@@ -142,12 +145,16 @@ export function createTranslateLoader(http: HttpClient) {
     PortfolioPageComponent,
     MultiLanguagePageComponent,
     DialogSearchAutorComponent,
-    DialogSearchEditoraComponent
+    DialogSearchEditoraComponent,
+    DialogSearchPessoaComponent,
+    DialogSearchTurmaComponent
   ],
   entryComponents: [
     DialogExampleComponent,
     DialogSearchAutorComponent, 
     DialogSearchEditoraComponent,
+    DialogSearchPessoaComponent,
+    DialogSearchTurmaComponent,
     CartButtonComponent
   ],
   imports: [
@@ -219,6 +226,7 @@ export function createTranslateLoader(http: HttpClient) {
     EditoraService,
     AutorService,
     LivroService,
+    EmprestimoService,
     AuthGuard,
     { provide: LOCALE_ID, useValue: 'pt-PT' }
   ],

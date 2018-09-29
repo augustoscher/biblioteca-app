@@ -1,3 +1,93 @@
-<p>
-  emprestimo-livro works!
-</p>
+<section>
+  <form #emprestimoForm="ngForm">
+      <md-card>
+          <md-card-content fxLayout="column">
+              <md-tab-group #tabGroup dynamicHeight="true">
+                  <md-tab label="Passo 1">
+                      <h6>Empréstimo</h6>
+                      <form #emprestimoForm="ngForm">
+                        <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
+                          <md-input-container fxFlex [dividerColor]="!turma.valid && !turma.pristine ? 'warn' : 'primary'">
+                              <input type="text" mdInput style="width: 400px;" placeholder="Turma" name="turma" disabled  ngModel #turma="ngModel" [(ngModel)]="emprestimoSelected.turma.nome" >
+                          </md-input-container>
+                          <button md-button name="btnSearchTurma" (click)="searchTurma()">Selecionar</button>
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
+                          <md-input-container fxFlex [dividerColor]="!pessoa.valid && !pessoa.pristine ? 'warn' : 'primary'">
+                              <input type="text" mdInput style="width: 400px;" placeholder="Pessoa" name="pessoa" disabled  ngModel #pessoa="ngModel" [(ngModel)]="emprestimoSelected.pessoa.nome" >
+                          </md-input-container>
+                          <button md-button name="btnSearchPessoa" (click)="searchPessoa()">Selecionar</button>
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
+                          <md-input-container>
+                              <textarea mdInput style="min-width: 500px;" placeholder="Observação" name="observacao" maxlength="250" maxRows="3" ngModel #observacao="ngModel" [(ngModel)]="emprestimoSelected.observacao"></textarea>
+                              <md-hint *ngIf="!observacao.valid && !observacao.pristine" class="warn-color">Permitido apenas 250 caracteres.</md-hint>
+                          </md-input-container>
+                        </div>
+                        <div style="margin-top: 10px; margin-bottom: 10px;">
+                            <button md-raised-button color="primary" (click)="tabGroup.selectedIndex=1" [disabled]="!emprestimoForm.valid">Próximo</button>
+                        </div>
+                      </form>
+                  </md-tab>
+                  <md-tab label="Passo 2" [disabled]="!emprestimoForm.valid">
+                    <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
+                      <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
+                        <span class="md-title">Livros</span>
+                      </span>
+                        <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
+                      </span>
+                        <td-search-box #searchBox backIcon="arrow_back" class="push-right-sm" placeholder="Pesquisar..." (searchDebounce)="search($event)" flex>
+                        </td-search-box>
+                    </div>
+                    <md-divider></md-divider>
+                    <td-data-table #dataTable
+                        [data]="filteredData"
+                        [columns]="columns"
+                        [sortable]="true"
+                        [sortBy]="sortBy"
+                        [sortOrder]="sortOrder"
+                        (sortChange)="sort($event)"
+                        [selectable]="true"
+                        [multiple]="false"
+                        (rowSelect)="selectEvent($event)">
+                    </td-data-table>
+                    <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
+                        <h6>Nenhum registro encontado.</h6>
+                    </div>
+                    <td-paging-bar #pagingBar [pageSizes]="[20]" [total]="filteredTotal" (change)="page($event)" class="push-top">
+                        <span td-paging-bar-label hide-xs>Resultados por página:</span>
+                          {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+                    </td-paging-bar>
+                    <div>
+                      <button md-raised-button color="primary" (click)="selecionarLivro()" [disabled]="!livroSelected">Adicionar</button>
+                    </div>
+                    <div style="margin-top: 15px;">
+                      <h6 style="text-align:center">Livros Adicionados</h6>
+                    </div>
+                    <div>
+                        <md-nav-list>
+                            <md-list-item *ngFor="let livroEmprestado of livrosEmprestados">
+                              <a md-line >{{ livroEmprestado.titulo }} - {{ livroEmprestado.autor.nome}} - {{ livroEmprestado.isbn}}</a>
+                              <button md-icon-button>
+                                <md-icon class="icon-color">info</md-icon>
+                              </button>
+                            </md-list-item>
+                        </md-nav-list>
+                    </div>
+                    <div style="margin-top: 10px; margin-bottom: 10px;">
+                        <button md-raised-button color="primary" (click)="tabGroup.selectedIndex=2" [disabled]="!emprestimoForm.valid">Próximo</button>
+                    </div>
+                  </md-tab>
+                  <md-tab label="Passo 3" [disabled]="!emprestimoForm.valid">
+                      <h6>Confirmação</h6>
+                    <div layout="row" style="margin-left: 10px; margin-top: 20px;">
+                      <button md-raised-button color="primary" type="submit" name="btnOk" [disabled]="!emprestimoForm.valid" (click)="gravar()" style="margin-right: 10px;">OK</button>
+                      <button md-button color="warn" type="button" name="btnCancelar" (click)="voltar()">Cancelar</button>
+                    </div>
+                  </md-tab>
+              </md-tab-group>
+          </md-card-content>
+      </md-card>
+      {{diagnostic}}
+  </form>
+</section>

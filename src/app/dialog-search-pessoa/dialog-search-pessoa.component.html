@@ -1,9 +1,10 @@
-<div>
-    <section style="min-height: 400px; min-width: 600px;">
+<div style="min-height: 200px; max-height: 600px; min-width: 600px;">
+  <div>
+    <section>
         <article>
           <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
           <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
-            <span class="md-title">Selecione a Editora</span>
+            <span class="md-title">Selecione a Pessoa</span>
           </span>
             <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
           </span>
@@ -32,8 +33,9 @@
           </td-paging-bar>
         </article>
       </section>
-</div>
-<div md-dialog-actions class="dialog-example-buttons">
-  <button md-button (click)="selecionar()">Selecionar</button>
-  <button md-button color="warn" (click)="cancelar()">Cancelar</button>
+  </div>
+  <div md-dialog-actions class="dialog-example-buttons">
+    <button md-button (click)="selecionar()">Selecionar</button>
+    <button md-button color="warn" (click)="cancelar()">Cancelar</button>
+  </div>
 </div>

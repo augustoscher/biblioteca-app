@@ -15,8 +15,4 @@ export class Livro {
     userLastUpdate: string;
     createdAt: Date
     updatedAt: Date;
-
-    getNomeAutor() : string {
-        return this.autor.nome;
-    }
 }
