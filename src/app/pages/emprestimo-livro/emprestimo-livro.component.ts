@@ -111,9 +111,9 @@ export class EmprestimoLivroComponent implements OnInit {
     {name: 'titulo', label: 'Livro', sortable: true},
     {name: 'isbn', label: 'Isbn', sortable: true},
     {name: 'autor.nome', label: 'Autor'},
-    {name: 'codigoLivre', label: 'Código Livre', sortable: true}
+    {name: 'codigoLivre', label: 'Código Livre', sortable: true},
     // {name: 'userLastUpdate', label: 'Usuário'},
-    // {name: 'createdAt', label: 'Data Criação'}
+    {name: 'createdAt', label: 'Data Criação'}
   ];
 
   selectEvent(event: any) {
