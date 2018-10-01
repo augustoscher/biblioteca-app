@@ -64,6 +64,10 @@ export class EmprestimoLivroComponent implements OnInit {
   selecionarLivro() {
     this.livrosEmprestados.push(this.livroSelected);
   }
+  remover(livro: any){
+    let idx = this.livrosEmprestados.indexOf(livro, 0);
+    this.livrosEmprestados.splice(idx,1);
+  }
 
   gravar() {
     if (this.emprestimoSelected.uuid) {
@@ -107,9 +111,9 @@ export class EmprestimoLivroComponent implements OnInit {
     {name: 'titulo', label: 'Livro', sortable: true},
     {name: 'isbn', label: 'Isbn', sortable: true},
     {name: 'autor.nome', label: 'Autor'},
-    {name: 'codigoLivre', label: 'Código Livre', sortable: true},
-    {name: 'userLastUpdate', label: 'Usuário'},
-    {name: 'createdAt', label: 'Data Criação'}
+    {name: 'codigoLivre', label: 'Código Livre', sortable: true}
+    // {name: 'userLastUpdate', label: 'Usuário'},
+    // {name: 'createdAt', label: 'Data Criação'}
   ];
 
   selectEvent(event: any) {

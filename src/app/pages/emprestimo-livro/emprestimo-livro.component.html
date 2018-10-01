@@ -30,49 +30,68 @@
                       </form>
                   </md-tab>
                   <md-tab label="Passo 2" [disabled]="!emprestimoForm.valid">
-                    <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
-                      <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
-                        <span class="md-title">Livros</span>
-                      </span>
-                        <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
-                      </span>
-                        <td-search-box #searchBox backIcon="arrow_back" class="push-right-sm" placeholder="Pesquisar..." (searchDebounce)="search($event)" flex>
-                        </td-search-box>
-                    </div>
-                    <md-divider></md-divider>
-                    <td-data-table #dataTable
-                        [data]="filteredData"
-                        [columns]="columns"
-                        [sortable]="true"
-                        [sortBy]="sortBy"
-                        [sortOrder]="sortOrder"
-                        (sortChange)="sort($event)"
-                        [selectable]="true"
-                        [multiple]="false"
-                        (rowSelect)="selectEvent($event)">
-                    </td-data-table>
-                    <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
-                        <h6>Nenhum registro encontado.</h6>
-                    </div>
-                    <td-paging-bar #pagingBar [pageSizes]="[20]" [total]="filteredTotal" (change)="page($event)" class="push-top">
-                        <span td-paging-bar-label hide-xs>Resultados por página:</span>
-                          {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
-                    </td-paging-bar>
+                      <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
+                          <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
+                            <span class="md-title">Livros</span>
+                          </span>
+                            <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
+                          </span>
+                            <td-search-box #searchBox backIcon="arrow_back" class="push-right-sm" placeholder="Pesquisar..." (searchDebounce)="search($event)" flex>
+                            </td-search-box>
+                        </div>
+                        <md-divider></md-divider>
+                        <td-data-table #dataTable
+                          [data]="filteredData"
+                          [columns]="columns"
+                          [sortable]="true"
+                          [sortBy]="sortBy"
+                          [sortOrder]="sortOrder"
+                          (sortChange)="sort($event)"
+                          [selectable]="true"
+                          [multiple]="false"
+                          (rowSelect)="selectEvent($event)">
+                        </td-data-table>
+                        <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
+                            <h6>Nenhum registro encontado.</h6>
+                        </div>
+                        <td-paging-bar #pagingBar [pageSizes]="[20]" [total]="filteredTotal" (change)="page($event)" class="push-top">
+                            <span td-paging-bar-label hide-xs>Resultados por página:</span>
+                            {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+                        </td-paging-bar>
                     <div>
                       <button md-raised-button color="primary" (click)="selecionarLivro()" [disabled]="!livroSelected">Adicionar</button>
                     </div>
-                    <div style="margin-top: 15px;">
+                    <div style="margin-top: 25px;">
                       <h6 style="text-align:center">Livros Adicionados</h6>
                     </div>
                     <div>
-                        <md-nav-list>
-                            <md-list-item *ngFor="let livroEmprestado of livrosEmprestados">
-                              <a md-line >{{ livroEmprestado.titulo }} - {{ livroEmprestado.autor.nome}} - {{ livroEmprestado.isbn}}</a>
-                              <button md-icon-button>
-                                <md-icon class="icon-color">info</md-icon>
-                              </button>
-                            </md-list-item>
-                        </md-nav-list>
+                      <!-- <md-nav-list>
+                          <md-list-item *ngFor="let livroEmprestado of livrosEmprestados">
+                            <a md-line >{{ livroEmprestado.titulo }} - {{ livroEmprestado.autor.nome}} - {{ livroEmprestado.isbn}}</a>
+                            <span></span>
+                            <button md-button color="warn" (click)="remover(livro)">Remover</button>
+                            <br>
+                          </md-list-item>
+                      </md-nav-list> -->
+
+                      <md-list>
+                          <md-list-item *ngFor="let livroEmprestado of livrosEmprestados">
+                            <!-- <md-icon class="icon-color" md-list-icon>account_circle</md-icon> -->
+                            <h6 md-line>{{livroEmprestado.titulo}}</h6>
+                            <p md-line>
+                              <span>{{livroEmprestado.autor.nome}} -- </span>
+                              <span>{{livroEmprestado.isbn}}</span>
+                            </p>
+                            <!-- <md-divider></md-divider> -->
+                          </md-list-item>
+                          <!-- <md-list-item *ngFor="let message of messages">
+                            <h4 md-line>{{message.from}}</h4>
+                            <p md-line> {{message.subject}} </p>
+                            <p md-line>{{message.message}} </p>
+                          </md-list-item> -->
+                      </md-list>
+
+
                     </div>
                     <div style="margin-top: 10px; margin-bottom: 10px;">
                         <button md-raised-button color="primary" (click)="tabGroup.selectedIndex=2" [disabled]="!emprestimoForm.valid">Próximo</button>
