@@ -16,9 +16,9 @@ export class ConsultaLivroComponent implements OnInit {
 
   filteredTotal: number;
   searchTerm = '';
-  fromRow = 1;
-  currentPage = 1;
-  pageSize = 20;
+  fromRow = 0;
+  currentPage = 0;
+  pageSize = 10;
   sortBy = 'titulo';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Ascending;
 
@@ -27,12 +27,25 @@ export class ConsultaLivroComponent implements OnInit {
     private _router: Router) { }
 
   ngOnInit() {
-    this._livroService.carregarLivros()
+    this.carregarLivros();
+  }
+
+  carregarLivros() {
+    this._livroService.carregarLivros(this.currentPage, this.pageSize)
       .subscribe(data => {
         this.filteredData = data['content'];
         this.data = data['content'];
         this.filteredTotal = data['totalElements'];
-        this.pageSize = data['size']
+      });
+  }
+
+  carregarLivrosPorTitulo() {
+    this._livroService.carregarLivrosPor(this.searchTerm)
+      .subscribe(data => {
+        this.filteredData = data;
+        this.data = data;
+        this.filteredTotal = data.length;
+        this.filter();
       });
   }
 
@@ -67,17 +80,20 @@ export class ConsultaLivroComponent implements OnInit {
 
   search(searchTerm: string): void {
     this.searchTerm = searchTerm;
-    this.fromRow = 1;
-    this.currentPage = 1;
-    this.filter();
+    this.fromRow = 0;
+    this.currentPage = 0;
+    if (!searchTerm) {
+      this.carregarLivros();
+    } else {
+      this.carregarLivrosPorTitulo();
+    }
   }
 
   page(pagingEvent: IPageChangeEvent): void {
     this.fromRow = pagingEvent.fromRow;
-    this.currentPage = pagingEvent.page;
+    this.currentPage = pagingEvent.page -1;
     this.pageSize = pagingEvent.pageSize;
-    //fazer a chamada paginada ao backend.
-    //no subscribe atualizar a variavel this.data e chamar this.filter()
+    this.carregarLivros();
     this.filter();
   }
 

@@ -21,6 +21,7 @@ export const environment = {
 
   urlGetEditoras: apiBase + '/v1/editoras',
   urlGetEditorasById: apiBase + '/v1/editoras/',
+  urlGetEditorasByNome: apiBase + '/v1/editoras/porNome/',
   urlPostEditoras: apiBase + '/v1/editoras',
   urlPutEditoras: apiBase + '/v1/editoras',
 
@@ -32,6 +33,7 @@ export const environment = {
 
   urlGetLivros: apiBase + '/v1/livros',
   urlGetLivrosById: apiBase + '/v1/livros/',
+  urlGetLivrosByTitulo: apiBase + '/v1/livros/porTitulo/',
   urlPostLivros: apiBase + '/v1/livros',
   urlPutLivros: apiBase + '/v1/livros',
 

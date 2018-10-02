@@ -41,12 +41,12 @@ export class ConsultaAlunoComponent implements OnInit {
 
   carregarPessoasPorNome() {
     this._pessoaService.carregarPessoasPor(this.searchTerm)
-    .subscribe(data => {
-      this.filteredData = data;
-      this.data = data;
-      this.filteredTotal = data.length;
-      this.filter();
-    });
+      .subscribe(data => {
+        this.filteredData = data;
+        this.data = data;
+        this.filteredTotal = data.length;
+        this.filter();
+      });
   }
 
   edit() {

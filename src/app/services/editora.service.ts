@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from "../../environments/environment";
 import { Observable } from "rxjs/Observable";
 import { Editora } from "../model/editora";
@@ -7,6 +7,7 @@ import { Editora } from "../model/editora";
 
 const URL_GET_EDITORAS = environment.urlGetEditoras;
 const URL_GET_EDITORAS_ID = environment.urlGetEditorasById;
+const URL_GET_EDITORAS_NOME = environment.urlGetEditorasByNome;
 const URL_POST_EDITORAS = environment.urlPostEditoras;
 const URL_PUT_EDITORAS = environment.urlPutEditoras;
 
@@ -15,9 +16,37 @@ export class EditoraService {
 
     constructor(private _http: HttpClient) {}
 
-    carregarEditoras() {
+    carregarEditoras(currentPage: any, pageSize: any) {
+        let httpHeaders = new HttpHeaders()
+        .set('Accept', 'application/json')
+        .set('Content-Type', 'application/json');
+
+        let httpParams = new HttpParams()
+        .set('page', currentPage)
+        .set('size', pageSize);
+        // .set('sort', sortBy);
+
+        let options = {
+            headers: httpHeaders,
+            params: httpParams
+        };   
+        
         return this._http
-            .get<Editora[]>(URL_GET_EDITORAS)
+            .get<Editora[]>(URL_GET_EDITORAS, options)
+            .catch(this.handleError);
+    }
+
+    carregarEditorasPor(searchTerm: string) {
+        let httpHeaders = new HttpHeaders()
+        .set('Accept', 'application/json')
+        .set('Content-Type', 'application/json');
+
+        let options = {
+            headers: httpHeaders,
+        };   
+
+        return this._http
+            .get<Editora[]>(URL_GET_EDITORAS_NOME + searchTerm, options)
             .catch(this.handleError);
     }
 

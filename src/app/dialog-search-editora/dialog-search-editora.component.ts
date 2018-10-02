@@ -18,9 +18,9 @@ export class DialogSearchEditoraComponent implements OnInit {
 
   filteredTotal: number;
   searchTerm = '';
-  fromRow = 1;
-  currentPage = 1;
-  pageSize = 20;
+  fromRow = 0;
+  currentPage = 0;
+  pageSize = 10;
   sortBy = 'nome';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Ascending;
 
@@ -29,13 +29,27 @@ export class DialogSearchEditoraComponent implements OnInit {
      private _dataTableService: TdDataTableService) {}
 
   ngOnInit() {
-  this._editoraService.carregarEditoras()
-    .subscribe(data => {
-      this.filteredData = data['content'];
-      this.data = data['content'];
-      this.filteredTotal = data['totalElements'];
-      this.pageSize = data['size']
-    });
+    this.carregarEditoras();
+  }
+
+  carregarEditoras() {
+    this._editoraService.carregarEditoras(this.currentPage, this.pageSize)
+      .subscribe(data => {
+        this.filteredData = data['content'];
+        this.data = data['content'];
+        this.filteredTotal = data['totalElements'];
+        this.pageSize = data['size']
+      });
+  }
+
+  carregarEditorasPorNome(){
+    this._editoraService.carregarEditorasPor(this.searchTerm)
+      .subscribe(data => {
+        this.filteredData = data;
+        this.data = data;
+        this.filteredTotal = data.length;
+        this.filter();
+      });
   }
 
   cancelar(){
@@ -71,15 +85,20 @@ export class DialogSearchEditoraComponent implements OnInit {
 
   search(searchTerm: string): void {
     this.searchTerm = searchTerm;
-    this.fromRow = 1;
-    this.currentPage = 1;
-    this.filter();
+    this.fromRow = 0;
+    this.currentPage = 0;
+    if (!searchTerm) {
+      this.carregarEditoras();
+    } else {
+      this.carregarEditorasPorNome();
+    }
   }
 
   page(pagingEvent: IPageChangeEvent): void {
     this.fromRow = pagingEvent.fromRow;
-    this.currentPage = pagingEvent.page;
+    this.currentPage = pagingEvent.page -1;
     this.pageSize = pagingEvent.pageSize;
+    this.carregarEditoras();
     this.filter();
   }
 

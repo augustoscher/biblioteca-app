@@ -95,7 +95,7 @@ export class DialogSearchAutorComponent implements OnInit {
 
   page(pagingEvent: IPageChangeEvent): void {
     this.fromRow = pagingEvent.fromRow;
-    this.currentPage = pagingEvent.page;
+    this.currentPage = pagingEvent.page -1;
     this.pageSize = pagingEvent.pageSize;
     this.carregarAutor();
     this.filter();

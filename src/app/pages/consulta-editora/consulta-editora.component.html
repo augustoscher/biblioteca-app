@@ -26,15 +26,15 @@
           (rowSelect)="selectEvent($event)">
             <ng-template tdDataTableTemplate="createdAt" let-value="value">
               <div layout="row">
-                  <span flex>{{value | date: 'dd-MM-yyyy'}}</span>
+                  <span flex>{{value | date: 'dd/MM/yyyy'}}</span>
               </div>
             </ng-template>
         </td-data-table>
-        <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
+        <!-- <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
             <h6>Nenhum registro encontado.</h6>
-        </div>
-        <td-paging-bar #pagingBar [pageSizes]="[20]" [total]="filteredTotal" (change)="page($event)" class="push-top">
-            <span td-paging-bar-label hide-xs>Row per page:</span>
+        </div> -->
+        <td-paging-bar #pagingBar [pageSizes]="[10, 15]" [total]="filteredTotal" (change)="page($event)" class="push-top">
+            <span td-paging-bar-label hide-xs>Resultados por página:</span>
             {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
         </td-paging-bar>
         <div layout="row" style="margin-left: 10px;">

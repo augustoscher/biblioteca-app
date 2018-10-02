@@ -32,21 +32,21 @@ export class DialogSearchPessoaComponent implements OnInit {
 
   carregarPessoas(){
     this._pessoaService.carregarPessoas(this.currentPage, this.pageSize)
-    .subscribe(data => {
-      this.filteredData = data['content'];
-      this.data = data['content'];
-      this.filteredTotal = data['totalElements'];
-    });
+      .subscribe(data => {
+        this.filteredData = data['content'];
+        this.data = data['content'];
+        this.filteredTotal = data['totalElements'];
+      });
   }
 
   carregarPessoasPorNome() {
     this._pessoaService.carregarPessoasPor(this.searchTerm)
-    .subscribe(data => {
-      this.filteredData = data;
-      this.data = data;
-      this.filteredTotal = data.length;
-      this.filter();
-    });
+      .subscribe(data => {
+        this.filteredData = data;
+        this.data = data;
+        this.filteredTotal = data.length;
+        this.filter();
+      });
   }
 
   cancelar(){
@@ -94,7 +94,7 @@ export class DialogSearchPessoaComponent implements OnInit {
 
   page(pagingEvent: IPageChangeEvent): void {
     this.fromRow = pagingEvent.fromRow;
-    this.currentPage = pagingEvent.page;
+    this.currentPage = pagingEvent.page-1;
     this.pageSize = pagingEvent.pageSize;
     this.carregarPessoas();
     this.filter();

@@ -22,6 +22,16 @@
             [sortOrder]="sortOrder"
             (sortChange)="sort($event)"
             (rowSelect)="selectEvent($event)">
+            <ng-template tdDataTableTemplate="createdAt" let-value="value">
+              <div layout="row">
+                  <span flex>{{value | date: 'dd/MM/yyyy'}}</span>
+              </div>
+            </ng-template>
+            <ng-template tdDataTableTemplate="updatedAt" let-value="value">
+              <div layout="row">
+                  <span flex>{{value | date: 'dd/MM/yyyy'}}</span>
+              </div>
+            </ng-template>
           </td-data-table>
           <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
               <h6>Nenhum registro encontado.</h6>

@@ -1,11 +1,12 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from "../../environments/environment";
 import { Observable } from "rxjs/Observable";
 import { Livro } from "../model/livro";
 
 const URL_GET_LIVROS = environment.urlGetLivros;
 const URL_GET_LIVROS_ID = environment.urlGetLivrosById;
+const URL_GET_LIVROS_TITULO = environment.urlGetLivrosByTitulo;
 const URL_POST_LIVROS = environment.urlPostLivros;
 const URL_PUT_LIVROS = environment.urlPutLivros;
 
@@ -14,9 +15,37 @@ export class LivroService {
 
     constructor(private _http: HttpClient) {}
 
-    carregarLivros() {
+    carregarLivros(currentPage: any, pageSize: any) {
+        let httpHeaders = new HttpHeaders()
+        .set('Accept', 'application/json')
+        .set('Content-Type', 'application/json');
+
+        let httpParams = new HttpParams()
+        .set('page', currentPage)
+        .set('size', pageSize);
+        // .set('sort', sortBy);
+
+        let options = {
+            headers: httpHeaders,
+            params: httpParams
+        };   
+        
         return this._http
-            .get<Livro[]>(URL_GET_LIVROS)
+            .get<Livro[]>(URL_GET_LIVROS, options)
+            .catch(this.handleError);
+    }
+
+    carregarLivrosPor(searchTerm: string){
+        let httpHeaders = new HttpHeaders()
+        .set('Accept', 'application/json')
+        .set('Content-Type', 'application/json');
+
+        let options = {
+            headers: httpHeaders,
+        };   
+
+        return this._http
+            .get<Livro[]>(URL_GET_LIVROS_TITULO + searchTerm, options)
             .catch(this.handleError);
     }
 
