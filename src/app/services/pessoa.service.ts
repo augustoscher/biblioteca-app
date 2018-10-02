@@ -1,11 +1,12 @@
 import { environment } from './../../environments/environment';
 import { Injectable } from "@angular/core";
 import { Observable } from 'rxjs/Observable';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Pessoa } from "../model/pessoa";
 
 const URL_GET_PESSOAS = environment.urlGetPessoas;
 const URL_GET_PESSOAS_ID = environment.urlGetPessoasById;
+const URL_GET_PESSOAS_NOME = environment.urlGetPessoasByNome;
 const URL_POST_PESSOAS = environment.urlPostPessoas;
 const URL_PUT_PESSOAS = environment.urlPutPessoas;
 
@@ -14,9 +15,37 @@ export class PessoaService {
 
     constructor(private _http: HttpClient) {}
 
-    carregarPessoas() {
+    carregarPessoas(currentPage: any, pageSize: any) {
+        let httpHeaders = new HttpHeaders()
+        .set('Accept', 'application/json')
+        .set('Content-Type', 'application/json');
+
+        let httpParams = new HttpParams()
+        .set('page', currentPage)
+        .set('size', pageSize);
+        // .set('sort', sortBy);
+
+        let options = {
+            headers: httpHeaders,
+            params: httpParams
+        };   
+
         return this._http
-            .get<Pessoa[]>(URL_GET_PESSOAS)
+            .get<Pessoa[]>(URL_GET_PESSOAS, options)
+            .catch(this.handleError);
+    }
+
+    carregarPessoasPor(searchTerm: string) {
+        let httpHeaders = new HttpHeaders()
+        .set('Accept', 'application/json')
+        .set('Content-Type', 'application/json');
+
+        let options = {
+            headers: httpHeaders,
+        };   
+
+        return this._http
+            .get<Pessoa[]>(URL_GET_PESSOAS_NOME + searchTerm, options)
             .catch(this.handleError);
     }
 

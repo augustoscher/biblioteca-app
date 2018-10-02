@@ -18,9 +18,9 @@ export class DialogSearchAutorComponent implements OnInit {
 
   filteredTotal: number;
   searchTerm = '';
-  fromRow = 1;
-  currentPage = 1;
-  pageSize = 20;
+  fromRow = 0;
+  currentPage = 0;
+  pageSize = 10;
   sortBy = 'nome';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Ascending;
 
@@ -29,12 +29,25 @@ export class DialogSearchAutorComponent implements OnInit {
      private _dataTableService: TdDataTableService) {}
 
   ngOnInit() {
-  this._autorService.carregarAutores()
+    this.carregarAutor();
+  }
+
+  carregarAutor() {
+    this._autorService.carregarAutores(this.currentPage, this.pageSize)
+      .subscribe(data => {
+        this.filteredData = data['content'];
+        this.data = data['content'];
+        this.filteredTotal = data['totalElements'];
+      });
+  }
+
+  carregarAutorPorNome() {
+    this._autorService.carregarAutorPor(this.searchTerm)
     .subscribe(data => {
-      this.filteredData = data['content'];
-      this.data = data['content'];
-      this.filteredTotal = data['totalElements'];
-      this.pageSize = data['size']
+      this.filteredData = data;
+      this.data = data;
+      this.filteredTotal = data.length;
+      this.filter();
     });
   }
 
@@ -49,7 +62,7 @@ export class DialogSearchAutorComponent implements OnInit {
   }
 
   columns: ITdDataTableColumn[] = [
-    {name: 'nome', label: 'Autor', sortable: true},
+    {name: 'nome', label: 'Autor'},
     {name: 'userLastUpdate', label: 'Usuário'},
     {name: 'createdAt', label: 'Data Criação' },
     {name: 'updatedAt', label: 'Data Atualização' }
@@ -71,15 +84,20 @@ export class DialogSearchAutorComponent implements OnInit {
 
   search(searchTerm: string): void {
     this.searchTerm = searchTerm;
-    this.fromRow = 1;
-    this.currentPage = 1;
-    this.filter();
+    this.fromRow = 0;
+    this.currentPage = 0;
+    if (!searchTerm) {
+      this.carregarAutor();
+    } else {
+      this.carregarAutorPorNome();
+    }
   }
 
   page(pagingEvent: IPageChangeEvent): void {
     this.fromRow = pagingEvent.fromRow;
     this.currentPage = pagingEvent.page;
     this.pageSize = pagingEvent.pageSize;
+    this.carregarAutor();
     this.filter();
   }
 

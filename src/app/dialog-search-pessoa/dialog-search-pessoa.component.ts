@@ -16,9 +16,9 @@ export class DialogSearchPessoaComponent implements OnInit {
 
   filteredTotal: number;
   searchTerm = '';
-  fromRow = 1;
-  currentPage = 1;
-  pageSize = 20;
+  fromRow = 0;
+  currentPage = 0;
+  pageSize = 10;
   sortBy = 'nome';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Ascending;
 
@@ -27,12 +27,25 @@ export class DialogSearchPessoaComponent implements OnInit {
      private _dataTableService: TdDataTableService) {}
 
   ngOnInit() {
-  this._pessoaService.carregarPessoas()
+    this.carregarPessoas();
+  }
+
+  carregarPessoas(){
+    this._pessoaService.carregarPessoas(this.currentPage, this.pageSize)
     .subscribe(data => {
       this.filteredData = data['content'];
       this.data = data['content'];
       this.filteredTotal = data['totalElements'];
-      this.pageSize = data['size']
+    });
+  }
+
+  carregarPessoasPorNome() {
+    this._pessoaService.carregarPessoasPor(this.searchTerm)
+    .subscribe(data => {
+      this.filteredData = data;
+      this.data = data;
+      this.filteredTotal = data.length;
+      this.filter();
     });
   }
 
@@ -70,15 +83,20 @@ export class DialogSearchPessoaComponent implements OnInit {
 
   search(searchTerm: string): void {
     this.searchTerm = searchTerm;
-    this.fromRow = 1;
-    this.currentPage = 1;
-    this.filter();
+    this.fromRow = 0;
+    this.currentPage = 0;
+    if (!searchTerm) {
+      this.carregarPessoas();
+    } else {
+      this.carregarPessoasPorNome();
+    }
   }
 
   page(pagingEvent: IPageChangeEvent): void {
     this.fromRow = pagingEvent.fromRow;
     this.currentPage = pagingEvent.page;
     this.pageSize = pagingEvent.pageSize;
+    this.carregarPessoas();
     this.filter();
   }
 

@@ -10,6 +10,7 @@ export const environment = {
 
   urlGetPessoas: apiBase + '/v1/pessoas',
   urlGetPessoasById: apiBase + '/v1/pessoas/',
+  urlGetPessoasByNome: apiBase + '/v1/pessoas/porNome/',
   urlPostPessoas: apiBase + '/v1/pessoas',
   urlPutPessoas: apiBase + '/v1/pessoas',
 
@@ -25,6 +26,7 @@ export const environment = {
 
   urlGetAutores: apiBase + '/v1/autores',
   urlGetAutoresById: apiBase + '/v1/autores/',
+  urlGetAutoresByNome: apiBase + '/v1/autores/porNome/',
   urlPostAutores: apiBase + '/v1/autores',
   urlPutAutores: apiBase + '/v1/autores',
 

@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Usuario } from "../model/usuario";
 import { LoginResult } from "../model/loginResult";
 import { environment } from "../../environments/environment";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 
 const URL_AUTH = environment.urlAuth;
 
@@ -16,7 +16,6 @@ export class AuthenticationService {
             .set('Accept', 'application/json')
             .set('Content-Type', 'application/json');
             // .set('Cache-Control', 'no-cache'); 
-
       let options = {
           headers: httpHeaders
       };       
