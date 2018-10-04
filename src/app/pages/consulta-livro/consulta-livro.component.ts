@@ -56,11 +56,11 @@ export class ConsultaLivroComponent implements OnInit {
   }
 
   columns: ITdDataTableColumn[] = [
-    {name: 'titulo', label: 'Livro', sortable: true},
-    {name: 'isbn', label: 'Isbn', sortable: true},
+    {name: 'titulo', label: 'Livro'},
+    {name: 'isbn', label: 'Isbn'},
     {name: 'autor.nome', label: 'Autor'},
-    {name: 'codigoLivre', label: 'Código Livre', sortable: true},
-    {name: 'userLastUpdate', label: 'Usuário'},
+    {name: 'codigoLivre', label: 'Código Livre'},
+    {name: 'qtdExemplares', label: 'Exemplares'},
     {name: 'createdAt', label: 'Data Criação'}
   ];
 

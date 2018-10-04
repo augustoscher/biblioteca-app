@@ -12,6 +12,7 @@ export class Livro {
     descricao: string;
     codigoBarras: string;
     codigoLivre: string;
+    qtdExemplares: number;
     userLastUpdate: string;
     createdAt: Date
     updatedAt: Date;

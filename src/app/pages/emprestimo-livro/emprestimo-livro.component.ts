@@ -7,6 +7,10 @@ import { EmprestimoService } from '../../services/emprestimo.service';
 import { DialogSearchPessoaComponent } from '../../dialog-search-pessoa/dialog-search-pessoa.component';
 import { DialogSearchTurmaComponent } from '../../dialog-search-turma/dialog-search-turma.component';
 import { TdDataTableSortingOrder, IPageChangeEvent, ITdDataTableSortChangeEvent, TdDataTableService, ITdDataTableColumn } from '@covalent/core';
+import { EmprestimoLivro } from '../../model/emprestimoLivro';
+import { Autor } from '../../model/autor';
+
+const DECIMAL_FORMAT: (v: any) => any = (v: Autor) => v.nome;
 
 @Component({
   selector: 'emprestimo-livro',
@@ -24,9 +28,9 @@ export class EmprestimoLivroComponent implements OnInit {
 
   filteredTotal: number;
   searchTerm = '';
-  fromRow = 1;
-  currentPage = 1;
-  pageSize = 20;
+  fromRow = 0;
+  currentPage = 0;
+  pageSize = 10;
   sortBy = 'titulo';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Ascending;
 
@@ -41,15 +45,8 @@ export class EmprestimoLivroComponent implements OnInit {
 
   ngOnInit() {
     this.emprestimoSelected = new Emprestimo();
+    this.carregarLivros();
     
-    this._livroService.carregarLivros()
-      .subscribe(data => {
-        this.filteredData = data['content'];
-        this.data = data['content'];
-        this.filteredTotal = data['totalElements'];
-        this.pageSize = data['size']
-      });
-
     // this.sub = this._route.params
     //   .subscribe(params => {
     //     this.uuid = params['uuid']; 
@@ -61,6 +58,26 @@ export class EmprestimoLivroComponent implements OnInit {
     //     }
     //   });
   }
+
+  carregarLivros() {
+    this._livroService.carregarLivros(this.currentPage, this.pageSize)
+      .subscribe(data => {
+        this.filteredData = data['content'];
+        this.data = data['content'];
+        this.filteredTotal = data['totalElements'];
+      });
+  }
+
+  carregarLivrosPorTitulo() {
+    this._livroService.carregarLivrosPor(this.searchTerm)
+      .subscribe(data => {
+        this.filteredData = data;
+        this.data = data;
+        this.filteredTotal = data.length;
+        this.filter();
+      });
+  }
+
   selecionarLivro() {
     this.livrosEmprestados.push(this.livroSelected);
   }
@@ -70,6 +87,13 @@ export class EmprestimoLivroComponent implements OnInit {
   }
 
   gravar() {
+    if (this.livrosEmprestados && this.livrosEmprestados.length > 0) {
+      this.livrosEmprestados.forEach(item => {
+        let emprestimoLivro = new EmprestimoLivro();
+        emprestimoLivro.livro.uuid = item.uuid;
+        this.emprestimoSelected.livros.push(emprestimoLivro);
+      });
+    }
     if (this.emprestimoSelected.uuid) {
       this._emprestimoService.alterar(this.emprestimoSelected).subscribe(ob => {
           this._snackBar.open('Empréstimo alterado com sucesso', 'OK', { duration: 3000 });
@@ -108,12 +132,19 @@ export class EmprestimoLivroComponent implements OnInit {
   }
 
   columns: ITdDataTableColumn[] = [
-    {name: 'titulo', label: 'Livro', sortable: true},
-    {name: 'isbn', label: 'Isbn', sortable: true},
+    {name: 'titulo', label: 'Livro'},
+    {name: 'isbn', label: 'Isbn'},
     {name: 'autor.nome', label: 'Autor'},
-    {name: 'codigoLivre', label: 'Código Livre', sortable: true},
-    // {name: 'userLastUpdate', label: 'Usuário'},
+    {name: 'codigoLivre', label: 'Código Livre'},
+    {name: 'qtdExemplares', label: 'Exemplares'},
     {name: 'createdAt', label: 'Data Criação'}
+  ];
+
+  emprestimoLivroColumns: ITdDataTableColumn[] = [
+    {name: 'titulo', label: 'Livro'},
+    {name: 'isbn', label: 'Isbn'},
+    {name: 'autor', label: 'Autor',  format: DECIMAL_FORMAT},
+    {name: 'codigoLivre', label: 'Código Livre'},
   ];
 
   selectEvent(event: any) {
@@ -132,17 +163,20 @@ export class EmprestimoLivroComponent implements OnInit {
 
   search(searchTerm: string): void {
     this.searchTerm = searchTerm;
-    this.fromRow = 1;
-    this.currentPage = 1;
-    this.filter();
+    this.fromRow = 0;
+    this.currentPage = 0;
+    if (!searchTerm) {
+      this.carregarLivros();
+    } else {
+      this.carregarLivrosPorTitulo();
+    }
   }
 
   page(pagingEvent: IPageChangeEvent): void {
     this.fromRow = pagingEvent.fromRow;
     this.currentPage = pagingEvent.page;
     this.pageSize = pagingEvent.pageSize;
-    //fazer a chamada paginada ao backend.
-    //no subscribe atualizar a variavel this.data e chamar this.filter()
+    this.carregarLivros();
     this.filter();
   }
 

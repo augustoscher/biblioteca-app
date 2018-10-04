@@ -32,7 +32,6 @@ export class ConsultaTurmaComponent implements OnInit {
         this.filteredData = data;
         this.data = data;
         this.filteredTotal = data.length;
-        // this.pageSize = data['size']
       });
   }
 
