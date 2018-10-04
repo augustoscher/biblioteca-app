@@ -10,7 +10,7 @@ import { TdDataTableSortingOrder, IPageChangeEvent, ITdDataTableSortChangeEvent,
 import { EmprestimoLivro } from '../../model/emprestimoLivro';
 import { Autor } from '../../model/autor';
 
-const DECIMAL_FORMAT: (v: any) => any = (v: Autor) => v.nome;
+const NOME_FMT: (v: any) => any = (v: Autor) => v ? v.nome : "";
 
 @Component({
   selector: 'emprestimo-livro',
@@ -71,9 +71,9 @@ export class EmprestimoLivroComponent implements OnInit {
   carregarLivrosPorTitulo() {
     this._livroService.carregarLivrosPor(this.searchTerm)
       .subscribe(data => {
-        this.filteredData = data;
-        this.data = data;
-        this.filteredTotal = data.length;
+        this.filteredData = data['content'];
+        this.data = data['content'];
+        this.filteredTotal = data['totalElements'];
         this.filter();
       });
   }
@@ -143,7 +143,7 @@ export class EmprestimoLivroComponent implements OnInit {
   emprestimoLivroColumns: ITdDataTableColumn[] = [
     {name: 'titulo', label: 'Livro'},
     {name: 'isbn', label: 'Isbn'},
-    {name: 'autor', label: 'Autor',  format: DECIMAL_FORMAT},
+    {name: 'autor', label: 'Autor',  format: NOME_FMT},
     {name: 'codigoLivre', label: 'Código Livre'},
   ];
 
@@ -188,7 +188,6 @@ export class EmprestimoLivroComponent implements OnInit {
     newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
     this.filteredData = newData;
   }
-
 
   voltar() {
     this._router.navigate(['/main/dashboard']);

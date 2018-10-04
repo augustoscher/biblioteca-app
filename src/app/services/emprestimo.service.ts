@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Emprestimo } from "../model/emprestimo";
 import { Observable } from "rxjs/Observable";
 import { environment } from "../../environments/environment";
@@ -14,9 +14,37 @@ export class EmprestimoService {
 
     constructor(private _http: HttpClient) {}
 
-    carregarEmprestimos() {
+    carregarEmprestimos(currentPage: any, pageSize: any) {
+        let httpHeaders = new HttpHeaders()
+        .set('Accept', 'application/json')
+        .set('Content-Type', 'application/json');
+
+        let httpParams = new HttpParams()
+        .set('page', currentPage)
+        .set('size', pageSize);
+        // .set('sort', sortBy);
+
+        let options = {
+            headers: httpHeaders,
+            params: httpParams
+        };   
+
         return this._http
-            .get<Emprestimo[]>(URL_GET_EMPRESTIMOS)
+            .get<Emprestimo[]>(URL_GET_EMPRESTIMOS, options)
+            .catch(this.handleError);
+    }
+
+    carregarEmprestimosPor(searchTerm: string) {
+        let httpHeaders = new HttpHeaders()
+        .set('Accept', 'application/json')
+        .set('Content-Type', 'application/json');
+
+        let options = {
+            headers: httpHeaders,
+        };   
+
+        return this._http
+            .get<Emprestimo[]>(URL_GET_EMPRESTIMOS, options)
             .catch(this.handleError);
     }
 

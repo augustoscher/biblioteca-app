@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TdDataTableService, TdDataTableSortingOrder, ITdDataTableColumn, ITdDataTableSortChangeEvent, IPageChangeEvent } from '@covalent/core';
 import { LivroService } from '../../services/livro.service';
+import { Autor } from '../../model/autor';
 
 @Component({
   selector: 'consulta-livro',
@@ -42,9 +43,9 @@ export class ConsultaLivroComponent implements OnInit {
   carregarLivrosPorTitulo() {
     this._livroService.carregarLivrosPor(this.searchTerm)
       .subscribe(data => {
-        this.filteredData = data;
-        this.data = data;
-        this.filteredTotal = data.length;
+        this.filteredData = data['content'];
+        this.data = data['content'];
+        this.filteredTotal = data['totalElements'];
         this.filter();
       });
   }
