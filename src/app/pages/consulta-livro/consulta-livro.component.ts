@@ -40,13 +40,13 @@ export class ConsultaLivroComponent implements OnInit {
       });
   }
 
-  carregarLivrosPorTitulo() {
+  carregarLivrosPor() {
     this._livroService.carregarLivrosPor(this.searchTerm)
       .subscribe(data => {
         this.filteredData = data['content'];
         this.data = data['content'];
         this.filteredTotal = data['totalElements'];
-        this.filter();
+        // this.filter();
       });
   }
 
@@ -86,7 +86,7 @@ export class ConsultaLivroComponent implements OnInit {
     if (!searchTerm) {
       this.carregarLivros();
     } else {
-      this.carregarLivrosPorTitulo();
+      this.carregarLivrosPor();
     }
   }
 

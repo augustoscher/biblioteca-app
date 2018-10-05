@@ -32,10 +32,10 @@ export class ConsultaEmprestimoLivroComponent implements OnInit {
     private _router: Router) { }
 
     ngOnInit() {
-      this.carregarLivros();
+      this.carregarEmprestimos();
     }
   
-    carregarLivros() {
+    carregarEmprestimos() {
       this._emprestimoService.carregarEmprestimos(this.currentPage, this.pageSize)
         .subscribe(data => {
           this.filteredData = data['content'];
@@ -44,27 +44,29 @@ export class ConsultaEmprestimoLivroComponent implements OnInit {
         });
     }
   
-    carregarLivrosPorTitulo() {
+    carregarEmprestimosPor() {
       this._emprestimoService.carregarEmprestimosPor(this.searchTerm)
         .subscribe(data => {
-          this.filteredData = data;
-          this.data = data;
-          this.filteredTotal = data.length;
-          this.filter();
+          this.filteredData = data['content'];
+          this.data = data['content'];
+          this.filteredTotal = data['totalElements'];
+          // this.filter();
         });
     }
   
-    edit() {
+    devolver() {
       if (this.emprestimoSelected) {
-        this._router.navigate(['/main/cadastro-livro', this.emprestimoSelected.uuid]);
+        this._router.navigate(['/main/devolucao-livro', this.emprestimoSelected.uuid]);
       }
+    }
+
+    voltar() {
+      this._router.navigate(['/main/dashboard']);
     }
   
     columns: ITdDataTableColumn[] = [
-      // {name: 'titulo', label: 'Livro'},
-      // {name: 'isbn', label: 'Isbn'},
-      // {name: 'autor.nome', label: 'Autor'},
-      // {name: 'codigoLivre', label: 'Código Livre'},
+      {name: 'pessoa.nome', label: 'Pessoa'},
+      {name: 'turma.nome', label: 'Turma'},
       {name: 'userLastUpdate', label: 'Usuário'},
       {name: 'createdAt', label: 'Data Criação'}
     ];
@@ -88,9 +90,9 @@ export class ConsultaEmprestimoLivroComponent implements OnInit {
       this.fromRow = 0;
       this.currentPage = 0;
       if (!searchTerm) {
-        this.carregarLivros();
+        this.carregarEmprestimos();
       } else {
-        this.carregarLivrosPorTitulo();
+        this.carregarEmprestimosPor();
       }
     }
   
@@ -98,7 +100,7 @@ export class ConsultaEmprestimoLivroComponent implements OnInit {
       this.fromRow = pagingEvent.fromRow;
       this.currentPage = pagingEvent.page -1;
       this.pageSize = pagingEvent.pageSize;
-      this.carregarLivros();
+      this.carregarEmprestimos();
       this.filter();
     }
   

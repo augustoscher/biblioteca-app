@@ -38,7 +38,7 @@
             {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
         </td-paging-bar>
         <div layout="row" style="margin-left: 10px;">
-            <button md-raised-button color="primary" routerLink="/main/cadastro-livro" style="margin-right: 10px;">Devolver</button>
+            <button md-raised-button color="primary" name="btnDevolver" (click)="devolver()" style="margin-right: 10px;">Devolver</button>
             <button md-button color="warn" type="button" name="btnCancelar" (click)="voltar()">Cancelar</button>
         </div>
       </md-card-content>

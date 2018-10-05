@@ -6,6 +6,7 @@ import { environment } from "../../environments/environment";
 
 const URL_GET_EMPRESTIMOS = environment.urlGetEmprestimos;
 const URL_GET_EMPRESTIMOS_ID = environment.urlGetEmprestimosById;
+const URL_GET_EMPRESTIMOS_BY = environment.urlGetEmprestimosBy;
 const URL_POST_EMPRESTIMOS = environment.urlPostEmprestimos;
 const URL_PUT_EMPRESTIMOS = environment.urlPutEmprestimos;
 
@@ -44,7 +45,7 @@ export class EmprestimoService {
         };   
 
         return this._http
-            .get<Emprestimo[]>(URL_GET_EMPRESTIMOS, options)
+            .get<Emprestimo[]>(URL_GET_EMPRESTIMOS_BY + searchTerm, options)
             .catch(this.handleError);
     }
 

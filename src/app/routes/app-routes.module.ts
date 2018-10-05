@@ -109,7 +109,7 @@ const APP_ROUTES: Routes = [
     {path: 'consulta-editora', loadChildren: 'app/pages/consulta-editora/consulta-editora.module#ConsultaEditoraModule', canActivate: [AuthGuard]},
     {path: 'consulta-autor', loadChildren: 'app/pages/consulta-autor/consulta-autor.module#ConsultaAutorModule', canActivate: [AuthGuard]},
     {path: 'emprestimo-livro', loadChildren: 'app/pages/emprestimo-livro/emprestimo-livro.module#EmprestimoLivroModule', canActivate: [AuthGuard]},
-    {path: 'devolucao-livro', loadChildren: 'app/pages/devolucao-livro/devolucao-livro.module#DevolucaoLivroModule', canActivate: [AuthGuard]},
+    {path: 'devolucao-livro/:uuid', loadChildren: 'app/pages/devolucao-livro/devolucao-livro.module#DevolucaoLivroModule', canActivate: [AuthGuard]},
     {path: 'consulta-emprestimo-livro', loadChildren: 'app/pages/consulta-emprestimo-livro/consulta-emprestimo-livro.module#ConsultaEmprestimoLivroModule', canActivate: [AuthGuard]},
     {path: '', redirectTo: '/main/dashboard', pathMatch: 'prefix'},
     {path: '**', redirectTo: '/main/dashboard', pathMatch: 'prefix'}

@@ -39,12 +39,13 @@ export const environment = {
 
   urlGetLivros: apiBase + '/v1/livros',
   urlGetLivrosById: apiBase + '/v1/livros/',
-  urlGetLivrosByTitulo: apiBase + '/v1/livros/porTitulo/',
+  urlGetLivrosByTitulo: apiBase + '/v1/livros/por/',
   urlPostLivros: apiBase + '/v1/livros',
   urlPutLivros: apiBase + '/v1/livros',
 
   urlGetEmprestimos: apiBase + '/v1/emprestimos',
   urlGetEmprestimosById: apiBase + '/v1/emprestimos/',
+  urlGetEmprestimosBy: apiBase + '/v1/emprestimos/por/',
   urlPostEmprestimos: apiBase + '/v1/emprestimos',
   urlPutEmprestimos: apiBase + '/v1/emprestimos'
 };
