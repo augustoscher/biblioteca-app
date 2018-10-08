@@ -11,10 +11,15 @@
               <h6 md-line>Turma</h6>
               <p md-line><em>{{emprestimoSelected.turma.nome}}</em></p>
             </md-list-item>
+            <md-list-item>
+              <h6 md-line>Observação</h6>
+              <p md-line><em>{{emprestimoSelected.observacao}}</em></p>
+            </md-list-item>
           </md-list>
+          
           <md-divider></md-divider>
           <div style="margin-top: 25px;">
-            <h6 style="text-align:center">Selecione os livros que serão devolvidos</h6>
+            <h6 style="text-align:center">Selecione itens a serem Devolvidos</h6>
           </div>
           <div>
             <td-data-table #dataTable

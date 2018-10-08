@@ -6,7 +6,7 @@ import { Emprestimo } from '../../model/emprestimo';
 import { TdDataTableSortingOrder, ITdDataTableColumn } from '@covalent/core';
 import { Autor } from '../../model/autor';
 
-const NOME_FMT: (v: any) => any = (v: Autor) => v ? v.nome : "";
+const NOME_FMT: (v: any) => any = (v: any) => v ? v.nome : "";
 
 @Component({
   selector: 'devolucao-livro',
@@ -57,7 +57,9 @@ export class DevolucaoLivroComponent implements OnInit, OnDestroy {
     {name: 'livro.titulo', label: 'Livro'},
     {name: 'livro.isbn', label: 'Isbn'},
     {name: 'livro.autor', label: 'Autor',  format: NOME_FMT},
+    {name: 'livro.editora', label: 'Editora',  format: NOME_FMT},
     {name: 'livro.codigoLivre', label: 'Código Livre'},
+    {name: 'status.descricao', label: 'Status'},
   ];
 
   voltar() {
