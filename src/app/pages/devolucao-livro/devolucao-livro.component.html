@@ -1,3 +1,48 @@
-<p>
-  {{diagnostic}}
-</p>
+<section>
+  <article>
+    <md-card>
+      <md-card-content>
+          <md-list>
+            <md-list-item>
+              <h6 md-line>Pessoa</h6>
+              <p md-line><em>{{emprestimoSelected.pessoa.nome}}</em></p>
+            </md-list-item>
+            <md-list-item>
+              <h6 md-line>Turma</h6>
+              <p md-line><em>{{emprestimoSelected.turma.nome}}</em></p>
+            </md-list-item>
+          </md-list>
+          <md-divider></md-divider>
+          <div style="margin-top: 25px;">
+            <h6 style="text-align:center">Selecione os livros que serão devolvidos</h6>
+          </div>
+          <div>
+            <td-data-table #dataTable
+              [data]="filteredData"
+              [columns]="columns"
+              [sortable]="true"
+              [sortBy]="sortBy"
+              [sortOrder]="sortOrder"
+              (sortChange)="sort($event)"
+              [selectable]="true"
+              [multiple]="true"
+              (rowSelect)="selectEvent($event)">
+              <ng-template tdDataTableTemplate="createdAt" let-value="value">
+                <div layout="row">
+                    <span flex>{{value | date: 'dd/MM/yyyy'}}</span>
+                </div>
+              </ng-template>
+            </td-data-table>
+            <td-paging-bar #pagingBar [pageSizes]="[10, 15]" [total]="filteredTotal" (change)="page($event)" class="push-top">
+                <span td-paging-bar-label hide-xs>Resultados por página:</span>
+                {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+            </td-paging-bar>
+          </div>  
+          <button md-raised-button color="primary">OK</button>
+      </md-card-content>
+    </md-card>
+  </article>
+</section>
+
+
+

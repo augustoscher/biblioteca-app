@@ -31,38 +31,38 @@
                   </md-tab>
                   <md-tab label="Passo 2" [disabled]="!emprestimoForm.valid">
                       <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
+                        <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
+                          <span class="md-title">Livros</span>
+                        </span>
                           <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
-                            <span class="md-title">Livros</span>
-                          </span>
-                            <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
-                          </span>
-                            <td-search-box #searchBox backIcon="arrow_back" class="push-right-sm" placeholder="Pesquisar..." (searchDebounce)="search($event)" flex>
-                            </td-search-box>
-                        </div>
-                        <md-divider></md-divider>
-                        <td-data-table #dataTable
-                          [data]="filteredData"
-                          [columns]="columns"
-                          [sortable]="true"
-                          [sortBy]="sortBy"
-                          [sortOrder]="sortOrder"
-                          (sortChange)="sort($event)"
-                          [selectable]="true"
-                          [multiple]="false"
-                          (rowSelect)="selectEvent($event)">
-                          <ng-template tdDataTableTemplate="createdAt" let-value="value">
-                            <div layout="row">
-                                <span flex>{{value | date: 'dd/MM/yyyy'}}</span>
-                            </div>
-                          </ng-template>
-                        </td-data-table>
-                        <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
-                            <h6>Nenhum registro encontado.</h6>
-                        </div>
-                        <td-paging-bar #pagingBar [pageSizes]="[10, 15]" [total]="filteredTotal" (change)="page($event)" class="push-top">
-                            <span td-paging-bar-label hide-xs>Resultados por página:</span>
-                            {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
-                        </td-paging-bar>
+                        </span>
+                        <td-search-box #searchBox backIcon="arrow_back" class="push-right-sm" placeholder="Pesquisar..." (searchDebounce)="search($event)" flex>
+                        </td-search-box>
+                      </div>
+                      <md-divider></md-divider>
+                      <td-data-table #dataTable
+                        [data]="filteredData"
+                        [columns]="columns"
+                        [sortable]="true"
+                        [sortBy]="sortBy"
+                        [sortOrder]="sortOrder"
+                        (sortChange)="sort($event)"
+                        [selectable]="true"
+                        [multiple]="false"
+                        (rowSelect)="selectEvent($event)">
+                        <ng-template tdDataTableTemplate="createdAt" let-value="value">
+                          <div layout="row">
+                              <span flex>{{value | date: 'dd/MM/yyyy'}}</span>
+                          </div>
+                        </ng-template>
+                      </td-data-table>
+                      <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
+                          <h6>Nenhum registro encontado.</h6>
+                      </div>
+                      <td-paging-bar #pagingBar [pageSizes]="[10, 15]" [total]="filteredTotal" (change)="page($event)" class="push-top">
+                          <span td-paging-bar-label hide-xs>Resultados por página:</span>
+                          {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+                      </td-paging-bar>
                     <div>
                       <button md-raised-button color="primary" (click)="selecionarLivro()" [disabled]="!livroSelected">Adicionar</button>
                     </div>
