@@ -54,28 +54,30 @@
             </md-tab>
             <md-tab label="Passo 2" [disabled]="!livroForm.valid">
               <h6>Autor e Editora</h6>
-              <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
-                  <md-input-container fxFlex [dividerColor]="!autor.valid && !autor.pristine ? 'warn' : 'primary'">
-                      <input type="text" mdInput style="width: 400px;" placeholder="Autor" name="autor" disabled  ngModel #autor="ngModel" [(ngModel)]="livroSelected.autor.nome" >
-                  </md-input-container>
-                  <button md-button name="btnSearchAutor" (click)="searchAutor()">Selecionar</button>
-              </div>
-              <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
-                  <md-input-container fxFlex [dividerColor]="!editora.valid && !editora.pristine ? 'warn' : 'primary'">
-                      <input type="text" mdInput style="width: 400px;" placeholder="Editora" name="editora" disabled  ngModel #editora="ngModel" [(ngModel)]="livroSelected.editora.nome" >
-                  </md-input-container>
-                  <button md-button name="btnSearchEditora" (click)="searchEditora()">Selecionar</button>
-              </div>
-              <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
-                <md-input-container fxFlex [dividerColor]="!qtdExemplares.valid && !qtdExemplares.pristine ? 'warn' : 'primary'">
-                    <input type="number" mdInput style="width: 500px;" placeholder="Qtd. Exemplares" name="qtdExemplares" required ngModel #qtdExemplares="ngModel" [(ngModel)]="livroSelected.qtdExemplares">
-                    <md-hint *ngIf="!qtdExemplares.valid && !qtdExemplares.pristine" class="warn-color">Campo obrigatório.</md-hint>
-                </md-input-container>
-              </div>
-              <div style="margin-top: 10px; margin-bottom: 10px;"> 
-                  <button md-raised-button color="primary" type="submit" name="btnOk" [disabled]="!livroForm.valid" (click)="gravar()" style="margin-right: 10px;">OK</button>
-                  <button md-button color="warn" type="button" name="btnCancelar" (click)="voltar()">Cancelar</button>
-              </div>
+              <form #livroForm2="ngForm">
+                <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
+                    <md-input-container fxFlex [dividerColor]="!autor.valid && !autor.pristine ? 'warn' : 'primary'">
+                        <input type="text" mdInput style="width: 400px;" placeholder="Autor" name="autor" disabled  ngModel #autor="ngModel" [(ngModel)]="livroSelected.autor.nome" >
+                    </md-input-container>
+                    <button md-button name="btnSearchAutor" (click)="searchAutor()">Selecionar</button>
+                </div>
+                <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
+                    <md-input-container fxFlex [dividerColor]="!editora.valid && !editora.pristine ? 'warn' : 'primary'">
+                        <input type="text" mdInput style="width: 400px;" placeholder="Editora" name="editora" disabled  ngModel #editora="ngModel" [(ngModel)]="livroSelected.editora.nome" >
+                    </md-input-container>
+                    <button md-button name="btnSearchEditora" (click)="searchEditora()">Selecionar</button>
+                </div>
+                <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
+                    <md-input-container fxFlex [dividerColor]="!qtdExemplares.valid && !qtdExemplares.pristine ? 'warn' : 'primary'">
+                        <input type="number" mdInput style="width: 500px;" placeholder="Qtd. Exemplares" name="qtdExemplares" required ngModel #qtdExemplares="ngModel" [(ngModel)]="livroSelected.qtdExemplares">
+                        <md-hint *ngIf="!qtdExemplares.valid && !qtdExemplares.pristine" class="warn-color">Campo obrigatório.</md-hint>
+                    </md-input-container>
+                </div>
+                <div style="margin-top: 10px; margin-bottom: 10px;"> 
+                    <button md-raised-button color="primary" type="submit" name="btnOk" [disabled]="!livroForm2.valid" (click)="gravar()" style="margin-right: 10px;">OK</button>
+                    <button md-button color="warn" type="button" name="btnCancelar" (click)="voltar()">Cancelar</button>
+                </div>
+              </form>
             </md-tab>
           </md-tab-group>
     </md-card-content>

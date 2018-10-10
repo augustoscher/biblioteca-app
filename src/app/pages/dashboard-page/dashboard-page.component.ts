@@ -76,31 +76,31 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
       value: 36
     }
   ];
-  // To do items
-  todoItems = [
-    {
-      title: 'Sections 1.10.32',
-      text: 'It is a long established fact',
-      done: false
-    },
-    {
-      title: 'It has roots',
-      text: 'Many desktop publishing ',
-      done: false
-    },
-    {
-      title: 'Richard McClintock',
-      text: 'Aldus PageMaker',
-      done: false
-    }
-  ];
-  doneItems = [
-    {
-      title: 'The first line of Lorem Ipsum',
-      text: 'It has survived not only five centuries',
-      done: true
-    }
-  ];
+  // // To do items
+  // todoItems = [
+  //   {
+  //     title: 'Sections 1.10.32',
+  //     text: 'It is a long established fact',
+  //     done: false
+  //   },
+  //   {
+  //     title: 'It has roots',
+  //     text: 'Many desktop publishing ',
+  //     done: false
+  //   },
+  //   {
+  //     title: 'Richard McClintock',
+  //     text: 'Aldus PageMaker',
+  //     done: false
+  //   }
+  // ];
+  // doneItems = [
+  //   {
+  //     title: 'The first line of Lorem Ipsum',
+  //     text: 'It has survived not only five centuries',
+  //     done: true
+  //   }
+  // ];
 
   constructor(private dataTableService: TdDataTableService, private resizeService: ResizeService) {
     this.resizeSubscription = resizeService.resizeInformer$.subscribe(
@@ -111,6 +111,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     setTimeout(() => {
       this.areaChartOption = AREA_CHART_OPTION;
+      this.areaChartOption.series[0].data = [1, 2, 3, 4, 4, 5, 1, 2, 3, 1, 3, 8];
       this.areaChartWithLineOption = AREA_CHART_WITH_LINE_OPTION;
       this.doughnutOption = DOUGHNUT_OPTION;
       this.indicatorItems = INIDICATOR_ITEMS;

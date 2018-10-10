@@ -5,8 +5,8 @@
         <div>
           <h5 class="font-w-light secondary-text-color">Empréstimos</h5>
         </div>
-        <div fxLayout="row">
-          <md-tab-group fxHide.lt-md="true">
+        <!-- <div fxLayout="row"> -->
+          <!-- <md-tab-group fxHide.lt-md="true">
             <md-tab>
               <ng-template md-tab-label>Todos</ng-template>
             </md-tab>
@@ -16,13 +16,13 @@
             <md-tab>
               <ng-template md-tab-label>Semana</ng-template>
             </md-tab>
-          </md-tab-group>
-          <div>
+          </md-tab-group> -->
+          <!-- <div>
             <button md-icon-button [mdMenuTriggerFor]="menuAbove">
               <md-icon class="secondary-text-color">more_vert</md-icon>
             </button>
-          </div>
-        </div>
+          </div> -->
+        <!-- </div> -->
       </div>
       <div echarts [options]="areaChartOption" (chartInit)="chartInstances.push($event)" class="area-chart"></div>
     </md-card>

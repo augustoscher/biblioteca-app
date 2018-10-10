@@ -37,7 +37,7 @@ export let AREA_CHART_OPTION = {
         fontSize: 14
       }
     },
-    data: ['Jan', '', 'Mar', '', 'May', '', 'Jul', '', 'Sep', '', 'Nov', '']
+    data: ['Jan', 'Fev', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Out', 'Nov', 'Dez']
   }],
   yAxis: [{
     type: 'value',
@@ -95,40 +95,9 @@ export let AREA_CHART_OPTION = {
       }
     },
     data: [50, 103, 75, 60, 98, 175, 88, 110, 121, 103, 75, 55]
-  }, {
-    name: 'Business B',
-    type: 'line',
-    smooth: true,
-    symbol: 'circle',
-    symbolSize: 3,
-    showSymbol: false,
-    lineStyle: {
-      normal: {
-        width: 0
-      }
-    },
-    areaStyle: {
-      normal: {
-        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-          offset: 0,
-          color: '#3e9ace'
-        }, {
-          offset: 1,
-          color: '#9dcce6'
-        }], false),
-        opacity: 0.73
-      }
-    },
-    itemStyle: {
-      normal: {
-        color: '#ffffff',
-        borderColor: '#3e9ace',
-        borderWidth: 2
-      }
-    },
-    data: [25, 75, 158, 75, 50, 91, 30, 138, 81, 67, 110, 98]
   }]
 };
+
 // Area chart with line model
 export let AREA_CHART_WITH_LINE_OPTION = {
   grid: {
