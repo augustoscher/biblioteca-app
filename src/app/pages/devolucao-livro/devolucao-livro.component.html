@@ -9,7 +9,7 @@
             </md-list-item>
             <md-list-item>
               <h6 md-line>Turma</h6>
-              <p md-line><em>{{emprestimoSelected.turma.nome}}</em></p>
+              <p md-line><em>{{emprestimoSelected.turma == undefined ? "" : emprestimoSelected.turma.nome}}</em></p>
             </md-list-item>
             <md-list-item>
               <h6 md-line>Observação</h6>
@@ -31,7 +31,8 @@
               (sortChange)="sort($event)"
               [selectable]="true"
               [multiple]="true"
-              (rowSelect)="selectEvent($event)">
+              (rowSelect)="selectEvent($event)"
+              (selectAll)="selectAllEvent($event)">
               <ng-template tdDataTableTemplate="createdAt" let-value="value">
                 <div layout="row">
                     <span flex>{{value | date: 'dd/MM/yyyy'}}</span>
@@ -43,7 +44,7 @@
                 {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
             </td-paging-bar>
           </div>  
-          <button md-raised-button color="primary">OK</button>
+          <button md-raised-button color="primary" [disabled]="itensSelected.length == 0 " (click)="devolver()">OK</button>
       </md-card-content>
     </md-card>
   </article>

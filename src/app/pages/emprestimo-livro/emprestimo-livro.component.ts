@@ -81,6 +81,7 @@ export class EmprestimoLivroComponent implements OnInit {
   selecionarLivro() {
     this.livrosEmprestados.push(this.livroSelected);
   }
+  
   remover(livro: any){
     let idx = this.livrosEmprestados.indexOf(livro, 0);
     this.livrosEmprestados.splice(idx,1);

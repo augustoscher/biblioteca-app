@@ -94,7 +94,7 @@
                       </table>
                     </div>
                     <div layout="row" style="margin-left: 10px; margin-top: 20px;">
-                      <button md-raised-button color="primary" type="submit" name="btnOk" [disabled]="livrosEmprestados.length == 0 || emprestimoSelected.turma.uuid == undefined || emprestimoSelected.pessoa.uuid == undefined" (click)="gravar()" style="margin-right: 10px;">OK</button>
+                      <button md-raised-button color="primary" type="submit" name="btnOk" [disabled]="livrosEmprestados.length == 0 || emprestimoSelected.pessoa.uuid == undefined" (click)="gravar()" style="margin-right: 10px;">OK</button>
                       <button md-button color="warn" type="button" name="btnCancelar" (click)="voltar()">Cancelar</button>
                     </div>
                   </md-tab>

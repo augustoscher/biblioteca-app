@@ -68,7 +68,8 @@ export class ConsultaEmprestimoLivroComponent implements OnInit {
       {name: 'pessoa.nome', label: 'Pessoa'},
       {name: 'turma.nome', label: 'Turma'},
       {name: 'userLastUpdate', label: 'Usuário'},
-      {name: 'createdAt', label: 'Data Criação'}
+      {name: 'createdAt', label: 'Data Criação'},
+      {name: 'status.descricao', label: 'Status'},
     ];
   
     selectEvent(event: any) {

@@ -5,6 +5,8 @@ import { MdSnackBar } from '@angular/material';
 import { Emprestimo } from '../../model/emprestimo';
 import { TdDataTableSortingOrder, ITdDataTableColumn } from '@covalent/core';
 import { Autor } from '../../model/autor';
+import { EmprestimoLivro } from '../../model/emprestimoLivro';
+import { StatusEmprestimo } from '../../model/statusEmprestimo';
 
 const NOME_FMT: (v: any) => any = (v: any) => v ? v.nome : "";
 
@@ -29,6 +31,7 @@ export class DevolucaoLivroComponent implements OnInit, OnDestroy {
   private uuid: string;
   private sub: any;
   public emprestimoSelected = new Emprestimo();
+  public itensSelected: Array<EmprestimoLivro> = [];
 
   constructor(private _route: ActivatedRoute, 
     private _router: Router, 
@@ -51,6 +54,55 @@ export class DevolucaoLivroComponent implements OnInit, OnDestroy {
             });
         }
       });
+  }
+
+  devolver() {
+    this.itensSelected.forEach(itemSelected => {
+      this.emprestimoSelected.livros.forEach(item => {
+        if (itemSelected.uuid === item.uuid) {
+          item.status = this.getStatusDevolvido();
+        }
+      });
+    });
+
+    this._emprestimoService.alterar(this.emprestimoSelected).subscribe(ob => {
+      this._snackBar.open('Devolução realizada com sucesso', 'OK', { duration: 3000 });
+      this.voltar();
+    },
+    err => {
+      this._snackBar.open('Erro ao realizar devolução: ' + err.message, '', { duration: 3000 });
+    });
+  }
+
+  selectEvent(event: any) {
+    if (event.selected) {
+        this.itensSelected.push(event.row);
+    } else {
+      let idx = this.itensSelected.indexOf(event.row, 0);
+      this.itensSelected.splice(idx,1);
+    }     
+  } 
+
+  selectAllEvent(event: any) {
+    if (event.selected) {
+      this.itensSelected = [];
+      event.rows.forEach(item => {
+        this.itensSelected.push(item);
+      });
+    } else {
+      this.itensSelected = [];
+    }
+  }
+
+  compareWith(row: any, model: any): boolean {
+    return row.id === model.id;
+  }
+
+  getStatusDevolvido(): StatusEmprestimo {
+    let status = new StatusEmprestimo();
+    status.id = 1;
+    status.descricao = 'Devolvido';
+    return status;
   }
 
   columns: ITdDataTableColumn[] = [
