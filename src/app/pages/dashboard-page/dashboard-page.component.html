@@ -58,14 +58,14 @@
         </md-tab-group>
       </div>
       <md-list>
-        <ng-container *ngFor="let item of ratingItems">
+        <ng-container *ngFor="let emprestimoUsuario of estatistica.emprestimosUsuario">
           <md-list-item>
             <!-- <img md-list-avatar src="{{item.avatar}}"> -->
-            <h6 md-line>{{item.name}}</h6>
-            <p md-line>{{item.tag}}</p>
+            <h6 md-line>{{emprestimoUsuario.usuario}}</h6>
+            <!-- <p md-line>{{item.tag}}</p> -->
             <div class="val-wrap" fxLayout="row" fxLayoutAlign="space-around center">
-              <md-progress-bar fxFlex="70" [mode]="'determinate'" [value]="item.value"></md-progress-bar>
-              <span fxFlex="30" class="rating-val secondary-text-color text-right">{{item.value}}%</span>
+              <md-progress-bar fxFlex="70" [mode]="'determinate'" [value]="emprestimoUsuario.qtdEmprestimos"></md-progress-bar>
+              <span fxFlex="30" class="rating-val secondary-text-color text-right">{{emprestimoUsuario.qtdEmprestimos}}x</span>
             </div>
             <button md-icon-button [mdMenuTriggerFor]="menuAbove">
               <md-icon class="secondary-text-color">more_vert</md-icon>
@@ -81,7 +81,7 @@
       <md-card fxFlex class="statistics-card">
         <div fxLayout="row" fxLayoutAlign="space-between center">
           <div>
-            <h5 class="font-w-light secondary-text-color">Livros</h5>
+            <h5 class="font-w-light secondary-text-color">Exemplares</h5>
           </div>
           <div>
             <button md-icon-button [mdMenuTriggerFor]="menuAbove">
@@ -89,9 +89,9 @@
             </button>
           </div>
         </div>
-        <div class="secondary-text-color">Evolução volumes catalogados</div>
+        <div class="secondary-text-color">Evolução exemplares catalogados</div>
         <h4 class="font-w-light text-truncate push-bottom-none">
-          <span>396</span>
+          <span>{{estatistica.qtdExemplares}}</span>
           <md-icon>expand_less</md-icon>
         </h4>
         <md-card-footer>
@@ -107,7 +107,7 @@
             </button>
           </div>
           <div fxFlex class="pad-left-md">
-            <h5 class="push-none wide-spacing">396</h5>
+            <h5 class="push-none wide-spacing">{{estatistica.qtdLivros}}</h5>
             <div class="secondary-text-color md-subhead wide-spacing">Livros catalogados</div>
           </div>
           <div fxFlexAlign="start">

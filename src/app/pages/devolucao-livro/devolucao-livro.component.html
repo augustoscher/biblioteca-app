@@ -8,6 +8,15 @@
               <p md-line><em>{{emprestimoSelected.pessoa.nome}}</em></p>
             </md-list-item>
             <md-list-item>
+              <h6 md-line>Status</h6>
+              <p md-line>
+                <em>
+                  <mark *ngIf="emprestimoSelected.status.id === 0" style="background: orangered">{{emprestimoSelected.status.descricao}}</mark>
+                  <mark *ngIf="emprestimoSelected.status.id === 1">{{emprestimoSelected.status.descricao}}</mark>
+                </em>
+              </p>
+            </md-list-item>
+            <md-list-item>
               <h6 md-line>Turma</h6>
               <p md-line><em>{{emprestimoSelected.turma == undefined ? "" : emprestimoSelected.turma.nome}}</em></p>
             </md-list-item>
@@ -44,7 +53,7 @@
                 {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
             </td-paging-bar>
           </div>  
-          <button md-raised-button color="primary" [disabled]="itensSelected.length == 0 " (click)="devolver()">OK</button>
+          <button md-raised-button color="primary" [disabled]="emprestimoSelected.status.id === 1 || itensSelected.length == 0" (click)="devolver()">OK</button>
       </md-card-content>
     </md-card>
   </article>

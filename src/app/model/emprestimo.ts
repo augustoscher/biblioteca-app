@@ -8,7 +8,7 @@ export class Emprestimo {
     turma: Turma = new Turma();
     pessoa: Pessoa = new Pessoa();
     livros: Array<EmprestimoLivro> = [];
-    status: StatusEmprestimo;
+    status: StatusEmprestimo = new StatusEmprestimo();
     observacao: string;
     userLastUpdate: string;
     createdAt: Date

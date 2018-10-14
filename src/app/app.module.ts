@@ -114,6 +114,7 @@ import { DialogSearchEditoraComponent } from './dialog-search-editora/dialog-sea
 import { DialogSearchPessoaComponent } from './dialog-search-pessoa/dialog-search-pessoa.component';
 import { DialogSearchTurmaComponent } from './dialog-search-turma/dialog-search-turma.component';
 import { EmprestimoService } from './services/emprestimo.service';
+import { DashboardService } from './services/dashboard.service';
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {};
 
@@ -227,6 +228,7 @@ export function createTranslateLoader(http: HttpClient) {
     AutorService,
     LivroService,
     EmprestimoService,
+    DashboardService,
     AuthGuard,
     { provide: LOCALE_ID, useValue: 'pt-PT' }
   ],

@@ -3,6 +3,8 @@ import {TdDataTableService} from '@covalent/core';
 import {ResizeService} from '../../resize/resize.service';
 import {routerAnimation} from '../../utils/page.animation';
 import {AREA_CHART_OPTION, AREA_CHART_WITH_LINE_OPTION, DOUGHNUT_OPTION, INIDICATOR_ITEMS} from './chart-models';
+import { DashboardService } from '../../services/dashboard.service';
+import { Estatistica } from '../../model/estatistica';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -101,14 +103,23 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   //     done: true
   //   }
   // ];
+  
+  public estatistica: Estatistica;
+  
+  constructor(
+    private dataTableService: TdDataTableService,
+    private resizeService: ResizeService,
+    private _dashboardService: DashboardService) {
+      
+      this.estatistica = new Estatistica();
 
-  constructor(private dataTableService: TdDataTableService, private resizeService: ResizeService) {
-    this.resizeSubscription = resizeService.resizeInformer$.subscribe(
-      () => this.chartInstances.forEach((chart) => chart.resize())
-    );
-  }
-
+      this.resizeSubscription = resizeService.resizeInformer$.subscribe(
+        () => this.chartInstances.forEach((chart) => chart.resize())
+      );
+    }
+      
   ngOnInit(): void {
+    this.carregarEstatistica();
     setTimeout(() => {
       this.areaChartOption = AREA_CHART_OPTION;
       this.areaChartOption.series[0].data = [1, 2, 3, 4, 4, 5, 1, 2, 3, 1, 3, 8];
@@ -116,6 +127,13 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
       this.doughnutOption = DOUGHNUT_OPTION;
       this.indicatorItems = INIDICATOR_ITEMS;
     }, 0);
+  }
+
+  carregarEstatistica() {
+    this._dashboardService.carregarEstatisticas()
+        .subscribe(data => {
+          this.estatistica = data;
+         });
   }
 
   ngOnDestroy(): void {

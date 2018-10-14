@@ -57,6 +57,13 @@ export class DevolucaoLivroComponent implements OnInit, OnDestroy {
   }
 
   devolver() {
+
+    if (this.isItemDevolvidoSelecionado()) {
+      this._snackBar.open('Foram selecionados itens já devolvidos. Verifique itens selecionados.', 'OK', { duration: 3000 });
+      return;
+    }
+
+    //setar status devolvido nos itens do emprestimo conforme os itens de bind view
     this.itensSelected.forEach(itemSelected => {
       this.emprestimoSelected.livros.forEach(item => {
         if (itemSelected.uuid === item.uuid) {
@@ -77,6 +84,7 @@ export class DevolucaoLivroComponent implements OnInit, OnDestroy {
   selectEvent(event: any) {
     if (event.selected) {
         this.itensSelected.push(event.row);
+        console.log(this.itensSelected);
     } else {
       let idx = this.itensSelected.indexOf(event.row, 0);
       this.itensSelected.splice(idx,1);
@@ -94,8 +102,20 @@ export class DevolucaoLivroComponent implements OnInit, OnDestroy {
     }
   }
 
-  compareWith(row: any, model: any): boolean {
-    return row.id === model.id;
+  isItemDevolvidoSelecionado(): boolean {
+    console.log(this.itensSelected);
+    if (this.itensSelected == undefined || this.itensSelected.length <= 0) {
+      return false;
+    } else {
+      let temItemDevolvido = false;
+      this.itensSelected.forEach(item => {
+        if (item.status.id == 1) {
+          temItemDevolvido = true;
+        }
+      });
+      return temItemDevolvido;
+    }
+
   }
 
   getStatusDevolvido(): StatusEmprestimo {
