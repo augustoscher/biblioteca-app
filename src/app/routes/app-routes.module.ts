@@ -93,6 +93,7 @@ const APP_ROUTES: Routes = [
     {path: 'cart', component: CartPageComponent},
     // {path: 'portfolio', component: PortfolioPageComponent},
     // {path: 'multi-language', component: MultiLanguagePageComponent},
+    {path: 'cadastro-usuario', loadChildren: 'app/pages/cadastro-usuario/cadastro-usuario.module#CadastroUsuarioModule', canActivate: [AuthGuard]},
     {path: 'cadastro-pessoa', loadChildren: 'app/pages/cadastro-aluno/cadastro-aluno.module#CadastroAlunoModule', canActivate: [AuthGuard]},
     {path: 'cadastro-pessoa/:uuid', loadChildren: 'app/pages/cadastro-aluno/cadastro-aluno.module#CadastroAlunoModule', canActivate: [AuthGuard]},
     {path: 'cadastro-livro', loadChildren: 'app/pages/cadastro-livro/cadastro-livro.module#CadastroLivroModule', canActivate: [AuthGuard]},

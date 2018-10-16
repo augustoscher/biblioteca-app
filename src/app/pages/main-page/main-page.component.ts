@@ -24,16 +24,37 @@ export class MainPageComponent implements OnInit {
      private _userService: UserService, private _router: Router) { }
 
   ngOnInit(){
-    if (!this.tipo) {
+    // if (!this.tipo) {
+      // this.tipo = this._userService.getRule();
+    // }
+    // if (!this.nome) {
+      // this.nome = this._userService.getUser();
+    // }
+  }
+
+  getUserRule() {
+    if (this.tipo == undefined) {
+      console.log("getUserRule()")
       this.tipo = this._userService.getRule();
     }
-    if (!this.nome) {
+    return this.tipo;
+  }
+
+  getUserName() {
+    if (this.nome == undefined) {
+      console.log("getUserName()")
       this.nome = this._userService.getUser();
     }
+    return this.nome;
   }
+
+
+
 
   logout(){
     this._userService.logout();
+    this.nome = undefined;
+    this.tipo = undefined;
     this._router.navigate(['login']);
   }
 

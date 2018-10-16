@@ -95,6 +95,13 @@
           </px-gdn-sideitem>
         </px-gdn-sideitem>
 
+        <px-gdn-sideitem *ngIf="getUserRule() == 'Administrador'" title="Administração">
+            <md-icon>school</md-icon>
+            <px-gdn-sideitem title="Cadastrar Usuário" [routerLinkUrl]="'cadastro-usuario'">
+              <md-icon>keyboard_arrow_right</md-icon>
+            </px-gdn-sideitem>
+        </px-gdn-sideitem>
+
         <px-gdn-sideitem title="Extra">
           <!-- <md-icon>extension</md-icon> -->
           <px-gdn-sideitem title="Form elements" [routerLinkUrl]="'form-elements'">
@@ -368,9 +375,9 @@
       <md-list>
         <md-list-item>
           <img md-list-avatar src="assets/avatars/4040.png">
-          <h4 md-line> {{nome}} </h4>
+          <h4 md-line> {{getUserName()}} </h4>
           <p md-line>
-            <span>{{tipo}}</span>
+            <span>{{getUserRule()}}</span>
           </p>
         </md-list-item>
         <md-divider></md-divider>
