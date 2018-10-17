@@ -37,6 +37,7 @@ ngOnInit(): void {
    */
   login(login, password) {
     this.loading = true;
+    this.error = '';
 
     this._authenticationService.login(login, password)
       .subscribe(
