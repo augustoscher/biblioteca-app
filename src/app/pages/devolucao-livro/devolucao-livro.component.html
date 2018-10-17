@@ -50,7 +50,7 @@
             </td-data-table>
             <td-paging-bar #pagingBar [pageSizes]="[10, 15]" [total]="filteredTotal" (change)="page($event)" class="push-top">
                 <span td-paging-bar-label hide-xs>Resultados por página:</span>
-                {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+                {{pagingBar.range}} <span hide-xs>de {{pagingBar.total}}</span>
             </td-paging-bar>
           </div>  
           <button md-raised-button color="primary" [disabled]="emprestimoSelected.status.id === 1 || itensSelected.length == 0" (click)="devolver()">OK</button>

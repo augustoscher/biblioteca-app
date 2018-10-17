@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EmprestimoService } from '../../services/emprestimo.service';
 import { MdSnackBar } from '@angular/material';
 import { Emprestimo } from '../../model/emprestimo';
-import { TdDataTableSortingOrder, ITdDataTableColumn } from '@covalent/core';
+import { TdDataTableSortingOrder, ITdDataTableColumn, IPageChangeEvent, ITdDataTableSortChangeEvent } from '@covalent/core';
 import { Autor } from '../../model/autor';
 import { EmprestimoLivro } from '../../model/emprestimoLivro';
 import { StatusEmprestimo } from '../../model/statusEmprestimo';
@@ -81,10 +81,26 @@ export class DevolucaoLivroComponent implements OnInit, OnDestroy {
     });
   }
 
+  sort(sortEvent: ITdDataTableSortChangeEvent): void {
+    // this.sortBy = sortEvent.name;
+    // this.sortOrder = sortEvent.order;
+    // this.filter();
+  }
+
+  search(searchTerm: string): void {
+  }
+
+  page(pagingEvent: IPageChangeEvent): void {
+    // this.fromRow = pagingEvent.fromRow;
+    // this.currentPage = pagingEvent.page -1;
+    // this.pageSize = pagingEvent.pageSize;
+    // this.carregarLivros();
+    // this.filter();
+  }
+
   selectEvent(event: any) {
     if (event.selected) {
         this.itensSelected.push(event.row);
-        console.log(this.itensSelected);
     } else {
       let idx = this.itensSelected.indexOf(event.row, 0);
       this.itensSelected.splice(idx,1);
@@ -103,7 +119,6 @@ export class DevolucaoLivroComponent implements OnInit, OnDestroy {
   }
 
   isItemDevolvidoSelecionado(): boolean {
-    console.log(this.itensSelected);
     if (this.itensSelected == undefined || this.itensSelected.length <= 0) {
       return false;
     } else {
@@ -115,7 +130,6 @@ export class DevolucaoLivroComponent implements OnInit, OnDestroy {
       });
       return temItemDevolvido;
     }
-
   }
 
   getStatusDevolvido(): StatusEmprestimo {
