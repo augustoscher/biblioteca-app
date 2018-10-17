@@ -4,9 +4,10 @@ import { LoginResult } from '../model/loginResult';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs/Observable';
 import { Usuario } from '../model/usuario';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const URL_GET_USUARIO_LOGIN = environment.urlGetUsuarioLogin;
+const URL_POST_USUARIO = environment.urlPostUsuario;
 
 @Injectable()
 export class UserService {
@@ -28,6 +29,21 @@ export class UserService {
   carregarUsuarioCompleto(login: string) {
     return this._http
         .get<Usuario[]>(URL_GET_USUARIO_LOGIN + login)
+        .catch(this.handleError);
+  }
+
+  incluir(usuario: Usuario): Observable<Usuario>{
+    let httpHeaders = new HttpHeaders()
+        .set('Accept', 'application/json')
+        .set('Content-Type', 'application/json')
+        .set('Cache-Control', 'no-cache'); 
+
+    let options = {
+        headers: httpHeaders
+    };        
+
+    return this._http
+        .post<Usuario>(URL_POST_USUARIO, usuario, options)
         .catch(this.handleError);
   }
 

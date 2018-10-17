@@ -1,3 +1,39 @@
-<p>
-  cadastro-usuario works!
-</p>
+<section>
+  <article>
+    <md-card>
+      <md-card-content>
+        <md-card-title class="md-title">Usuário</md-card-title>
+        <form #usuarioForm="ngForm">
+            <div layout="row" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="25">
+              <md-input-container [dividerColor]="!userName.valid && !userName.pristine ? 'warn' : 'primary'">
+                <input type="text" mdInput placeholder="Nome" name="userName" required ngModel #userName="ngModel">
+                <md-hint *ngIf="!userName.valid && !userName.pristine" class="warn-color">Obrigatório</md-hint>
+              </md-input-container>
+            </div>
+            <div layout="row">
+              <md-input-container [dividerColor]="!login.valid && !login.pristine ? 'warn' : 'primary'">
+                <input type="text" mdInput placeholder="Login" name="login" minlength="6" required ngModel #login="ngModel">
+                <md-hint *ngIf="!login.valid && !login.pristine" class="warn-color">Obrigatório. Mín. 6 caracteres</md-hint>
+              </md-input-container>
+            </div>
+            <div layout="row" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="25">
+              <md-input-container [dividerColor]="!password.valid && !password.pristine ? 'warn' : 'primary'">
+                <input type="password" required mdInput placeholder="Senha" name="password" minlength="6" ngModel #password="ngModel">
+                <md-hint *ngIf="!password.valid && !password.pristine" class="warn-color">{{password.value.length}} / 6</md-hint>
+              </md-input-container>
+            </div>
+            <div layout="row" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="25">
+              <md-input-container [dividerColor]="!checkPassword.valid && !checkPassword.pristine ? 'warn' : 'primary'">
+                <input type="password" required mdInput placeholder="Confirmar senha" name="checkPassword" ngModel #checkPassword="ngModel" [equalTo]="password">
+                <md-hint *ngIf="!checkPassword.valid && !checkPassword.pristine" class="warn-color">Senhas não são iguais</md-hint>
+              </md-input-container>
+            </div>
+            <div layout="row" style="margin-left: 10px; margin-top: 20px;">
+              <button md-raised-button color="primary" (click)="cadastrar(usuarioForm)" [disabled]="!usuarioForm.valid">OK</button>
+              <button md-button color="warn" type="button" name="btnCancelar" (click)="voltar()">Cancelar</button>
+            </div>
+        </form>
+      </md-card-content>
+    </md-card>
+  </article>
+</section>

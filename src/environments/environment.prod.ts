@@ -7,6 +7,7 @@ export const environment = {
   urlAuth: apiBase + '/login',
 
   urlGetUsuarioLogin: apiBase + '/v1/usuarios/porLogin/',
+  urlPostUsuario: apiBase + '/v1/usuarios',
 
   urlGetPessoas: apiBase + '/v1/pessoas',
   urlGetPessoasById: apiBase + '/v1/pessoas/',
