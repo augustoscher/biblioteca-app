@@ -24,6 +24,9 @@ export class CadastroLivroComponent implements OnInit {
   
   ngOnInit() {
     this.livroSelected = new Livro();
+    if (!this.uuid) {
+      this.livroSelected.qtdExemplares = 1;
+    }
 
     this.sub = this._route.params
       .subscribe(params => {

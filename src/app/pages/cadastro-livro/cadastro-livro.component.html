@@ -69,7 +69,7 @@
                 </div>
                 <div fxLayout="row" fxLayoutGap="20px" fxLayoutGap.gt-sm="30px">
                     <md-input-container fxFlex [dividerColor]="!qtdExemplares.valid && !qtdExemplares.pristine ? 'warn' : 'primary'">
-                        <input type="number" mdInput style="width: 500px;" placeholder="Qtd. Exemplares" name="qtdExemplares" required ngModel #qtdExemplares="ngModel" [(ngModel)]="livroSelected.qtdExemplares">
+                        <input type="number" mdInput style="width: 500px;" placeholder="Qtd. Exemplares" name="qtdExemplares" required min="1" ngModel #qtdExemplares="ngModel" [(ngModel)]="livroSelected.qtdExemplares">
                         <md-hint *ngIf="!qtdExemplares.valid && !qtdExemplares.pristine" class="warn-color">Campo obrigatório.</md-hint>
                     </md-input-container>
                 </div>
