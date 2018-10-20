@@ -38,7 +38,7 @@ export class ConsultaEmprestimoDetalhadoComponent implements OnInit {
         data.forEach(emprestimo => {
           emprestimo.livros.forEach(emprestimoItem => {
             if (emprestimoItem.status.id == 0) { //emprestado
-              itens.push(new EmprestimoLivroAluno(emprestimo.uuid, emprestimo.turma.nome, emprestimo.pessoa.nome, emprestimoItem.livro.titulo, emprestimo.createdAt));
+              itens.push(new EmprestimoLivroAluno(emprestimo.uuid, emprestimo.turma != undefined ? emprestimo.turma.nome : "", emprestimo.pessoa.nome, emprestimoItem.livro.titulo, emprestimo.createdAt));
             }
           });
         });
