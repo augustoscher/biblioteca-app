@@ -7,6 +7,7 @@ import { environment } from "../../environments/environment";
 const URL_GET_EMPRESTIMOS = environment.urlGetEmprestimos;
 const URL_GET_EMPRESTIMOS_ID = environment.urlGetEmprestimosById;
 const URL_GET_EMPRESTIMOS_BY = environment.urlGetEmprestimosBy;
+const URL_GET_EMPRESTIMOS_PENDENTES = environment.urlGetEmprestimosPendentes;
 const URL_POST_EMPRESTIMOS = environment.urlPostEmprestimos;
 const URL_PUT_EMPRESTIMOS = environment.urlPutEmprestimos;
 
@@ -34,6 +35,21 @@ export class EmprestimoService {
             .get<Emprestimo[]>(URL_GET_EMPRESTIMOS, options)
             .catch(this.handleError);
     }
+
+    carregarEmprestimosPendentesDevolucao() {
+        let httpHeaders = new HttpHeaders()
+        .set('Accept', 'application/json')
+        .set('Content-Type', 'application/json');
+
+        let options = {
+            headers: httpHeaders,
+        };   
+
+        return this._http
+            .get<Emprestimo[]>(URL_GET_EMPRESTIMOS_PENDENTES, options)
+            .catch(this.handleError);
+    }
+
 
     carregarEmprestimosPor(searchTerm: string) {
         let httpHeaders = new HttpHeaders()

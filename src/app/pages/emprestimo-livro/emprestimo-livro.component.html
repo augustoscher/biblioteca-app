@@ -50,9 +50,9 @@
                         [selectable]="true"
                         [multiple]="false"
                         (rowSelect)="selectEvent($event)">
-                        <ng-template tdDataTableTemplate="createdAt" let-value="value">
+                        <ng-template tdDataTableTemplate="emprestado" let-value="value">
                           <div layout="row">
-                              <span flex>{{value | date: 'dd/MM/yyyy'}}</span>
+                              <span flex>{{value == true ? "Sim" : "Não"}}</span>
                           </div>
                         </ng-template>
                       </td-data-table>
@@ -64,7 +64,7 @@
                           {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
                       </td-paging-bar>
                     <div>
-                      <button md-raised-button color="primary" (click)="selecionarLivro()" [disabled]="!livroSelected">Adicionar</button>
+                      <button md-raised-button color="primary" (click)="selecionarLivro()" [disabled]="!livroSelected || livroSelected.emprestado == true">Adicionar</button>
                     </div>
                     <div style="margin-top: 25px;">
                       <h6 style="text-align:center">Livros Adicionados</h6>

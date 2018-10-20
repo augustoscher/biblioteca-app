@@ -5,7 +5,7 @@
       <md-card-content>
         <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
           <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
-            <span class="md-title">Livros</span>
+            <span class="md-title">Emprestimos</span>
           </span>
             <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
           </span>
@@ -24,9 +24,9 @@
           [selectable]="true"
           [multiple]="false"
           (rowSelect)="selectEvent($event)">
-            <ng-template tdDataTableTemplate="emprestado" let-value="value">
+            <ng-template tdDataTableTemplate="createdAt" let-value="value">
               <div layout="row">
-                  <span flex>{{value == true ? "Sim" : "Não"}}</span>
+                  <span flex>{{value | date: 'dd/MM/yyyy'}}</span>
               </div>
             </ng-template>
         </td-data-table>
@@ -38,8 +38,8 @@
             {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
         </td-paging-bar>
         <div layout="row" style="margin-left: 10px;">
-            <button md-raised-button color="primary" routerLink="/main/cadastro-livro" style="margin-right: 10px;">Cadastrar</button>
-            <button md-raised-button color="secundary"  (click)="edit()" [disabled]="!livroSelected">Editar</button>
+            <button md-raised-button color="primary" name="btnDevolver" (click)="devolver()" style="margin-right: 10px;">Devolver</button>
+            <button md-button color="warn" type="button" name="btnCancelar" (click)="voltar()">Cancelar</button>
         </div>
       </md-card-content>
     </md-card>

@@ -47,6 +47,7 @@ export const environment = {
   urlGetEmprestimos: apiBase + '/v1/emprestimos',
   urlGetEmprestimosById: apiBase + '/v1/emprestimos/',
   urlGetEmprestimosBy: apiBase + '/v1/emprestimos/por/',
+  urlGetEmprestimosPendentes: apiBase + '/v1/emprestimos/pendentes',
   urlPostEmprestimos: apiBase + '/v1/emprestimos',
   urlPutEmprestimos: apiBase + '/v1/emprestimos',
 

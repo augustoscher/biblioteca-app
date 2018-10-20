@@ -148,7 +148,7 @@ export function createTranslateLoader(http: HttpClient) {
     DialogSearchAutorComponent,
     DialogSearchEditoraComponent,
     DialogSearchPessoaComponent,
-    DialogSearchTurmaComponent
+    DialogSearchTurmaComponent,
   ],
   entryComponents: [
     DialogExampleComponent,

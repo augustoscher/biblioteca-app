@@ -38,11 +38,9 @@ import {PricingTablesPageComponent} from '../pages/pricing-tables-page/pricing-t
 import {ProductsPageComponent} from '../pages/products-page/products-page.component';
 import {ProductPageComponent} from '../pages/product-page/product-page.component';
 import {CartPageComponent} from '../pages/cart-page/cart-page.component';
-import {PortfolioPageComponent} from '../pages/portfolio-page/portfolio-page.component';
 import {PageNotFoundComponent} from '../pages/page-not-found/page-not-found.component';
 import {LoginPageComponent} from '../pages/login-page/login-page.component';
 import {SignUpPageComponent} from '../pages/sign-up-page/sign-up-page.component';
-import {MultiLanguagePageComponent} from '../pages/multi-language-page/multi-language-page.component';
 import { AuthGuard } from '../guards/auth.guard.service';
 
 
@@ -76,7 +74,6 @@ const APP_ROUTES: Routes = [
     {path: 'heatmap', component: HeatmapPageComponent},
     {path: 'piechart', component: PieChartPageComponent},
     {path: 'radar', component: RadarPageComponent},
-    // {path: 'tree', loadChildren: 'app/pages/tree-page/tree-page.module#TreePageModule'},
     {path: 'editor', loadChildren: 'app/pages/editor-page/editor-page.module#EditorPageModule'},
     {path: 'table', component: TablePageComponent},
     {path: 'scroll', component: ScrollPageComponent},
@@ -91,8 +88,6 @@ const APP_ROUTES: Routes = [
     {path: 'products', component: ProductsPageComponent},
     {path: 'product', component: ProductPageComponent},
     {path: 'cart', component: CartPageComponent},
-    // {path: 'portfolio', component: PortfolioPageComponent},
-    // {path: 'multi-language', component: MultiLanguagePageComponent},
     {path: 'cadastro-usuario', loadChildren: 'app/pages/cadastro-usuario/cadastro-usuario.module#CadastroUsuarioModule', canActivate: [AuthGuard]},
     {path: 'cadastro-pessoa', loadChildren: 'app/pages/cadastro-aluno/cadastro-aluno.module#CadastroAlunoModule', canActivate: [AuthGuard]},
     {path: 'cadastro-pessoa/:uuid', loadChildren: 'app/pages/cadastro-aluno/cadastro-aluno.module#CadastroAlunoModule', canActivate: [AuthGuard]},
@@ -112,6 +107,7 @@ const APP_ROUTES: Routes = [
     {path: 'emprestimo-livro', loadChildren: 'app/pages/emprestimo-livro/emprestimo-livro.module#EmprestimoLivroModule', canActivate: [AuthGuard]},
     {path: 'devolucao-livro/:uuid', loadChildren: 'app/pages/devolucao-livro/devolucao-livro.module#DevolucaoLivroModule', canActivate: [AuthGuard]},
     {path: 'consulta-emprestimo-livro', loadChildren: 'app/pages/consulta-emprestimo-livro/consulta-emprestimo-livro.module#ConsultaEmprestimoLivroModule', canActivate: [AuthGuard]},
+    {path: 'consulta-emprestimo-detalhado', loadChildren: 'app/pages/consulta-emprestimo-detalhado/consulta-emprestimo-detalhado.module#ConsultaEmprestimoDetalhadoModule', canActivate: [AuthGuard]},
     {path: '', redirectTo: '/main/dashboard', pathMatch: 'prefix'},
     {path: '**', redirectTo: '/main/dashboard', pathMatch: 'prefix'}
   ]

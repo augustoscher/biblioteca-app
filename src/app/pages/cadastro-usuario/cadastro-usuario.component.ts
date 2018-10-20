@@ -32,7 +32,7 @@ export class CadastroUsuarioComponent implements OnInit {
         this.voltar();
       },
       err => {
-        this._snackBar.open('Erro ao incluir usuário: ' + err.message, '', { duration: 3000 });
+        this._snackBar.open('Não foi possível cadastrar usuário. Possívelmente este usuário já existe. Tente outro.', '', { duration: 3000 });
       });
     }
   }

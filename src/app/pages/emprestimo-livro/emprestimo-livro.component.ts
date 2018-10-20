@@ -136,9 +136,10 @@ export class EmprestimoLivroComponent implements OnInit {
     {name: 'titulo', label: 'Livro'},
     {name: 'isbn', label: 'Isbn'},
     {name: 'autor.nome', label: 'Autor'},
+    {name: 'editora.nome', label: 'Editora'},
     {name: 'codigoLivre', label: 'Código Livre'},
-    {name: 'qtdExemplares', label: 'Exemplares'},
-    {name: 'createdAt', label: 'Data Criação'}
+    {name: 'emprestado', label: 'Emprestado'},
+    
   ];
 
   emprestimoLivroColumns: ITdDataTableColumn[] = [
