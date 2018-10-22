@@ -115,6 +115,7 @@ import { DialogSearchPessoaComponent } from './dialog-search-pessoa/dialog-searc
 import { DialogSearchTurmaComponent } from './dialog-search-turma/dialog-search-turma.component';
 import { EmprestimoService } from './services/emprestimo.service';
 import { DashboardService } from './services/dashboard.service';
+import { LoadingSpinnerModule } from './loading-spinner/loading-spinner.module';
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {};
 
@@ -156,7 +157,7 @@ export function createTranslateLoader(http: HttpClient) {
     DialogSearchEditoraComponent,
     DialogSearchPessoaComponent,
     DialogSearchTurmaComponent,
-    CartButtonComponent
+    CartButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -204,6 +205,7 @@ export function createTranslateLoader(http: HttpClient) {
     CovalentCommonModule,
     ResizeModule,
     HttpClientModule,
+    LoadingSpinnerModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

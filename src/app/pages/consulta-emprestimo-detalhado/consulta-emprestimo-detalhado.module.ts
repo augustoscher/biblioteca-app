@@ -4,6 +4,7 @@ import { MdCardModule, MdButtonModule, MdButtonToggleModule } from '@angular/mat
 import { CovalentCommonModule, CovalentDataTableModule, CovalentFileModule, CovalentMediaModule, CovalentNotificationsModule, CovalentPagingModule, CovalentSearchModule, CovalentStepsModule } from '@covalent/core';
 import { RouterModule } from '@angular/router';
 import { ConsultaEmprestimoDetalhadoComponent } from './consulta-emprestimo-detalhado.component';
+import { LoadingSpinnerModule } from '../../loading-spinner/loading-spinner.module';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { ConsultaEmprestimoDetalhadoComponent } from './consulta-emprestimo-deta
     MdButtonToggleModule,
     CovalentCommonModule, CovalentDataTableModule, CovalentFileModule, CovalentMediaModule, 
     CovalentNotificationsModule, CovalentPagingModule, CovalentSearchModule, CovalentStepsModule,
+    LoadingSpinnerModule,
     RouterModule.forChild([
       {path: '', component: ConsultaEmprestimoDetalhadoComponent}
     ])

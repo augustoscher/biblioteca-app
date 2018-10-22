@@ -14,6 +14,9 @@ export class ConsultaAlunoComponent implements OnInit {
   filteredData: Array<any>;
   personSelected: any;
 
+  showSpinner: boolean = true;
+  isLoadingDone: boolean = false;
+
   filteredTotal: number;
   searchTerm = '';
   fromRow = 0;
@@ -31,21 +34,26 @@ export class ConsultaAlunoComponent implements OnInit {
   }
 
   carregarPessoas() {
+    // this.showSpinner = true;
     this._pessoaService.carregarPessoas(this.currentPage, this.pageSize)
     .subscribe(data => {
       this.filteredData = data['content'];
       this.data = data['content'];
       this.filteredTotal = data['totalElements'];
+      this.showSpinner = false;
+      this.isLoadingDone = true;
     });
   }
 
   carregarPessoasPorNome() {
+    // this.showSpinner = true;
     this._pessoaService.carregarPessoasPor(this.searchTerm)
       .subscribe(data => {
         this.filteredData = data;
         this.data = data;
         this.filteredTotal = data.length;
         this.filter();
+        this.showSpinner = false;
       });
   }
 

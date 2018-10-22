@@ -1,5 +1,6 @@
+<loading-spinner *ngIf="showSpinner"></loading-spinner>
 
-<section>
+<section *ngIf="isLoadingDone">
   <article>
     <md-card>
       <md-card-content>

@@ -15,6 +15,9 @@ export class ConsultaEmprestimoDetalhadoComponent implements OnInit {
   filteredData: Array<any>;
   itemSelected: any;
 
+  showSpinner: boolean = true;
+  isLoadingDone: boolean = false;
+
   filteredTotal: number;
   searchTerm = '';
   fromRow = 0;
@@ -48,6 +51,8 @@ export class ConsultaEmprestimoDetalhadoComponent implements OnInit {
         this.filteredData = data;
         this.data = data;
         this.filteredTotal = data.length;
+        this.showSpinner = false;
+        this.isLoadingDone = true;
       });
     }
 
