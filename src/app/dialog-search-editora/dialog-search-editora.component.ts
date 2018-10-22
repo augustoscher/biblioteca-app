@@ -16,6 +16,8 @@ export class DialogSearchEditoraComponent implements OnInit {
   filteredData: Array<any>;
   editoraSelected: any;
 
+  showSpinner: boolean = true;
+
   filteredTotal: number;
   searchTerm = '';
   fromRow = 0;
@@ -39,6 +41,7 @@ export class DialogSearchEditoraComponent implements OnInit {
         this.data = data['content'];
         this.filteredTotal = data['totalElements'];
         this.pageSize = data['size']
+        this.showSpinner=false;
       });
   }
 

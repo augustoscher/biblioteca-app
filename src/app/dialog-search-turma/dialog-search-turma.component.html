@@ -18,6 +18,7 @@
           [columns]="columns"
           [sortable]="true"
           [selectable]="true"
+          [multiple]="false"
           [sortBy]="sortBy"
           [sortOrder]="sortOrder"
           (sortChange)="sort($event)"
@@ -33,9 +34,10 @@
             </div>
           </ng-template>
         </td-data-table>
-        <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
+        <loading-spinner *ngIf="showSpinner"></loading-spinner>
+        <!-- <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
             <h6>Nenhum registro encontado.</h6>
-        </div>
+        </div> -->
         <td-paging-bar #pagingBar [pageSizes]="[20]" [total]="filteredTotal" (change)="page($event)" class="push-top">
             <span td-paging-bar-label hide-xs>Resultados por página:</span>
             {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>

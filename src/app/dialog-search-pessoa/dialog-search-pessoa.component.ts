@@ -14,6 +14,8 @@ export class DialogSearchPessoaComponent implements OnInit {
   filteredData: Array<any>;
   autorSelected: any;
 
+  showSpinner: boolean = true;
+
   filteredTotal: number;
   searchTerm = '';
   fromRow = 0;
@@ -36,6 +38,7 @@ export class DialogSearchPessoaComponent implements OnInit {
         this.filteredData = data['content'];
         this.data = data['content'];
         this.filteredTotal = data['totalElements'];
+        this.showSpinner = false;
       });
   }
 

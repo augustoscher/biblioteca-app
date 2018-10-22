@@ -18,6 +18,7 @@
             [columns]="columns"
             [sortable]="true"
             [selectable]="true"
+            [multiple]="false"
             [sortBy]="sortBy"
             [sortOrder]="sortOrder"
             (sortChange)="sort($event)"
@@ -33,6 +34,7 @@
                 </div>
               </ng-template>
           </td-data-table>
+          <loading-spinner *ngIf="showSpinner"></loading-spinner>
           <!-- <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
               <h6>Nenhum registro encontado.</h6>
           </div> -->

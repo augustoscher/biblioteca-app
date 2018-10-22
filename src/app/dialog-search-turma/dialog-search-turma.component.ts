@@ -13,6 +13,8 @@ export class DialogSearchTurmaComponent implements OnInit {
   data: Array<any>;
   filteredData: Array<any>;
   turmaSelected: any;
+  
+  showSpinner: boolean = true;
 
   filteredTotal: number;
   searchTerm = '';
@@ -32,7 +34,7 @@ export class DialogSearchTurmaComponent implements OnInit {
       this.filteredData = data;
         this.data = data;
         this.filteredTotal = data.length;
-        // this.pageSize = data['size']
+        this.showSpinner = false;
     });
   }
 
