@@ -20,7 +20,7 @@ export class DialogSearchTurmaComponent implements OnInit {
   searchTerm = '';
   fromRow = 1;
   currentPage = 1;
-  pageSize = 20;
+  pageSize = 10;
   sortBy = 'nome';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Ascending;
 
