@@ -14,6 +14,9 @@ export class ConsultaTurmaComponent implements OnInit {
   filteredData: Array<any>;
   turmaSelected: any;
 
+  showSpinner: boolean = true;
+  isLoadingDone: boolean = false;
+
   filteredTotal: number;
   searchTerm = '';
   fromRow = 1;
@@ -32,6 +35,8 @@ export class ConsultaTurmaComponent implements OnInit {
         this.filteredData = data;
         this.data = data;
         this.filteredTotal = data.length;
+        this.showSpinner = false;
+        this.isLoadingDone = true;
       });
   }
 

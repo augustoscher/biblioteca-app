@@ -19,6 +19,9 @@ export class ConsultaEmprestimoLivroComponent implements OnInit {
   filteredData: Array<any>;
   emprestimoSelected: any;
 
+  showSpinner: boolean = true;
+  isLoadingDone: boolean = false;
+
   filteredTotal: number;
   searchTerm = '';
   fromRow = 0;
@@ -41,6 +44,8 @@ export class ConsultaEmprestimoLivroComponent implements OnInit {
           this.filteredData = data['content'];
           this.data = data['content'];
           this.filteredTotal = data['totalElements'];
+          this.showSpinner = false;
+          this.isLoadingDone = true;
         });
     }
   

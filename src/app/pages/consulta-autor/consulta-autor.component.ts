@@ -16,6 +16,9 @@ export class ConsultaAutorComponent implements OnInit {
   filteredData: Array<any>;
   autorSelected: any;
 
+  showSpinner: boolean = true;
+  isLoadingDone: boolean = false;
+
   filteredTotal: number;
   searchTerm = '';
   fromRow = 0;
@@ -39,6 +42,8 @@ export class ConsultaAutorComponent implements OnInit {
         this.data = data['content'];
         this.filteredTotal = data['totalElements'];
         this.pageSize = data['size']
+        this.showSpinner = false;
+        this.isLoadingDone = true;
       });
   }
 

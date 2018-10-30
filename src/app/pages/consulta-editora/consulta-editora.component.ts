@@ -14,6 +14,9 @@ export class ConsultaEditoraComponent implements OnInit {
   filteredData: Array<any>;
   editoraSelected: any;
 
+  showSpinner: boolean = true;
+  isLoadingDone: boolean = false;
+
   filteredTotal: number;
   searchTerm = '';
   fromRow = 0;
@@ -36,6 +39,8 @@ export class ConsultaEditoraComponent implements OnInit {
         this.filteredData = data['content'];
         this.data = data['content'];
         this.filteredTotal = data['totalElements'];
+        this.showSpinner = false;
+        this.isLoadingDone = true;
       });
   }
 
