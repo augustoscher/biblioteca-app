@@ -1,6 +1,7 @@
 # Biblioteca-APP #
 
 #### Angular BibliotecaApp ####
+###### Website that is responsible for the management of the Public School Library. 
 
 * BibliotecaApp
 * 0.1.0
