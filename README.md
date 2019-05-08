@@ -1,27 +1,30 @@
-# Momo admin template
+# Biblioteca-APP #
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.1.
+#### Angular BibliotecaApp ####
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* BibliotecaApp
+* 0.1.0
 
-## Code scaffolding
+##### Requirements:  
+- npm needs to be installed.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
 
-## Build
+### Setting Up 
+----
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+##### 1. Clone the repositorie  
+> git clone ggit@github.com:augustoscher/biblioteca-app.git
 
-## Running unit tests
+##### 2. Access the repositorie
+> cd biblioteca-app
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+##### 3. Install the dependencies
+> sudo npm install
 
-## Running end-to-end tests
+##### 4. Running
+> npm start
+> ng serve
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+#### 5. Test
+Open http://localhost:4200
