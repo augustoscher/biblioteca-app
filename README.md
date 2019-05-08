@@ -4,7 +4,7 @@
 ###### Website that is responsible for the management of the Public School Library. 
 
 * BibliotecaApp
-* 0.1.0
+* 1.0.1
 
 ##### Requirements:  
 - npm needs to be installed.
